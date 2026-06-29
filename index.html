@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,600;12..96,700;12..96,800&family=Hanken+Grotesk:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<script src="image-slot.js"></script>
+<style>
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0}
+  img{max-width:100%}
+  ::selection{background:#e45b8f;color:#fff}
+  @keyframes jpReveal{from{transform:translateY(28px)}to{transform:translateY(0)}}
+  @keyframes jpMarq{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+  @keyframes jpMarqR{from{transform:translateX(-50%)}to{transform:translateX(0)}}
+  @keyframes jpFloat{0%,100%{transform:translateY(0) rotate(-5deg)}50%{transform:translateY(-11px) rotate(-5deg)}}
+  @keyframes jpBob{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
+</style>
+</helmet>
+<div data-screen-label="Home (Conversión)" id="top" style="background:#FBF6EE;color:#141414;font-family:'Hanken Grotesk',system-ui,-apple-system,sans-serif;overflow-x:clip;position:relative">
+
+  <!-- TRUST STRIP -->
+  <div style="background:#141414;color:#FBF6EE;font-size:13px;font-weight:600">
+    <div style="max-width:1200px;margin:0 auto;padding:9px 22px;display:flex;flex-wrap:wrap;gap:8px 22px;align-items:center;justify-content:center;text-align:center">
+      <span style="color:#FFC83D;letter-spacing:1px">★★★★★</span>
+      <span>+21 marcas confían en nosotros</span>
+      <span style="opacity:.4">·</span>
+      <span>Respuesta en menos de 24 h</span>
+      <span style="opacity:.4">·</span>
+      <span style="color:#e45b8f">Asesoría inicial gratis</span>
+    </div>
+  </div>
+
+  <!-- HEADER -->
+  <header style="position:sticky;top:0;z-index:60;backdrop-filter:blur(12px);background:rgba(251,246,238,.85);border-bottom:1px solid rgba(20,20,20,.08)">
+    <div style="max-width:1200px;margin:0 auto;padding:11px 22px;display:flex;align-items:center;justify-content:space-between;gap:18px">
+      <a href="#top" style="display:flex;align-items:center;text-decoration:none;flex:none"><img src="logo-ink.svg" alt="Jumping Panda" style="height:46px;width:auto;display:block" /></a>
+      <sc-if value="{{ desktop }}" hint-placeholder-val="{{ true }}">
+      <nav style="display:flex;align-items:center;gap:4px">
+        <sc-for list="{{ nav }}" as="item" hint-placeholder-count="4">
+          <a href="{{ item.href }}" style="text-decoration:none;color:#141414;font-weight:600;font-size:15px;padding:8px 13px;border-radius:999px;transition:background .2s,color .2s" style-hover="background:#141414;color:#FBF6EE">{{ item.label }}</a>
+        </sc-for>
+      </nav>
+      <a href="{{ wa }}" target="_blank" style="flex:none;text-decoration:none;background:#e45b8f;color:#141414;font-weight:700;font-size:15px;padding:11px 20px;border-radius:999px;box-shadow:0 4px 0 #141414;transition:transform .2s,box-shadow .2s" style-hover="transform:translateY(-2px);box-shadow:0 6px 0 #141414">Agendar gratis →</a>
+      </sc-if>
+      <sc-if value="{{ isMobile }}" hint-placeholder-val="{{ false }}">
+      <button onClick="{{ toggleMenu }}" aria-label="Menú" style="border:none;background:#141414;color:#FBF6EE;width:44px;height:44px;border-radius:13px;cursor:pointer;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px">
+        <span style="width:18px;height:2px;background:#FBF6EE;display:block"></span>
+        <span style="width:18px;height:2px;background:#FBF6EE;display:block"></span>
+        <span style="width:18px;height:2px;background:#e45b8f;display:block"></span>
+      </button>
+      </sc-if>
+    </div>
+    <sc-if value="{{ menuOpen }}" hint-placeholder-val="{{ false }}">
+    <div style="padding:8px 22px 20px;display:flex;flex-direction:column;gap:4px;border-top:1px solid rgba(20,20,20,.08)">
+      <sc-for list="{{ nav }}" as="item" hint-placeholder-count="4">
+        <a href="{{ item.href }}" onClick="{{ closeMenu }}" style="text-decoration:none;color:#141414;font-weight:700;font-size:18px;padding:11px 4px;font-family:'Bricolage Grotesque',sans-serif">{{ item.label }}</a>
+      </sc-for>
+      <a href="{{ wa }}" target="_blank" style="margin-top:8px;text-align:center;text-decoration:none;background:#e45b8f;color:#141414;font-weight:700;padding:13px;border-radius:999px">Agenda tu asesoría gratis →</a>
+    </div>
+    </sc-if>
+  </header>
+
+  <!-- ABOVE THE FOLD -->
+  <section style="position:relative;max-width:1200px;margin:0 auto;padding:clamp(34px,5vw,68px) 22px clamp(30px,4vw,52px)">
+    <div style="position:absolute;top:-20px;right:-90px;width:560px;height:560px;background:radial-gradient(circle at 35% 35%,#F6DCE7,rgba(246,220,231,0) 68%);z-index:0;pointer-events:none"></div>
+    <div style="position:relative;z-index:1;display:grid;grid-template-columns:repeat(auto-fit,minmax(335px,1fr));gap:clamp(28px,4vw,54px);align-items:center">
+      <div>
+        <div style="display:inline-flex;align-items:center;gap:8px;background:#141414;color:#FBF6EE;font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:12.5px;letter-spacing:.1em;text-transform:uppercase;padding:8px 14px;border-radius:999px">Marketing digital · México</div>
+        <h1 style="font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:clamp(38px,5.6vw,72px);line-height:.98;letter-spacing:-.035em;margin:18px 0 0">Que internet te traiga clientes. <span style="color:#e45b8f">En semanas, no en años.</span></h1>
+        <p style="font-size:clamp(16px,1.35vw,20px);line-height:1.55;max-width:33em;margin:20px 0 0;color:#3c3a37">Creamos tu página, te posicionamos en Google y la IA, y convertimos visitas en clientes que compran — con estrategia, sin complicaciones y <strong style="color:#141414">sin que tú tengas que pelearte con la tecnología.</strong></p>
+        <div style="display:flex;flex-wrap:wrap;gap:13px;margin-top:26px">
+          <a href="{{ wa }}" target="_blank" style="text-decoration:none;background:#e45b8f;color:#141414;font-weight:700;font-size:17px;padding:16px 28px;border-radius:999px;box-shadow:0 5px 0 #141414;transition:transform .2s,box-shadow .2s" style-hover="transform:translateY(-3px);box-shadow:0 8px 0 #141414">Agenda tu asesoría gratis de 30 min</a>
+          <a href="#como" style="text-decoration:none;background:transparent;color:#141414;font-weight:700;font-size:17px;padding:16px 24px;border-radius:999px;border:2px solid #141414;transition:background .2s,color .2s" style-hover="background:#141414;color:#FBF6EE">Ver cómo funciona</a>
+        </div>
+        <div style="display:flex;flex-wrap:wrap;gap:10px 18px;margin-top:18px">
+          <sc-for list="{{ riskBadges }}" as="b" hint-placeholder-count="4">
+            <span style="display:inline-flex;align-items:center;gap:7px;font-size:14px;font-weight:600;color:#141414"><span style="display:inline-flex;align-items:center;justify-content:center;width:18px;height:18px;border-radius:50%;background:#e45b8f;color:#141414;font-size:11px;font-weight:800">✓</span>{{ b }}</span>
+          </sc-for>
+        </div>
+        <div style="display:flex;align-items:center;gap:12px;margin-top:26px;padding-top:22px;border-top:1px solid rgba(20,20,20,.1)">
+          <span style="color:#FFC83D;font-size:18px;letter-spacing:1px">★★★★★</span>
+          <span style="font-size:14.5px;color:#555"><strong style="color:#141414">+21 marcas</strong> mexicanas ya venden con nosotros</span>
+        </div>
+      </div>
+
+      <div style="position:relative">
+        <div style="position:absolute;inset:14px -14px -16px 14px;background:#e45b8f;border-radius:30px;z-index:0"></div>
+        <div style="position:relative;z-index:1;border-radius:28px;overflow:hidden;border:3px solid #141414;box-shadow:0 24px 50px rgba(20,20,20,.18)">
+          <img src="https://cdn.shopify.com/s/files/1/0528/5543/9528/files/jumping-panda-Taqueria-google-ads-servicio-web-hero.jpg?v=1776119350&width=1400" alt="Negocio mexicano encontrado en internet con Jumping Panda" style="width:100%;height:100%;object-fit:cover;display:block;aspect-ratio:4/3.5" />
+        </div>
+        <div style="position:absolute;z-index:2;top:-24px;left:-24px;width:118px;height:118px;border-radius:50%;background:#141414;color:#FBF6EE;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:1px;font-family:'Bricolage Grotesque',sans-serif;animation:jpFloat 4.5s ease-in-out infinite;box-shadow:0 10px 24px rgba(20,20,20,.28)">
+          <div style="font-weight:600;font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;opacity:.8">Asesoría</div>
+          <div style="font-weight:800;font-size:21px;line-height:1;color:#e45b8f">GRATIS</div>
+          <div style="font-weight:600;font-size:11px">30 min</div>
+        </div>
+        <div style="position:absolute;z-index:2;right:-12px;bottom:34px;background:#FBF6EE;border:2px solid #141414;border-radius:16px;padding:11px 15px;box-shadow:0 10px 24px rgba(20,20,20,.16);max-width:200px">
+          <div style="font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:15px;line-height:1.15">Te encuentran justo cuando te buscan</div>
+          <div style="font-size:12.5px;color:#666;margin-top:3px">Google · IA · Mapas</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- LOGO WALL (social proof) -->
+  <section id="clientes" style="padding:clamp(24px,3vw,40px) 0 clamp(40px,6vw,72px);overflow:hidden">
+    <div style="max-width:1200px;margin:0 auto;padding:0 22px;text-align:center;animation:jpReveal linear both;animation-timeline:view();animation-range:entry 0% cover 40%">
+      <h2 style="font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:clamp(22px,2.6vw,34px);line-height:1.05;letter-spacing:-.025em;margin:0">Marcas reales que ya venden con nosotros</h2>
+      <p style="font-size:15px;color:#666;margin:8px 0 0">De consultorios a tiendas en línea: +21 negocios mexicanos confían en Jumping Panda.</p>
+    </div>
+    <div style="margin-top:32px;display:flex;flex-direction:column;gap:14px">
+      <div style="display:flex;gap:14px;width:max-content;animation:jpMarq 42s linear infinite">
+        <sc-for list="{{ clientsLoopA }}" as="c">
+          <div style="flex:none;width:162px;height:92px;background:#fff;border:1px solid rgba(20,20,20,.08);border-radius:16px;display:flex;align-items:center;justify-content:center;padding:18px"><img src="{{ c }}" alt="Cliente Jumping Panda" style="max-width:100%;max-height:100%;object-fit:contain;display:block" /></div>
+        </sc-for>
+      </div>
+      <div style="display:flex;gap:14px;width:max-content;animation:jpMarqR 48s linear infinite">
+        <sc-for list="{{ clientsLoopB }}" as="c">
+          <div style="flex:none;width:162px;height:92px;background:#fff;border:1px solid rgba(20,20,20,.08);border-radius:16px;display:flex;align-items:center;justify-content:center;padding:18px"><img src="{{ c }}" alt="Cliente Jumping Panda" style="max-width:100%;max-height:100%;object-fit:contain;display:block" /></div>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <!-- OUTCOME CHAIN (so that) -->
+  <section style="background:#141414;color:#FBF6EE">
+    <div style="max-width:1200px;margin:0 auto;padding:clamp(48px,7vw,92px) 22px">
+      <div style="max-width:720px;animation:jpReveal linear both;animation-timeline:view();animation-range:entry 0% cover 28%">
+        <div style="font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:#e45b8f">Cómo convertimos clics en clientes</div>
+        <h2 style="font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:clamp(28px,4.2vw,50px);line-height:1.02;letter-spacing:-.03em;margin:14px 0 0">No vendemos servicios. Construimos tu máquina de ventas.</h2>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;margin-top:42px">
+        <sc-for list="{{ outcomes }}" as="o" hint-placeholder-count="4">
+          <div style="background:#1d1d1d;border:1px solid rgba(251,246,238,.1);border-radius:20px;padding:24px 22px;animation:jpReveal linear both;animation-timeline:view();animation-range:entry 0% cover 16%">
+            <div style="font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:34px;line-height:1;color:#e45b8f">{{ o.n }}</div>
+            <h3 style="font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:22px;margin:14px 0 8px">{{ o.t }}</h3>
+            <p style="margin:0;font-size:14.5px;line-height:1.5;color:#b9b5ae">{{ o.d }}</p>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROBLEM / WHY CARE -->
+  <section style="background:#e45b8f;color:#141414">
+    <div style="max-width:1080px;margin:0 auto;padding:clamp(48px,7vw,96px) 22px;text-align:center;animation:jpReveal linear both;animation-timeline:view();animation-range:entry 0% cover 30%">
+      <h2 style="font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:clamp(28px,4.4vw,54px);line-height:1.02;letter-spacing:-.03em;margin:0;max-width:18em;margin-inline:auto">El mundo entero busca en México. ¿Te encuentran a ti… o a tu competencia?</h2>
+      <p style="font-size:clamp(16px,1.5vw,21px);line-height:1.55;max-width:40em;margin:20px auto 0;color:#1c1410">Millones buscan en Google y en IA todos los días. Si no apareces en sus respuestas <strong>(AEO)</strong>, en el mapa <strong>(GEO)</strong> ni en los resultados <strong>(SEO y Ads)</strong>, esos clientes se los lleva alguien más. Cada día sin estrategia es dinero que se va.</p>
+      <a href="{{ wa }}" target="_blank" style="display:inline-block;margin-top:30px;text-decoration:none;background:#141414;color:#FBF6EE;font-weight:700;font-size:17px;padding:15px 30px;border-radius:999px;transition:transform .2s" style-hover="transform:translateY(-3px)">Quiero que me encuentren a mí →</a>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section id="servicios" style="background:#141414;color:#FBF6EE;border-radius:clamp(28px,4vw,52px) clamp(28px,4vw,52px) 0 0">
+    <div style="max-width:1200px;margin:0 auto;padding:clamp(48px,7vw,96px) 22px">
+      <div style="max-width:740px;animation:jpReveal linear both;animation-timeline:view();animation-range:entry 0% cover 26%">
+        <div style="font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:#e45b8f">Nuestros servicios</div>
+        <h2 style="font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:clamp(28px,4.4vw,52px);line-height:1.02;letter-spacing:-.03em;margin:14px 0 0">Todo para vender en línea, en un solo equipo.</h2>
+        <p style="font-size:clamp(16px,1.3vw,19px);line-height:1.55;margin:16px 0 0;color:#c9c5be">Cada servicio empieza con un diagnóstico gratis y se mide por una sola cosa: cuánto te ayuda a vender.</p>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(248px,1fr));gap:16px;margin-top:42px">
+        <sc-for list="{{ services }}" as="s">
+          <a href="{{ s.href }}" target="_blank" style="display:flex;flex-direction:column;background:#1d1d1d;border:1px solid rgba(251,246,238,.12);border-radius:22px;overflow:hidden;text-decoration:none;color:#FBF6EE;transition:transform .35s,box-shadow .35s,border-color .35s;animation:jpReveal linear both;animation-timeline:view();animation-range:entry 0% cover 16%" style-hover="transform:translateY(-7px);box-shadow:0 22px 44px rgba(0,0,0,.4);border-color:#e45b8f">
+            <div style="aspect-ratio:16/11;overflow:hidden;background:#2a2a2a"><img src="{{ s.img }}" alt="{{ s.title }}" style="width:100%;height:100%;object-fit:cover;display:block" /></div>
+            <div style="padding:20px 20px 22px;display:flex;flex-direction:column;flex:1">
+              <h3 style="font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:20px;margin:0 0 9px;letter-spacing:-.01em">{{ s.title }}</h3>
+              <p style="margin:0 0 16px;font-size:14px;line-height:1.5;color:#b9b5ae;flex:1">{{ s.desc }}</p>
+              <span style="display:inline-flex;align-items:center;gap:7px;font-weight:700;font-size:14.5px;color:#e45b8f">Conocer más →</span>
+            </div>
+          </a>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS (reduce effort) -->
+  <section id="como" style="background:#141414;color:#FBF6EE">
+    <div style="max-width:1200px;margin:0 auto;padding:0 22px clamp(48px,7vw,96px)">
+      <div style="border-top:1px solid rgba(251,246,238,.14);padding-top:clamp(40px,6vw,72px)">
+        <div style="max-width:740px;animation:jpReveal linear both;animation-timeline:view();animation-range:entry 0% cover 30%">
+          <div style="font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:#e45b8f">Cómo trabajamos</div>
+          <h2 style="font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:clamp(26px,4vw,48px);line-height:1.02;letter-spacing:-.03em;margin:14px 0 0">Trabajar con nosotros es así de simple.</h2>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:10px;margin-top:42px">
+          <sc-for list="{{ steps }}" as="st" hint-placeholder-count="4">
+            <div style="padding:24px 20px;border-radius:18px;transition:background .3s;animation:jpReveal linear both;animation-timeline:view();animation-range:entry 0% cover 14%" style-hover="background:#1d1d1d">
+              <div style="display:flex;align-items:center;gap:12px"><div style="font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:34px;line-height:1;color:#e45b8f">{{ st.n }}</div><div style="flex:1;height:1px;background:rgba(251,246,238,.16)"></div></div>
+              <h3 style="font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:20px;margin:16px 0 8px">{{ st.t }}</h3>
+              <p style="margin:0;font-size:14px;line-height:1.5;color:#b9b5ae">{{ st.d }}</p>
+            </div>
+          </sc-for>
+        </div>
+        <div style="margin-top:36px;display:flex;flex-wrap:wrap;gap:14px;align-items:center">
+          <a href="{{ wa }}" target="_blank" style="text-decoration:none;background:#e45b8f;color:#141414;font-weight:700;font-size:16px;padding:14px 26px;border-radius:999px;transition:transform .2s" style-hover="transform:translateY(-3px)">Empieza con tu diagnóstico gratis</a>
+          <span style="font-size:14px;color:#b9b5ae">Sin costo · Sin compromiso · Respuesta en 24 h</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WALL OF LOVE (reviews) -->
+  <section style="max-width:1200px;margin:0 auto;padding:clamp(48px,7vw,96px) 22px">
+    <div style="text-align:center;max-width:760px;margin:0 auto;animation:jpReveal linear both;animation-timeline:view();animation-range:entry 0% cover 30%">
+      <div style="font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:#e45b8f">Reseñas reales</div>
+      <h2 style="font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:clamp(28px,4.2vw,50px);line-height:1.02;letter-spacing:-.03em;margin:12px 0 0">Lo que pasa cuando confías en Jumping Panda</h2>
+      <p style="font-size:16px;line-height:1.55;color:#666;margin:14px 0 0">Capturas reales de lo que dicen nuestros clientes en Google, Facebook y WhatsApp. Nada vende más que la palabra de quien ya lo vivió.</p>
+    </div>
+    <div style="margin-top:34px;display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px">
+      <image-slot id="jp-rev1" shape="rounded" radius="16" placeholder="Captura de reseña" style="width:100%;aspect-ratio:3/4;border:2px dashed rgba(20,20,20,.18)"></image-slot>
+      <image-slot id="jp-rev2" shape="rounded" radius="16" placeholder="Captura de reseña" style="width:100%;aspect-ratio:3/4;border:2px dashed rgba(20,20,20,.18)"></image-slot>
+      <image-slot id="jp-rev3" shape="rounded" radius="16" placeholder="Captura de reseña" style="width:100%;aspect-ratio:3/4;border:2px dashed rgba(20,20,20,.18)"></image-slot>
+      <image-slot id="jp-rev4" shape="rounded" radius="16" placeholder="Captura de reseña" style="width:100%;aspect-ratio:3/4;border:2px dashed rgba(20,20,20,.18)"></image-slot>
+      <image-slot id="jp-rev5" shape="rounded" radius="16" placeholder="Captura de reseña" style="width:100%;aspect-ratio:3/4;border:2px dashed rgba(20,20,20,.18)"></image-slot>
+      <image-slot id="jp-rev6" shape="rounded" radius="16" placeholder="Captura de reseña" style="width:100%;aspect-ratio:3/4;border:2px dashed rgba(20,20,20,.18)"></image-slot>
+    </div>
+  </section>
+
+  <!-- RISK REVERSAL -->
+  <section style="max-width:1080px;margin:0 auto;padding:0 22px clamp(48px,7vw,90px)">
+    <div style="background:#141414;color:#FBF6EE;border-radius:28px;padding:clamp(32px,5vw,60px);text-align:center;position:relative;overflow:hidden;animation:jpReveal linear both;animation-timeline:view();animation-range:entry 0% cover 24%">
+      <div style="font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:#e45b8f">Cero riesgo</div>
+      <h2 style="font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:clamp(28px,4.2vw,50px);line-height:1.02;letter-spacing:-.03em;margin:12px auto 0;max-width:16em">Empezar no te cuesta nada. Quedarte, solo si funciona.</h2>
+      <p style="font-size:clamp(16px,1.4vw,19px);line-height:1.55;max-width:38em;margin:18px auto 0;color:#c9c5be">Tu primera asesoría es gratis y sin compromiso. Salimos de ella con un diagnóstico claro de tu mayor oportunidad de ventas — la apliques con nosotros o por tu cuenta.</p>
+      <div style="display:flex;flex-wrap:wrap;justify-content:center;gap:12px 24px;margin-top:26px">
+        <sc-for list="{{ riskBadges }}" as="b" hint-placeholder-count="4">
+          <span style="display:inline-flex;align-items:center;gap:8px;font-size:15px;font-weight:600"><span style="display:inline-flex;align-items:center;justify-content:center;width:20px;height:20px;border-radius:50%;background:#e45b8f;color:#141414;font-size:12px;font-weight:800">✓</span>{{ b }}</span>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <!-- TEAM -->
+  <section id="equipo" style="max-width:1200px;margin:0 auto;padding:0 22px clamp(48px,7vw,90px)">
+    <div style="display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:18px;animation:jpReveal linear both;animation-timeline:view();animation-range:entry 0% cover 28%">
+      <div>
+        <div style="font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:#e45b8f">El equipo</div>
+        <h2 style="font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:clamp(26px,4vw,48px);line-height:1;letter-spacing:-.03em;margin:12px 0 0">Detrás de Jumping Panda hay personas que sí contestan.</h2>
+      </div>
+      <a href="https://jumpingpanda.mx/pages/el-equipo-jumping-panda" target="_blank" style="text-decoration:none;color:#141414;font-weight:700;border-bottom:2px solid #e45b8f;padding-bottom:3px">Conoce su historia →</a>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px;margin-top:36px">
+      <sc-for list="{{ team }}" as="m">
+        <div style="background:#fff;border:1px solid rgba(20,20,20,.08);border-radius:22px;overflow:hidden;animation:jpReveal linear both;animation-timeline:view();animation-range:entry 0% cover 18%">
+          <div style="aspect-ratio:1/1;overflow:hidden;background:#F8E3EC"><img src="{{ m.img }}" alt="{{ m.name }}" style="width:100%;height:100%;object-fit:cover;display:block" /></div>
+          <div style="padding:18px 20px 22px">
+            <h3 style="font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:21px;margin:0">{{ m.name }}</h3>
+            <div style="display:inline-block;margin-top:8px;background:#F8E3EC;color:#141414;font-weight:600;font-size:13px;padding:5px 12px;border-radius:999px">{{ m.role }}</div>
+          </div>
+        </div>
+      </sc-for>
+    </div>
+  </section>
+
+  <!-- FINAL CTA + FORM -->
+  <section id="contacto" style="background:#e45b8f;color:#141414">
+    <div style="max-width:1080px;margin:0 auto;padding:clamp(48px,7vw,96px) 22px;display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:clamp(28px,4vw,52px);align-items:center">
+      <div style="animation:jpReveal linear both;animation-timeline:view();animation-range:entry 0% cover 26%">
+        <div style="font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:13px;letter-spacing:.12em;text-transform:uppercase;opacity:.7">Tu siguiente cliente te está buscando</div>
+        <h2 style="font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:clamp(30px,4.6vw,56px);line-height:1;letter-spacing:-.03em;margin:14px 0 0">Agenda tu asesoría gratis y encuentra tu mayor oportunidad de ventas.</h2>
+        <p style="font-size:clamp(16px,1.4vw,20px);line-height:1.55;max-width:30em;margin:18px 0 0;color:#1c1410">30 minutos, 1 a 1, sin costo y sin compromiso. Déjanos tus datos y te contactamos en menos de 24 horas.</p>
+        <div style="margin-top:22px;display:flex;align-items:center;gap:12px">
+          <span style="color:#141414;font-size:18px;letter-spacing:1px">★★★★★</span>
+          <span style="font-size:14.5px;color:#1c1410"><strong>+21 marcas</strong> ya dieron el paso</span>
+        </div>
+      </div>
+      <div style="background:#FBF6EE;border:3px solid #141414;border-radius:26px;padding:clamp(22px,3vw,34px);box-shadow:0 18px 0 rgba(20,20,20,.18);animation:jpReveal linear both;animation-timeline:view();animation-range:entry 0% cover 22%">
+        <sc-if value="{{ sent }}" hint-placeholder-val="{{ false }}">
+          <div style="text-align:center;padding:30px 8px">
+            <div style="font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:30px;color:#e45b8f;letter-spacing:-.02em">¡Listo! 🐼</div>
+            <p style="margin:12px 0 0;font-size:16px;line-height:1.5;color:#3c3a37">Recibimos tus datos. Te contactamos en menos de 24 horas para agendar tu asesoría gratis.</p>
+            <a href="{{ wa }}" target="_blank" style="display:inline-block;margin-top:20px;text-decoration:none;background:#141414;color:#FBF6EE;font-weight:700;padding:13px 24px;border-radius:999px">¿Urge? Escríbenos por WhatsApp</a>
+          </div>
+        </sc-if>
+        <sc-if value="{{ notSent }}" hint-placeholder-val="{{ true }}">
+        <form onSubmit="{{ onSubmit }}">
+          <div style="font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:21px;margin-bottom:16px">Agenda tu asesoría gratis</div>
+          <input value="{{ fNombre }}" onChange="{{ onNombre }}" type="text" placeholder="Tu nombre" style="width:100%;font:inherit;font-size:15px;padding:13px 15px;border:2px solid #141414;border-radius:13px;background:#fff;margin-bottom:12px;outline:none" />
+          <input value="{{ fCorreo }}" onChange="{{ onCorreo }}" type="email" required="true" placeholder="Tu correo electrónico *" style="width:100%;font:inherit;font-size:15px;padding:13px 15px;border:2px solid #141414;border-radius:13px;background:#fff;margin-bottom:12px;outline:none" />
+          <input value="{{ fTel }}" onChange="{{ onTel }}" type="tel" placeholder="Tu teléfono / WhatsApp" style="width:100%;font:inherit;font-size:15px;padding:13px 15px;border:2px solid #141414;border-radius:13px;background:#fff;margin-bottom:12px;outline:none" />
+          <textarea value="{{ fComentario }}" onChange="{{ onComentario }}" rows="2" placeholder="¿Qué te gustaría lograr?" style="width:100%;font:inherit;font-size:15px;padding:13px 15px;border:2px solid #141414;border-radius:13px;background:#fff;margin-bottom:16px;outline:none;resize:vertical"></textarea>
+          <button type="submit" style="width:100%;border:none;cursor:pointer;background:#e45b8f;color:#141414;font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:17px;padding:16px;border-radius:13px;box-shadow:0 5px 0 #141414;transition:transform .15s,box-shadow .15s" style-hover="transform:translateY(-2px);box-shadow:0 7px 0 #141414">Quiero mi asesoría gratis →</button>
+          <div style="text-align:center;font-size:12.5px;color:#777;margin-top:12px">Sin costo · Sin compromiso · Respuesta en 24 h</div>
+        </form>
+        </sc-if>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer style="background:#141414;color:#FBF6EE">
+    <div style="max-width:1200px;margin:0 auto;padding:clamp(46px,6vw,80px) 22px 28px">
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:34px">
+        <div style="grid-column:1/-1;max-width:420px">
+          <img src="logo-white.svg" alt="Jumping Panda" style="height:84px;width:auto;display:block" />
+          <p style="margin:14px 0 0;font-size:15px;line-height:1.55;color:#b9b5ae;max-width:30em">Te ayudamos a vender en internet con estrategia, claridad y acompañamiento. Hecho en México, con amor.</p>
+          <div style="display:flex;gap:9px;margin-top:18px">
+            <sc-for list="{{ socials }}" as="s" hint-placeholder-count="4">
+              <a href="{{ s.href }}" target="_blank" style="text-decoration:none;color:#FBF6EE;font-weight:700;font-size:13px;padding:8px 13px;border:1.5px solid rgba(251,246,238,.25);border-radius:999px;transition:background .2s,color .2s,border-color .2s" style-hover="background:#e45b8f;color:#141414;border-color:#e45b8f">{{ s.label }}</a>
+            </sc-for>
+          </div>
+        </div>
+        <div>
+          <div style="font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:14px;color:#e45b8f;margin-bottom:14px">Menú</div>
+          <div style="display:flex;flex-direction:column;gap:9px">
+            <a href="#servicios" style="text-decoration:none;color:#cfccc6;font-size:14.5px" style-hover="color:#FBF6EE">Servicios</a>
+            <a href="#como" style="text-decoration:none;color:#cfccc6;font-size:14.5px" style-hover="color:#FBF6EE">Cómo funciona</a>
+            <a href="#clientes" style="text-decoration:none;color:#cfccc6;font-size:14.5px" style-hover="color:#FBF6EE">Clientes</a>
+            <a href="https://jumpingpanda.mx/collections/jumping-panda" target="_blank" style="text-decoration:none;color:#cfccc6;font-size:14.5px" style-hover="color:#FBF6EE">Tienda</a>
+          </div>
+        </div>
+        <div>
+          <div style="font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:14px;color:#e45b8f;margin-bottom:14px">Políticas</div>
+          <div style="display:flex;flex-direction:column;gap:9px">
+            <a href="https://jumpingpanda.mx/policies/privacy-policy" target="_blank" style="text-decoration:none;color:#cfccc6;font-size:14.5px" style-hover="color:#FBF6EE">Privacidad</a>
+            <a href="https://jumpingpanda.mx/policies/terms-of-service" target="_blank" style="text-decoration:none;color:#cfccc6;font-size:14.5px" style-hover="color:#FBF6EE">Términos</a>
+            <a href="https://jumpingpanda.mx/policies/refund-policy" target="_blank" style="text-decoration:none;color:#cfccc6;font-size:14.5px" style-hover="color:#FBF6EE">Reembolso</a>
+          </div>
+        </div>
+        <div>
+          <div style="font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:14px;color:#e45b8f;margin-bottom:14px">Contacto</div>
+          <div style="display:flex;flex-direction:column;gap:9px">
+            <a href="mailto:soy@jumpingpanda.mx" style="text-decoration:none;color:#cfccc6;font-size:14.5px" style-hover="color:#FBF6EE">soy@jumpingpanda.mx</a>
+            <a href="{{ wa }}" target="_blank" style="text-decoration:none;color:#cfccc6;font-size:14.5px" style-hover="color:#FBF6EE">+52 722 931 3202</a>
+            <span style="color:#7e7b76;font-size:13px;margin-top:6px">México · MXN $</span>
+          </div>
+        </div>
+      </div>
+      <div style="margin-top:44px;padding-top:22px;border-top:1px solid rgba(251,246,238,.14);font-size:13px;color:#7e7b76">© 2026 Jumping Panda · Hecho en México con amor</div>
+    </div>
+  </footer>
+
+  <sc-if value="{{ showWhatsApp }}" hint-placeholder-val="{{ true }}">
+  <a href="{{ wa }}" target="_blank" style="position:fixed;bottom:22px;right:22px;z-index:70;text-decoration:none;background:#e45b8f;color:#141414;font-weight:700;font-size:14.5px;padding:13px 20px;border-radius:999px;box-shadow:0 8px 24px rgba(20,20,20,.3);display:flex;align-items:center;gap:8px;transition:transform .2s" style-hover="transform:translateY(-3px)"><span style="width:9px;height:9px;border-radius:50%;background:#141414;display:inline-block"></span>WhatsApp</a>
+  </sc-if>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;showWhatsApp&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;}}">
+class Component extends DCLogic {
+  state = { menuOpen:false, isMobile:false, sent:false, nombre:'', correo:'', tel:'', comentario:'' };
+  componentDidMount(){
+    this._r = () => { const m = window.innerWidth < 900; if (m !== this.state.isMobile) this.setState({ isMobile:m }); };
+    this._r();
+    window.addEventListener('resize', this._r);
+  }
+  componentWillUnmount(){ if (this._r) window.removeEventListener('resize', this._r); }
+  renderVals(){
+    const CDN = 'https://cdn.shopify.com/s/files/1/0528/5543/9528/files/';
+    const wa = 'https://wa.me/527229313202';
+    const services = [
+      { title:'Creación de página web', desc:'Tu mejor vendedor 24/7. Clara, rápida y lista para convertir visitas en clientes.', img:CDN+'Jumping_panda_servicios_paginas_web.png?v=1766180423&width=900', href:'https://jumpingpanda.mx/pages/servicios-creacion-de-paginas-web' },
+      { title:'Página web + agenda de citas', desc:'Convierte visitas en citas agendadas en automático. Ideal para consultorios y servicios.', img:CDN+'designer-drawing-website-mockup.jpg?v=1762970553&width=900', href:'https://jumpingpanda.mx/pages/servicios-pagina-web-con-agenda-de-citas' },
+      { title:'Comercio electrónico', desc:'Una tienda en línea hecha para vender y escalar, no solo para verse bonita.', img:CDN+'Jumping_panda_servicios_comercio_electronico.png?v=1766180423&width=900', href:'https://jumpingpanda.mx/pages/servicios-creacion-comercio-electronico' },
+      { title:'Gestión de redes sociales', desc:'Contenido con estrategia que construye comunidad y genera clientes, no solo likes.', img:CDN+'Jumping_panda_servicios_gestion_de_redes_sociales.png?v=1766180423&width=900', href:'https://jumpingpanda.mx/pages/servicios-gestion-de-redes-sociales' },
+      { title:'Google Ads + SEO y GEO', desc:'Aparece justo cuando te buscan y atrae clientes listos para comprar.', img:CDN+'Jumping_panda_servicios_google_ads.png?v=1766180423&width=900', href:'https://jumpingpanda.mx/pages/servicio-google-ads-y-seo' },
+      { title:'Configuración de Amazon', desc:'Empieza a vender en el marketplace más grande, sin improvisar.', img:CDN+'Jumping_panda_servicios_configuracion_inicial_amazon.png?v=1766180423&width=900', href:'https://jumpingpanda.mx/pages/servicios-configuracion-inicial-de-amazon' },
+      { title:'Configuración de Mercado Libre', desc:'Lanza tu tienda con una base sólida y empieza a vender desde el día uno.', img:CDN+'Jumping_panda_servicios_configuracion_mercado_libre.png?v=1766180423&width=900', href:'https://jumpingpanda.mx/pages/servicios-configuracion-inicial-mercado-libre' },
+      { title:'Mantenimiento web y SEO', desc:'Tu sitio siempre rápido, seguro y subiendo en Google, mes con mes.', img:CDN+'Jumping_panda_servicios_mantenimiento_y_SEO.png?v=1766180423&width=900', href:'https://jumpingpanda.mx/pages/servicios-mantenimiento-web-y-seo' }
+    ];
+    const outcomes = [
+      { n:'01', t:'Te encuentran', d:'Apareces en Google, en la IA y en el mapa, justo cuando te buscan.' },
+      { n:'02', t:'Te eligen', d:'Una web y redes que generan confianza y convierten visitas en clientes.' },
+      { n:'03', t:'Vendes más', d:'Más leads, más citas y más ventas, de forma constante.' },
+      { n:'04', t:'Creces sin frenar', d:'Optimizamos cada mes para que tu crecimiento no se detenga.' }
+    ];
+    const steps = [
+      { n:'01', t:'Diagnóstico gratis', d:'Agendamos una llamada, entendemos tu negocio y encontramos tu mayor oportunidad de ventas.' },
+      { n:'02', t:'Propuesta clara', d:'Te entregamos un plan sencillo, sin tecnicismos y con todo por escrito.' },
+      { n:'03', t:'Lo hacemos por ti', d:'Ejecutamos la estrategia completa. Tú te enfocas en tu negocio; nosotros en que vendas.' },
+      { n:'04', t:'Creces y ajustamos', d:'Medimos resultados, optimizamos cada mes y escalamos lo que funciona.' }
+    ];
+    const riskBadges = ['Sin costo','Sin compromiso','Diagnóstico personalizado','Respuesta en 24 h'];
+    const team = [
+      { name:'Chio Lara', role:'Diseño & experiencia', img:CDN+'Conoce_al_equipo_chio_480x480.jpg?v=1727714706' },
+      { name:'Erci Rodríguez', role:'Marketing digital', img:CDN+'conoce_al_equipo_Erci_480x480.jpg?v=1727714706' },
+      { name:'Roberto Ministro', role:'Desarrollo & estrategia', img:CDN+'conoce_al_equipo_roberto_480x480.jpg?v=1727714706' }
+    ];
+    const socials = [
+      { label:'Instagram', href:'https://instagram.com/jumpingpandamx' },
+      { label:'Facebook', href:'https://facebook.com/jumpingpandamx' },
+      { label:'TikTok', href:'https://www.tiktok.com/@jumpingpandamx' },
+      { label:'YouTube', href:'http://www.youtube.com/@JumpingPandaMX' }
+    ];
+    const nav = [
+      { label:'Servicios', href:'#servicios' },
+      { label:'Cómo funciona', href:'#como' },
+      { label:'Clientes', href:'#clientes' },
+      { label:'Contacto', href:'#contacto' }
+    ];
+    const cn = ['dra_melisa_rivas','Kitchen_Lab','Biogar','Be_brave_textiles','Instituto_Universitario_Londres','Dat_Clinic','Massivosillas','SRpatrimonialpng','muever','Inox','Trend_Resources','Tibait','marcela_castanos_joyeria_artesanal','pae_psicologia_integral','quirella','design_printer','sc_johnson','Vegos','aco','Super_colors','dheany_and_dogs'];
+    const v = (n) => (n==='quirella'||n==='design_printer') ? '1766176253' : '1766176254';
+    const clients = cn.map(n => CDN+'Jumping_Panda_clientes_'+n+'.png?v='+v(n)+'&width=360');
+    const half = Math.ceil(clients.length/2);
+    const clientsLoopA = clients.slice(0,half).concat(clients.slice(0,half));
+    const clientsLoopB = clients.slice(half).concat(clients.slice(half));
+    const showWhatsApp = this.props.showWhatsApp ?? true;
+    return {
+      wa, services, outcomes, steps, riskBadges, team, socials, nav, clients, clientsLoopA, clientsLoopB, showWhatsApp,
+      isMobile: this.state.isMobile, desktop: !this.state.isMobile,
+      menuOpen: this.state.menuOpen, sent: this.state.sent, notSent: !this.state.sent,
+      fNombre: this.state.nombre, fCorreo: this.state.correo, fTel: this.state.tel, fComentario: this.state.comentario,
+      onNombre: (e)=>this.setState({nombre:e.target.value}),
+      onCorreo: (e)=>this.setState({correo:e.target.value}),
+      onTel: (e)=>this.setState({tel:e.target.value}),
+      onComentario: (e)=>this.setState({comentario:e.target.value}),
+      onSubmit: (e)=>{ e.preventDefault(); this.setState({sent:true}); },
+      toggleMenu: ()=>this.setState(s=>({menuOpen:!s.menuOpen})),
+      closeMenu: ()=>this.setState({menuOpen:false})
+    };
+  }
+}
+</script>
+</body>
+</html>

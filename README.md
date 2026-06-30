@@ -23,13 +23,16 @@ python3 -m http.server 8000
 
 Any static server works (`npx serve`, `php -S localhost:8000`, VS Code Live Server, …).
 
-## Deploy to GitHub Pages
+## Deploy (GitHub Pages)
 
-1. Push this folder to a GitHub repo (see below).
-2. Repo → **Settings → Pages** → Source: **Deploy from a branch** → `main` / `/root`.
-3. Your site goes live at `https://<user>.github.io/<repo>/`.
+This repo is **already live** on GitHub Pages:
 
-`index.html` is the entry point, so no build step is required.
+- **Repo:** `jumpingpandamx/jumping-panda-website` (public)
+- **Custom domain:** <https://jumpingpanda.mx> (set via the `CNAME` file)
+- **github.io URL:** <https://jumpingpandamx.github.io/jumping-panda-website/>
+- **Source:** Deploy from branch `main`, folder `/root`. `index.html` is the entry point — no build step.
+
+To publish a change, just commit and push to `main`; Pages rebuilds automatically (usually under a minute). Don't delete or rename `CNAME` or the custom domain will drop.
 
 ---
 
@@ -40,8 +43,11 @@ Any static server works (`npx serve`, `php -S localhost:8000`, VS Code Live Serv
 | `index.html` | The whole page — markup + logic. |
 | `support.js` | ~50 KB client runtime that renders the page. Loads React 18 + Babel from unpkg at runtime. **Do not edit.** |
 | `image-slot.js` | Web component used for the 6 review screenshots (drag-and-drop, persists in `localStorage`). |
-| `logo-ink.svg` | Dark logo — used in the header (light background). |
+| `jumping-panda-header-horizontal-vector.svg` | Horizontal logo — used in the **header** (light background). |
 | `logo-white.svg` | White logo — used in the footer (dark background). |
+| `logo-ink.svg` | Dark square logo. **No longer referenced** (header now uses the horizontal logo); kept for reference. |
+| `logos/` | 24 client logos as transparent SVGs — the logo wall ("Marcas reales que ya venden con nosotros"). |
+| `CNAME` | Custom-domain config for GitHub Pages (`jumpingpanda.mx`). Don't delete. |
 
 > **How `index.html` is structured.** It is a "Design Component": the markup lives
 > inside `<x-dc>…</x-dc>` and the behavior lives in a `class Component extends DCLogic`
@@ -92,9 +98,9 @@ Any static server works (`npx serve`, `php -S localhost:8000`, VS Code Live Serv
 ## Sections (top → bottom)
 
 1. **Trust strip** — thin dark bar: 5-star rating, "+21 marcas", "respuesta en 24 h", "asesoría gratis".
-2. **Header** — sticky, blurred cream bar. Logo (`logo-ink.svg`) + nav + pink "Agendar gratis" CTA. Collapses to a hamburger + slide-down menu under 900px.
+2. **Header** — sticky, blurred cream bar. Horizontal logo (`jumping-panda-header-horizontal-vector.svg`) + nav + pink "Agendar gratis" CTA. Collapses to a hamburger + slide-down menu under 900px.
 3. **Hero** — two-column: badge, H1 (with pink phrase), subhead, two CTAs, 4 risk badges, rating row; right column is a bordered hero image with two floating cards ("Asesoría GRATIS 30 min" + "Te encuentran cuando te buscan").
-4. **Logo wall** — two opposed infinite marquees of 21 client logos.
+4. **Logo wall** — a single infinite marquee of the 24 client logos (transparent SVGs from `logos/`), shown in grayscale. Subhead reads "+24 negocios mexicanos". The logo list and order live in the logic block at the bottom of `index.html` (`const clients = [...]`).
 5. **Outcome chain** — dark section, 4 numbered cards (Te encuentran → Te eligen → Vendes más → Creces).
 6. **Problem** — full-bleed pink section, big question headline + CTA.
 7. **Services** — dark, rounded top; grid of 8 service cards (image + title + desc + link), hover lift + pink border.
@@ -111,7 +117,7 @@ Any static server works (`npx serve`, `php -S localhost:8000`, VS Code Live Serv
 ## Interactions & behavior
 
 - **Scroll reveal**: sections rise in via CSS `animation-timeline: view()` (`@keyframes jpReveal`).
-- **Marquees**: `@keyframes jpMarq` / `jpMarqR` scroll the two logo rows in opposite directions (42s / 48s loops).
+- **Marquee**: `@keyframes jpMarq` scrolls the single logo row (45s loop). Each logo `<img>` uses an explicit `height:126px; width:auto` — required so the viewBox-only SVGs don't collapse to zero width in Safari/WebKit.
 - **Floating accents**: `jpFloat` / `jpBob` gently bob the hero badges.
 - **Hover**: buttons lift + deepen their hard shadow; service cards lift and gain a pink border; nav items invert to ink/cream.
 - **Smooth scroll** on in-page anchor links (`#servicios`, `#como`, `#clientes`, `#contacto`).
@@ -132,12 +138,15 @@ Held in the `Component` logic class:
 
 ## Assets
 
-- **Local & version-controlled**: `logo-ink.svg`, `logo-white.svg`.
-- **External (Shopify CDN)**: the hero image, 8 service images, 3 team photos, and 21
-  client logos are hot-linked from `https://cdn.shopify.com/s/files/1/0528/5543/9528/files/…`.
+- **Local & version-controlled**: `jumping-panda-header-horizontal-vector.svg` (header),
+  `logo-white.svg` (footer), `logo-ink.svg` (unused), and the **24 client logos** in
+  `logos/` (transparent SVGs).
+- **External (Shopify CDN)**: the hero image, 8 service images, and 3 team photos are
+  still hot-linked from `https://cdn.shopify.com/s/files/1/0528/5543/9528/files/…`.
   They load over the network; the exact URLs are in the logic block at the bottom of
-  `index.html`. For a production repo, consider downloading them into an `assets/` folder
-  and updating the references.
+  `index.html`. For a fully self-contained repo, consider downloading them into an
+  `assets/` folder and updating the references (the client logos have already been
+  migrated this way).
 - **Review screenshots (TODO)**: the "Wall of love" uses 6 empty `<image-slot>`
   placeholders. Drop real review screenshots onto them in the browser (they persist in
   `localStorage`), **or** replace each `<image-slot>` with a plain `<img>` pointing at a

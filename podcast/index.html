@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="../support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<title>Pandas Creativos y su Camino al Éxito — Podcast | Jumping Panda</title>
+<meta name="description" content="El podcast de Jumping Panda donde exploramos las historias de quienes han alcanzado el éxito: emprendedores, innovadores y creativos. Escúchanos en Spotify.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,600;12..96,700;12..96,800&family=Hanken+Grotesk:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0}
+  img{max-width:100%}
+  ::selection{background:#e45b8f;color:#fff}
+  @keyframes jpReveal{from{transform:translateY(28px)}to{transform:translateY(0)}}
+  @keyframes jpMarq{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+  @keyframes jpMarqR{from{transform:translateX(-50%)}to{transform:translateX(0)}}
+  @keyframes jpFloat{0%,100%{transform:translateY(0) rotate(-5deg)}50%{transform:translateY(-11px) rotate(-5deg)}}
+  @keyframes jpBob{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
+</style>
+</helmet>
+<div data-screen-label="Podcast · Pandas Creativos" id="top" style="background:#FBF6EE;color:#141414;font-family:'Hanken Grotesk',system-ui,-apple-system,sans-serif;overflow-x:clip;position:relative">
+
+  <!-- TRUST STRIP -->
+  <div style="background:#141414;color:#FBF6EE;font-size:13px;font-weight:600">
+    <div style="max-width:1200px;margin:0 auto;padding:9px 22px;display:flex;flex-wrap:wrap;gap:8px 22px;align-items:center;justify-content:center;text-align:center">
+      <span style="color:#FFC83D;letter-spacing:1px">★★★★★</span>
+      <span>+30 marcas confían en nosotros</span>
+      <span style="opacity:.4">·</span>
+      <span>Respuesta en menos de 24 h</span>
+      <span style="opacity:.4">·</span>
+      <span style="color:#e45b8f">Asesoría inicial gratis</span>
+    </div>
+  </div>
+
+  <!-- HEADER -->
+  <header style="position:sticky;top:0;z-index:60;backdrop-filter:blur(12px);background:rgba(251,246,238,.85);border-bottom:1px solid rgba(20,20,20,.08)">
+    <div style="max-width:1200px;margin:0 auto;padding:11px 22px;display:flex;align-items:center;justify-content:space-between;gap:18px">
+      <a href="../index.html#top" style="display:flex;align-items:center;text-decoration:none;flex:none"><img src="../jumping-panda-header-horizontal-vector.svg" alt="Jumping Panda" style="height:46px;width:auto;display:block" /></a>
+      <sc-if value="{{ desktop }}" hint-placeholder-val="{{ true }}">
+      <nav style="display:flex;align-items:center;gap:4px">
+        <sc-for list="{{ nav }}" as="item" hint-placeholder-count="5">
+          <a href="{{ item.href }}" style="text-decoration:none;color:#141414;font-weight:600;font-size:15px;padding:8px 13px;border-radius:999px;transition:background .2s,color .2s" style-hover="background:#141414;color:#FBF6EE">{{ item.label }}</a>
+        </sc-for>
+      </nav>
+      <a href="{{ wa }}" target="_blank" rel="noopener" style="flex:none;text-decoration:none;background:#e45b8f;color:#141414;font-weight:700;font-size:15px;padding:11px 20px;border-radius:999px;box-shadow:0 4px 0 #141414;transition:transform .2s,box-shadow .2s" style-hover="transform:translateY(-2px);box-shadow:0 6px 0 #141414">Agendar gratis →</a>
+      </sc-if>
+      <sc-if value="{{ isMobile }}" hint-placeholder-val="{{ false }}">
+      <button onClick="{{ toggleMenu }}" aria-label="Menú" style="border:none;background:#141414;color:#FBF6EE;width:44px;height:44px;border-radius:13px;cursor:pointer;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px">
+        <span style="width:18px;height:2px;background:#FBF6EE;display:block"></span>
+        <span style="width:18px;height:2px;background:#FBF6EE;display:block"></span>
+        <span style="width:18px;height:2px;background:#e45b8f;display:block"></span>
+      </button>
+      </sc-if>
+    </div>
+    <sc-if value="{{ menuOpen }}" hint-placeholder-val="{{ false }}">
+    <div style="padding:8px 22px 20px;display:flex;flex-direction:column;gap:4px;border-top:1px solid rgba(20,20,20,.08)">
+      <sc-for list="{{ nav }}" as="item" hint-placeholder-count="5">
+        <a href="{{ item.href }}" onClick="{{ closeMenu }}" style="text-decoration:none;color:#141414;font-weight:700;font-size:18px;padding:11px 4px;font-family:'Bricolage Grotesque',sans-serif">{{ item.label }}</a>
+      </sc-for>
+      <a href="{{ wa }}" target="_blank" rel="noopener" style="margin-top:8px;text-align:center;text-decoration:none;background:#e45b8f;color:#141414;font-weight:700;padding:13px;border-radius:999px">Agenda tu asesoría gratis →</a>
+    </div>
+    </sc-if>
+  </header>
+
+  <!-- HERO (dark, distinct from service pages) -->
+  <section style="background:#141414;color:#FBF6EE;position:relative;overflow:hidden">
+    <div style="position:absolute;top:-120px;right:-120px;width:560px;height:560px;background:radial-gradient(circle at 50% 50%,rgba(228,91,143,.35),rgba(228,91,143,0) 70%);z-index:0;pointer-events:none"></div>
+    <div style="position:absolute;bottom:-160px;left:-140px;width:520px;height:520px;background:radial-gradient(circle at 50% 50%,rgba(228,91,143,.18),rgba(228,91,143,0) 70%);z-index:0;pointer-events:none"></div>
+    <div style="max-width:1000px;margin:0 auto;padding:clamp(48px,8vw,112px) 22px;text-align:center;position:relative;z-index:1">
+      <div style="font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:13px;letter-spacing:.16em;text-transform:uppercase;color:#e45b8f">Podcast</div>
+      <h1 style="font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:clamp(38px,6vw,80px);line-height:.98;letter-spacing:-.035em;margin:14px 0 0">Pandas Creativos y su Camino al Éxito</h1>
+      <p style="font-size:clamp(16px,1.5vw,21px);line-height:1.55;max-width:34em;margin:20px auto 0;color:#c9c5be">Historias reales de quienes han alcanzado el éxito: sus logros, sus fracasos y las lecciones del camino.</p>
+      <div style="display:flex;flex-wrap:wrap;gap:13px;justify-content:center;margin-top:30px">
+        <sc-for list="{{ platforms }}" as="p" hint-placeholder-count="1">
+          <a href="{{ p.href }}" target="_blank" rel="noopener" style="text-decoration:none;background:#e45b8f;color:#141414;font-weight:700;font-size:16px;padding:14px 26px;border-radius:999px;box-shadow:0 5px 0 rgba(251,246,238,.25);transition:transform .2s,box-shadow .2s" style-hover="transform:translateY(-3px);box-shadow:0 8px 0 rgba(251,246,238,.25)">Escuchar en {{ p.label }}</a>
+        </sc-for>
+        <a href="#episodios" style="text-decoration:none;background:transparent;color:#FBF6EE;font-weight:700;font-size:16px;padding:14px 24px;border-radius:999px;border:2px solid rgba(251,246,238,.4);transition:background .2s,color .2s,border-color .2s" style-hover="background:#FBF6EE;color:#141414;border-color:#FBF6EE">Ver episodios →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- SOBRE EL PODCAST -->
+  <section style="max-width:880px;margin:0 auto;padding:clamp(48px,7vw,90px) 22px;text-align:center;animation:jpReveal linear both;animation-timeline:view();animation-range:entry 0% cover 30%">
+    <div style="font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:#e45b8f">Sobre el podcast</div>
+    <h2 style="font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:clamp(28px,4.2vw,48px);line-height:1.02;letter-spacing:-.03em;margin:12px 0 0">Conversaciones con quienes ya recorrieron el camino</h2>
+    <p style="font-size:clamp(16px,1.3vw,19px);line-height:1.6;margin:20px auto 0;color:#3c3a37">Bienvenidos a Pandas Creativos y su Camino al Éxito, el podcast de Jumping Panda donde exploramos las historias de quienes han alcanzado el éxito en su campo. Cada episodio es una oportunidad para aprender de emprendedores, innovadores y creativos que comparten sus trayectorias, desde sus logros hasta sus fracasos, y cómo han logrado el equilibrio en sus vidas profesionales, personales y familiares.</p>
+  </section>
+
+  <!-- ¿QUÉ ENCONTRARÁS? (dark) -->
+  <section style="background:#141414;color:#FBF6EE;border-radius:clamp(28px,4vw,52px) clamp(28px,4vw,52px) 0 0">
+    <div style="max-width:1200px;margin:0 auto;padding:clamp(48px,7vw,92px) 22px">
+      <div style="max-width:740px;animation:jpReveal linear both;animation-timeline:view();animation-range:entry 0% cover 28%">
+        <div style="font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:#e45b8f">En cada episodio</div>
+        <h2 style="font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:clamp(28px,4.2vw,50px);line-height:1.02;letter-spacing:-.03em;margin:14px 0 0">¿Qué encontrarás en cada episodio?</h2>
+        <p style="font-size:clamp(16px,1.3vw,19px);line-height:1.55;margin:16px 0 0;color:#c9c5be">En Pandas Creativos no solo hablamos de éxitos. Profundizamos en los desafíos que enfrentaron, las decisiones difíciles que tomaron y las lecciones valiosas que aprendieron en el camino.</p>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(248px,1fr));gap:16px;margin-top:42px">
+        <sc-for list="{{ encontraras }}" as="e" hint-placeholder-count="3">
+          <div style="background:#1d1d1d;border:1px solid rgba(251,246,238,.1);border-radius:22px;padding:26px 24px;animation:jpReveal linear both;animation-timeline:view();animation-range:entry 0% cover 16%">
+            <h3 style="font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:22px;margin:0 0 9px;color:#e45b8f">{{ e.t }}</h3>
+            <p style="margin:0;font-size:15px;line-height:1.55;color:#b9b5ae">{{ e.d }}</p>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <!-- ESCÚCHANOS -->
+  <section style="max-width:1000px;margin:0 auto;padding:clamp(48px,7vw,90px) 22px;text-align:center;animation:jpReveal linear both;animation-timeline:view();animation-range:entry 0% cover 30%">
+    <div style="font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:#e45b8f">Dónde escuchar</div>
+    <h2 style="font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:clamp(28px,4.2vw,48px);line-height:1.02;letter-spacing:-.03em;margin:12px 0 0">Escúchanos en tu plataforma favorita</h2>
+    <p style="font-size:clamp(16px,1.3vw,19px);line-height:1.55;max-width:40em;margin:16px auto 0;color:#3c3a37">Elige tu plataforma y acompáñanos en cada episodio.</p>
+    <div style="display:flex;flex-wrap:wrap;gap:12px;justify-content:center;margin-top:28px">
+      <sc-for list="{{ platforms }}" as="p" hint-placeholder-count="1">
+        <a href="{{ p.href }}" target="_blank" rel="noopener" style="text-decoration:none;color:#141414;font-weight:700;font-size:15px;padding:13px 22px;border:2px solid #141414;border-radius:999px;transition:background .2s,color .2s" style-hover="background:#141414;color:#FBF6EE">{{ p.label }}</a>
+      </sc-for>
+    </div>
+  </section>
+
+  <!-- EPISODIOS (Spotify show embed) -->
+  <section id="episodios" style="max-width:920px;margin:0 auto;padding:0 22px clamp(48px,7vw,90px);animation:jpReveal linear both;animation-timeline:view();animation-range:entry 0% cover 28%">
+    <div style="text-align:center">
+      <div style="font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:#e45b8f">Escucha ahora</div>
+      <h2 style="font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:clamp(28px,4.2vw,48px);line-height:1.02;letter-spacing:-.03em;margin:12px 0 0">Episodios</h2>
+      <p style="font-size:clamp(16px,1.3vw,19px);line-height:1.55;max-width:40em;margin:16px auto 0;color:#3c3a37">Dale play al episodio más reciente. Los nuevos aparecen aquí automáticamente.</p>
+    </div>
+    <div style="margin-top:28px;border:3px solid #141414;border-radius:20px;overflow:hidden;box-shadow:0 18px 0 rgba(20,20,20,.12)">
+      <iframe title="Pandas Creativos y su Camino al Éxito en Spotify" src="{{ spotifyEmbed }}" width="100%" height="352" frameborder="0" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy" style="display:block;border:0"></iframe>
+    </div>
+  </section>
+
+  <!-- CIERRE / CTA -->
+  <section style="background:#e45b8f;color:#141414">
+    <div style="max-width:1000px;margin:0 auto;padding:clamp(48px,7vw,96px) 22px;text-align:center;animation:jpReveal linear both;animation-timeline:view();animation-range:entry 0% cover 30%">
+      <h2 style="font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:clamp(28px,4.4vw,54px);line-height:1.02;letter-spacing:-.03em;margin:0;max-width:16em;margin-inline:auto">No te pierdas ningún episodio</h2>
+      <p style="font-size:clamp(16px,1.5vw,21px);line-height:1.55;max-width:38em;margin:18px auto 0;color:#1c1410">Suscríbete o síguenos en tu plataforma favorita y acompáñanos en cada episodio.</p>
+      <div style="display:flex;flex-wrap:wrap;gap:13px;justify-content:center;margin-top:28px">
+        <sc-for list="{{ platforms }}" as="p" hint-placeholder-count="1">
+          <a href="{{ p.href }}" target="_blank" rel="noopener" style="text-decoration:none;background:#141414;color:#FBF6EE;font-weight:700;font-size:17px;padding:15px 28px;border-radius:999px;transition:transform .2s" style-hover="transform:translateY(-3px)">Seguir en {{ p.label }}</a>
+        </sc-for>
+        <a href="{{ wa }}" target="_blank" rel="noopener" style="text-decoration:none;background:transparent;color:#141414;font-weight:700;font-size:17px;padding:15px 26px;border-radius:999px;border:2px solid #141414;transition:background .2s,color .2s" style-hover="background:#141414;color:#FBF6EE">¿Te gustaría ser invitado? →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer style="background:#141414;color:#FBF6EE">
+    <div style="max-width:1200px;margin:0 auto;padding:clamp(46px,6vw,80px) 22px 28px">
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:34px">
+        <div style="grid-column:1/-1;max-width:420px">
+          <img src="../logo-white.svg" alt="Jumping Panda" style="height:84px;width:auto;display:block" />
+          <p style="margin:14px 0 0;font-size:15px;line-height:1.55;color:#b9b5ae;max-width:30em">Te ayudamos a vender en internet con estrategia, claridad y acompañamiento. Hecho en México, con amor.</p>
+          <div style="display:flex;gap:9px;margin-top:18px">
+            <sc-for list="{{ socials }}" as="s" hint-placeholder-count="4">
+              <a href="{{ s.href }}" target="_blank" rel="noopener" style="text-decoration:none;color:#FBF6EE;font-weight:700;font-size:13px;padding:8px 13px;border:1.5px solid rgba(251,246,238,.25);border-radius:999px;transition:background .2s,color .2s,border-color .2s" style-hover="background:#e45b8f;color:#141414;border-color:#e45b8f">{{ s.label }}</a>
+            </sc-for>
+          </div>
+        </div>
+        <div>
+          <div style="font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:14px;color:#e45b8f;margin-bottom:14px">Menú</div>
+          <div style="display:flex;flex-direction:column;gap:9px">
+            <a href="../index.html#servicios" style="text-decoration:none;color:#cfccc6;font-size:14.5px" style-hover="color:#FBF6EE">Servicios</a>
+            <a href="../index.html#como" style="text-decoration:none;color:#cfccc6;font-size:14.5px" style-hover="color:#FBF6EE">Cómo funciona</a>
+            <a href="../index.html#clientes" style="text-decoration:none;color:#cfccc6;font-size:14.5px" style-hover="color:#FBF6EE">Clientes</a>
+            <a href="https://jumpingpanda.mx/collections/jumping-panda" target="_blank" rel="noopener" style="text-decoration:none;color:#cfccc6;font-size:14.5px" style-hover="color:#FBF6EE">Tienda</a>
+          </div>
+        </div>
+        <div>
+          <div style="font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:14px;color:#e45b8f;margin-bottom:14px">Políticas</div>
+          <div style="display:flex;flex-direction:column;gap:9px">
+            <a href="https://jumpingpanda.mx/policies/privacy-policy" target="_blank" rel="noopener" style="text-decoration:none;color:#cfccc6;font-size:14.5px" style-hover="color:#FBF6EE">Privacidad</a>
+            <a href="https://jumpingpanda.mx/policies/terms-of-service" target="_blank" rel="noopener" style="text-decoration:none;color:#cfccc6;font-size:14.5px" style-hover="color:#FBF6EE">Términos</a>
+            <a href="https://jumpingpanda.mx/policies/refund-policy" target="_blank" rel="noopener" style="text-decoration:none;color:#cfccc6;font-size:14.5px" style-hover="color:#FBF6EE">Reembolso</a>
+          </div>
+        </div>
+        <div>
+          <div style="font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:14px;color:#e45b8f;margin-bottom:14px">Contacto</div>
+          <div style="display:flex;flex-direction:column;gap:9px">
+            <a href="mailto:soy@jumpingpanda.mx" style="text-decoration:none;color:#cfccc6;font-size:14.5px" style-hover="color:#FBF6EE">soy@jumpingpanda.mx</a>
+            <a href="{{ wa }}" target="_blank" rel="noopener" style="text-decoration:none;color:#cfccc6;font-size:14.5px" style-hover="color:#FBF6EE">+52 722 931 3202</a>
+            <span style="color:#7e7b76;font-size:13px;margin-top:6px">México · MXN $</span>
+          </div>
+        </div>
+      </div>
+      <div style="margin-top:44px;padding-top:22px;border-top:1px solid rgba(251,246,238,.14);font-size:13px;color:#7e7b76">© 2026 Jumping Panda · Hecho en México con amor</div>
+    </div>
+  </footer>
+
+  <sc-if value="{{ showWhatsApp }}" hint-placeholder-val="{{ true }}">
+  <a href="{{ wa }}" target="_blank" rel="noopener" style="position:fixed;bottom:22px;right:22px;z-index:70;text-decoration:none;background:#e45b8f;color:#141414;font-weight:700;font-size:14.5px;padding:13px 20px;border-radius:999px;box-shadow:0 8px 24px rgba(20,20,20,.3);display:flex;align-items:center;gap:8px;transition:transform .2s" style-hover="transform:translateY(-3px)"><span style="width:9px;height:9px;border-radius:50%;background:#141414;display:inline-block"></span>WhatsApp</a>
+  </sc-if>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;showWhatsApp&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;}}">
+class Component extends DCLogic {
+  state = { menuOpen:false, isMobile:false };
+  componentDidMount(){
+    this._r = () => { const m = window.innerWidth < 900; if (m !== this.state.isMobile) this.setState({ isMobile:m }); };
+    this._r();
+    window.addEventListener('resize', this._r);
+  }
+  componentWillUnmount(){ if (this._r) window.removeEventListener('resize', this._r); }
+  renderVals(){
+    const wa = 'https://wa.me/527229313202';
+    const spotifyEmbed = 'https://open.spotify.com/embed/show/6kTliydAKSu9VKgcVwMG50?utm_source=generator';
+    const platforms = [
+      { label:'Spotify', href:'https://open.spotify.com/show/6kTliydAKSu9VKgcVwMG50' }
+    ];
+    const nav = [
+      { label:'Servicios', href:'../index.html#servicios' },
+      { label:'Cómo funciona', href:'../index.html#como' },
+      { label:'Clientes', href:'../index.html#clientes' },
+      { label:'Podcast', href:'#top' },
+      { label:'Contacto', href:'../index.html#contacto' }
+    ];
+    const socials = [
+      { label:'Instagram', href:'https://instagram.com/jumpingpandamx' },
+      { label:'Facebook', href:'https://facebook.com/jumpingpandamx' },
+      { label:'TikTok', href:'https://www.tiktok.com/@jumpingpandamx' },
+      { label:'YouTube', href:'http://www.youtube.com/@JumpingPandaMX' }
+    ];
+    const encontraras = [
+      { t:'Inspiración', d:'Historias reales de personas que han dejado huella.' },
+      { t:'Motivación', d:'Para impulsar tu propio camino.' },
+      { t:'Herramientas prácticas', d:'Que puedes aplicar en tu viaje hacia el éxito.' }
+    ];
+    const showWhatsApp = this.props.showWhatsApp ?? true;
+    return {
+      wa, spotifyEmbed, platforms, nav, socials, encontraras, showWhatsApp,
+      isMobile: this.state.isMobile, desktop: !this.state.isMobile,
+      menuOpen: this.state.menuOpen,
+      toggleMenu: ()=>this.setState(s=>({menuOpen:!s.menuOpen})),
+      closeMenu: ()=>this.setState({menuOpen:false})
+    };
+  }
+}
+</script>
+</body>
+</html>

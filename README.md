@@ -97,10 +97,10 @@ To publish a change, just commit and push to `main`; Pages rebuilds automaticall
 
 ## Sections (top → bottom)
 
-1. **Trust strip** — thin dark bar: 5-star rating, "+21 marcas", "respuesta en 24 h", "asesoría gratis".
+1. **Trust strip** — thin dark bar: 5-star rating, "+30 marcas", "respuesta en 24 h", "asesoría gratis".
 2. **Header** — sticky, blurred cream bar. Horizontal logo (`jumping-panda-header-horizontal-vector.svg`) + nav + pink "Agendar gratis" CTA. Collapses to a hamburger + slide-down menu under 900px.
 3. **Hero** — two-column: badge, H1 (with pink phrase), subhead, two CTAs, 4 risk badges, rating row; right column is a bordered hero image with two floating cards ("Asesoría GRATIS 30 min" + "Te encuentran cuando te buscan").
-4. **Logo wall** — a single infinite marquee of the 24 client logos (transparent SVGs from `logos/`), shown in grayscale. Subhead reads "+24 negocios mexicanos". The logo list and order live in the logic block at the bottom of `index.html` (`const clients = [...]`).
+4. **Logo wall** — a single infinite marquee of the 24 client logos (transparent SVGs from `logos/`), shown in grayscale. Subhead reads "+30 negocios mexicanos". The logo list and order live in the logic block at the bottom of `index.html` (`const clients = [...]`).
 5. **Outcome chain** — dark section, 4 numbered cards (Te encuentran → Te eligen → Vendes más → Creces).
 6. **Problem** — full-bleed pink section, big question headline + CTA.
 7. **Services** — dark, rounded top; grid of 8 service cards (image + title + desc + link), hover lift + pink border.

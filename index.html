@@ -117,7 +117,7 @@
       <p style="font-size:15px;color:#666;margin:8px 0 0">De consultorios a tiendas en línea: +24 negocios mexicanos confían en Jumping Panda.</p>
     </div>
     <div style="margin-top:32px;display:flex">
-      <div style="display:flex;gap:14px;width:max-content;animation:jpMarq 80s linear infinite">
+      <div style="display:flex;gap:14px;width:max-content;animation:jpMarq 22s linear infinite">
         <sc-for list="{{ clientsLoop }}" as="c">
           <div style="flex:none;height:126px;display:flex;align-items:center;justify-content:center;padding:0 22px"><img src="{{ c }}" alt="Cliente Jumping Panda" style="max-height:100%;max-width:100%;object-fit:contain;display:block;filter:grayscale(1)" /></div>
         </sc-for>
@@ -390,8 +390,9 @@ class Component extends DCLogic {
       { label:'Clientes', href:'#clientes' },
       { label:'Contacto', href:'#contacto' }
     ];
-    const clients = ['dra-melisa-rivas','kitchen-lab','biogar','be-brave-textiles','instituto-londres','dat-clinic','massivosillas','sr-patrimonial','muever','inex','trend-resources','tibait','mc-joyeria-artesanal','pae','quirella','design-printer','sc-johnson','vegos-constructores','aco','dheany-and-dogs','centro-huitzilli','kuppani','psicoach360','vision-quirurgica'].map(n => 'logos/'+n+'-vector.svg');
-    const clientsLoop = clients.concat(clients);
+    const clients = ['tibait','quirella','dra-melisa-rivas','vision-quirurgica'].map(n => 'logos/'+n+'-vector.svg');
+    const clientsRow = clients.concat(clients,clients);
+    const clientsLoop = clientsRow.concat(clientsRow);
     const showWhatsApp = this.props.showWhatsApp ?? true;
     return {
       wa, services, outcomes, steps, riskBadges, team, socials, nav, clients, clientsLoop, showWhatsApp,

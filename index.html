@@ -163,7 +163,7 @@
       </div>
       <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(248px,1fr));gap:16px;margin-top:42px">
         <sc-for list="{{ services }}" as="s">
-          <a href="{{ s.href }}" target="_blank" style="display:flex;flex-direction:column;background:#1d1d1d;border:1px solid rgba(251,246,238,.12);border-radius:22px;overflow:hidden;text-decoration:none;color:#FBF6EE;transition:transform .35s,box-shadow .35s,border-color .35s;animation:jpReveal linear both;animation-timeline:view();animation-range:entry 0% cover 16%" style-hover="transform:translateY(-7px);box-shadow:0 22px 44px rgba(0,0,0,.4);border-color:#e45b8f">
+          <a href="{{ s.href }}" style="display:flex;flex-direction:column;background:#1d1d1d;border:1px solid rgba(251,246,238,.12);border-radius:22px;overflow:hidden;text-decoration:none;color:#FBF6EE;transition:transform .35s,box-shadow .35s,border-color .35s;animation:jpReveal linear both;animation-timeline:view();animation-range:entry 0% cover 16%" style-hover="transform:translateY(-7px);box-shadow:0 22px 44px rgba(0,0,0,.4);border-color:#e45b8f">
             <div style="aspect-ratio:16/11;overflow:hidden;background:#2a2a2a"><img src="{{ s.img }}" alt="{{ s.title }}" style="width:100%;height:100%;object-fit:cover;display:block" /></div>
             <div style="padding:20px 20px 22px;display:flex;flex-direction:column;flex:1">
               <h3 style="font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:20px;margin:0 0 9px;letter-spacing:-.01em">{{ s.title }}</h3>

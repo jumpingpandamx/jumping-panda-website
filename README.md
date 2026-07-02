@@ -1,12 +1,14 @@
 # Jumping Panda — Marketing site (Conversión)
 
-Landing page for **Jumping Panda**, a Mexican digital-marketing studio. This is the
-"Conversión" direction: a conversion-optimized, single-page site in Spanish whose job
-is to turn visitors into booked free consultations.
+Marketing site for **Jumping Panda**, a Mexican digital-marketing studio. The
+"Conversión" direction: conversion-optimized, in Spanish (México), whose job is to turn
+visitors into booked free consultations.
 
-The page is **high-fidelity** — final colors, typography, spacing, copy, and
-interactions. It is built as a single self-contained HTML page that renders through a
-tiny client-side runtime (`support.js`), so it runs as-is on any static host.
+It started as a single landing page (`index.html`) and now also has **8 service pages**
+(under `servicios/`) and a **podcast page** (`podcast/`) — all sharing the same header,
+footer, nav, design tokens, and runtime. Every page is **high-fidelity** (final colors,
+typography, spacing, copy, interactions) and renders through a tiny client-side runtime
+(`support.js`), so it runs as-is on any static host.
 
 ---
 
@@ -47,6 +49,8 @@ To publish a change, just commit and push to `main`; Pages rebuilds automaticall
 | `logo-white.svg` | White logo — used in the footer (dark background). |
 | `logo-ink.svg` | Dark square logo. **No longer referenced** (header now uses the horizontal logo); kept for reference. |
 | `logos/` | 24 client logos as transparent SVGs — the logo wall ("Marcas reales que ya venden con nosotros"). |
+| `servicios/<slug>/index.html` | The 8 service pages (see **Pages** below). Each is its own self-contained Design Component. |
+| `podcast/index.html` | The podcast page ("Pandas Creativos y su Camino al Éxito"). |
 | `CNAME` | Custom-domain config for GitHub Pages (`jumpingpanda.mx`). Don't delete. |
 
 > **How `index.html` is structured.** It is a "Design Component": the markup lives
@@ -55,6 +59,52 @@ To publish a change, just commit and push to `main`; Pages rebuilds automaticall
 > holes look like `{{ name }}`; control flow uses `<sc-for>` (loops) and `<sc-if>`
 > (conditionals). All styling is inline. See **Recreating in a framework** below if you
 > want conventional source instead.
+
+---
+
+## Pages
+
+All pages reuse the **same header, footer, nav, colors, fonts, and components** as the
+home page, and each is its own standalone Design Component (the header/footer markup and
+the `menuOpen` / `isMobile` / form state are duplicated per file — there is no shared
+component module). Every page has exactly **one `<h1>`** (the hero); section titles are `<h2>`.
+
+**Home** — `index.html` → `/`
+
+**Service pages** — `servicios/<slug>/index.html`. Shared structure: hero (1 H1) →
+propuesta de valor → ¿Qué incluye? + Cómo trabajamos → ¿Para quién es? (SÍ / NO /
+Beneficios) → FAQ (accordion via native `<details>`) → ¿Y después? (cross-sell) →
+cierre + contact form. All CTAs link to WhatsApp (`https://wa.me/527229313202`,
+`target="_blank" rel="noopener"`).
+
+| Service page | Slug |
+|--------------|------|
+| Creación de páginas web | `/servicios/creacion-de-paginas-web/` |
+| Página web + agenda de citas | `/servicios/pagina-web-con-agenda-de-citas/` |
+| Comercio electrónico | `/servicios/comercio-electronico/` |
+| Gestión de redes sociales | `/servicios/gestion-de-redes-sociales/` |
+| Google Ads + SEO (GEO/AEO) | `/servicios/google-ads-y-seo/` |
+| Configuración inicial de Amazon | `/servicios/configuracion-inicial-amazon/` |
+| Configuración inicial de Mercado Libre | `/servicios/configuracion-inicial-mercado-libre/` |
+| Mantenimiento web y SEO | `/servicios/mantenimiento-web-y-seo/` |
+
+- The homepage "Nuestros servicios" cards link to these local pages (`const services = [...]`
+  in `index.html`); the cards open in the **same tab** (no `target="_blank"`).
+- The two SEO-oriented pages (**Google Ads + SEO**, **Mantenimiento web y SEO**) embed
+  **FAQPage JSON-LD** (`schema.org/FAQPage`) in the static `<head>` for rich results / AI answers.
+- **"Prueba social"** sections were intentionally omitted (no testimonials yet), and
+  FAQ items marked `[completar]` in the briefs were dropped pending real info.
+
+**Podcast** — `podcast/index.html` → `/podcast/`. Deliberately distinct look (dark hero
+with pink glow). Sections: hero → Sobre el podcast → ¿Qué encontrarás? → Escúchanos
+(platform buttons) → Episodios (Spotify *show* embed + YouTube *playlist* embed) →
+cierre. Platform URLs live in `const platforms = [...]`. **TODO:** the hero is
+text-only — a podcast logo asset still needs to be added.
+
+**Navigation** — the header nav (and mobile menu) is **Servicios · Cómo funciona ·
+Clientes · Podcast · Contacto**, present on every page. On sub-pages the first three and
+Contacto point back to the home anchors (e.g. `../index.html#servicios`); "Podcast"
+points to `/podcast/`.
 
 ---
 
@@ -98,12 +148,12 @@ To publish a change, just commit and push to `main`; Pages rebuilds automaticall
 ## Sections (top → bottom)
 
 1. **Trust strip** — thin dark bar: 5-star rating, "+30 marcas", "respuesta en 24 h", "asesoría gratis".
-2. **Header** — sticky, blurred cream bar. Horizontal logo (`jumping-panda-header-horizontal-vector.svg`) + nav + pink "Agendar gratis" CTA. Collapses to a hamburger + slide-down menu under 900px.
+2. **Header** — sticky, blurred cream bar. Horizontal logo (`jumping-panda-header-horizontal-vector.svg`) + nav (Servicios · Cómo funciona · Clientes · Podcast · Contacto) + pink "Agendar gratis" CTA. Collapses to a hamburger + slide-down menu under 900px. Same header on every page.
 3. **Hero** — two-column: badge, H1 (with pink phrase), subhead, two CTAs, 4 risk badges, rating row; right column is a bordered hero image with two floating cards ("Asesoría GRATIS 30 min" + "Te encuentran cuando te buscan").
 4. **Logo wall** — a single infinite marquee of the 24 client logos (transparent SVGs from `logos/`), shown in grayscale. Subhead reads "+30 negocios mexicanos". The logo list and order live in the logic block at the bottom of `index.html` (`const clients = [...]`).
 5. **Outcome chain** — dark section, 4 numbered cards (Te encuentran → Te eligen → Vendes más → Creces).
 6. **Problem** — full-bleed pink section, big question headline + CTA.
-7. **Services** — dark, rounded top; grid of 8 service cards (image + title + desc + link), hover lift + pink border.
+7. **Services** — dark, rounded top; grid of 8 service cards (image + title + desc + link), hover lift + pink border. Each card links to its local service page under `servicios/` (see **Pages**).
 8. **How it works** — dark, 4 numbered steps + CTA row.
 9. **Wall of love** — 6 review screenshot slots (`<image-slot>`), 3:4 aspect.
 10. **Risk reversal** — dark rounded card, "empezar no cuesta nada" + 4 badges.
@@ -120,7 +170,7 @@ To publish a change, just commit and push to `main`; Pages rebuilds automaticall
 - **Marquee**: `@keyframes jpMarq` scrolls the single logo row (45s loop). Each logo `<img>` uses an explicit `height:126px; width:auto` — required so the viewBox-only SVGs don't collapse to zero width in Safari/WebKit.
 - **Floating accents**: `jpFloat` / `jpBob` gently bob the hero badges.
 - **Hover**: buttons lift + deepen their hard shadow; service cards lift and gain a pink border; nav items invert to ink/cream.
-- **Smooth scroll** on in-page anchor links (`#servicios`, `#como`, `#clientes`, `#contacto`).
+- **Smooth scroll** on in-page anchor links (`#servicios`, `#como`, `#clientes`, `#contacto`). Service/podcast pages link back to these anchors on the home page.
 - **Mobile menu**: hamburger toggles `menuOpen`; links close it on tap.
 - **Contact form**: controlled inputs; on submit it shows an inline success state ("¡Listo! 🐼"). **There is no backend** — submission is local only (see below).
 - **WhatsApp FAB**: deep-links to `https://wa.me/527229313202`. Can be hidden via the `showWhatsApp` prop.

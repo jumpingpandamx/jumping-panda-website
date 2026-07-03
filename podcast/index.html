@@ -35,19 +35,52 @@
   .jp-dropcard a:hover{background:#F8E3EC}
   .jp-dropcard .t{display:block;font-size:14.5px;font-weight:600}
   .jp-dropcard .d{display:block;font-size:12.5px;color:#666;margin-top:2px}
+  /* Mobile menu: Servicios accordion caret */
+  .jp-mobcaret::after{content:"";width:8px;height:8px;margin-left:9px;border-right:2px solid currentColor;border-bottom:2px solid currentColor;transform:translateY(-2px) rotate(45deg);transition:transform .2s ease;display:inline-block}
+  .jp-mobcaret.open::after{transform:translateY(1px) rotate(-135deg)}
+  /* Trust strip: static centered on desktop, one-line marquee on mobile */
+  .jp-trust-marq{display:none;overflow:hidden}
+  .jp-trust-track{display:flex;width:max-content;animation:jpMarq 22s linear infinite}
+  .jp-trust-half{display:flex;align-items:center;gap:22px;padding:9px 22px 9px 0;white-space:nowrap}
+  @media (max-width:899px){
+    .jp-trust-static{display:none!important}
+    .jp-trust-marq{display:block}
+  }
 </style>
 </helmet>
 <div data-screen-label="Podcast · Pandas Creativos" id="top" style="background:#FBF6EE;color:#141414;font-family:'Hanken Grotesk',system-ui,-apple-system,sans-serif;overflow-x:clip;position:relative">
 
   <!-- TRUST STRIP -->
   <div style="background:#141414;color:#FBF6EE;font-size:13px;font-weight:600">
-    <div style="max-width:1200px;margin:0 auto;padding:9px 22px;display:flex;flex-wrap:wrap;gap:8px 22px;align-items:center;justify-content:center;text-align:center">
+    <div class="jp-trust-static" style="max-width:1200px;margin:0 auto;padding:9px 22px;display:flex;flex-wrap:wrap;gap:8px 22px;align-items:center;justify-content:center;text-align:center">
       <span style="color:#FFC83D;letter-spacing:1px">★★★★★</span>
       <span>+30 marcas confían en nosotros</span>
       <span style="opacity:.4">·</span>
       <span>Respuesta en menos de 24 h</span>
       <span style="opacity:.4">·</span>
       <span style="color:#e45b8f">Diagnóstico inicial gratis</span>
+    </div>
+    <div class="jp-trust-marq">
+      <div class="jp-trust-track">
+        <div class="jp-trust-half">
+          <span style="color:#FFC83D;letter-spacing:1px">★★★★★</span>
+          <span>+30 marcas confían en nosotros</span>
+          <span style="opacity:.4">·</span>
+          <span>Respuesta en menos de 24 h</span>
+          <span style="opacity:.4">·</span>
+          <span style="color:#e45b8f">Diagnóstico inicial gratis</span>
+          <span style="opacity:.4">·</span>
+        </div>
+        <div class="jp-trust-half" aria-hidden="true">
+          <span style="color:#FFC83D;letter-spacing:1px">★★★★★</span>
+          <span>+30 marcas confían en nosotros</span>
+          <span style="opacity:.4">·</span>
+          <span>Respuesta en menos de 24 h</span>
+          <span style="opacity:.4">·</span>
+          <span style="color:#e45b8f">Diagnóstico inicial gratis</span>
+          <span style="opacity:.4">·</span>
+        </div>
+      </div>
     </div>
   </div>
 
@@ -91,7 +124,21 @@
     </div>
     <sc-if value="{{ menuOpen }}" hint-placeholder-val="{{ false }}">
     <div style="max-width:1200px;margin:8px auto 0;padding:10px 20px 20px;background:rgba(251,246,238,.97);backdrop-filter:blur(12px);border:1.5px solid rgba(20,20,20,.14);border-radius:18px;display:flex;flex-direction:column;gap:4px">
-      <sc-for list="{{ nav }}" as="item" hint-placeholder-count="4">
+      <button onClick="{{ toggleMobServices }}" class="jp-mobcaret{{ mobServicesOpenClass }}" style="display:flex;align-items:center;border:none;background:none;cursor:pointer;text-align:left;color:#141414;font-weight:700;font-size:18px;padding:11px 4px;font-family:'Bricolage Grotesque',sans-serif">Servicios</button>
+      <sc-if value="{{ mobServicesOpen }}" hint-placeholder-val="{{ false }}">
+      <div style="display:flex;flex-direction:column;gap:2px;padding:0 0 8px 14px;border-left:2px solid rgba(20,20,20,.12);margin:0 0 4px 6px">
+          <a href="../servicios/creacion-de-paginas-web/" onClick="{{ closeMenu }}" style="text-decoration:none;color:#141414;font-weight:600;font-size:15.5px;padding:9px 4px">Creación de página web</a>
+          <a href="../servicios/pagina-web-con-agenda-de-citas/" onClick="{{ closeMenu }}" style="text-decoration:none;color:#141414;font-weight:600;font-size:15.5px;padding:9px 4px">Página web + agenda de citas</a>
+          <a href="../servicios/comercio-electronico/" onClick="{{ closeMenu }}" style="text-decoration:none;color:#141414;font-weight:600;font-size:15.5px;padding:9px 4px">Comercio electrónico</a>
+          <a href="../servicios/gestion-de-redes-sociales/" onClick="{{ closeMenu }}" style="text-decoration:none;color:#141414;font-weight:600;font-size:15.5px;padding:9px 4px">Gestión de redes sociales</a>
+          <a href="../servicios/google-ads-y-seo/" onClick="{{ closeMenu }}" style="text-decoration:none;color:#141414;font-weight:600;font-size:15.5px;padding:9px 4px">Google Ads + SEO y GEO</a>
+          <a href="../servicios/configuracion-inicial-amazon/" onClick="{{ closeMenu }}" style="text-decoration:none;color:#141414;font-weight:600;font-size:15.5px;padding:9px 4px">Configuración de Amazon</a>
+          <a href="../servicios/configuracion-inicial-mercado-libre/" onClick="{{ closeMenu }}" style="text-decoration:none;color:#141414;font-weight:600;font-size:15.5px;padding:9px 4px">Configuración de Mercado Libre</a>
+          <a href="../servicios/mantenimiento-web-y-seo/" onClick="{{ closeMenu }}" style="text-decoration:none;color:#141414;font-weight:600;font-size:15.5px;padding:9px 4px">Mantenimiento web y SEO</a>
+          <a href="../index.html#servicios" onClick="{{ closeMenu }}" style="text-decoration:none;color:#e45b8f;font-weight:700;font-size:15px;padding:9px 4px">Ver todos los servicios →</a>
+      </div>
+      </sc-if>
+      <sc-for list="{{ navRest }}" as="item" hint-placeholder-count="4">
         <a href="{{ item.href }}" onClick="{{ closeMenu }}" style="text-decoration:none;color:#141414;font-weight:700;font-size:18px;padding:11px 4px;font-family:'Bricolage Grotesque',sans-serif">{{ item.label }}</a>
       </sc-for>
       <a href="{{ wa }}" target="_blank" rel="noopener" style="margin-top:8px;text-align:center;text-decoration:none;background:#e45b8f;color:#141414;font-weight:700;padding:13px;border:1.5px solid #141414;border-radius:12px">Agenda tu diagnóstico</a>
@@ -239,7 +286,7 @@
 </x-dc>
 <script type="text/x-dc" data-dc-script data-props="{&quot;showWhatsApp&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;}}">
 class Component extends DCLogic {
-  state = { menuOpen:false, isMobile:false };
+  state = { menuOpen:false, mobServicesOpen:false, isMobile:false };
   componentDidMount(){
     this._r = () => { const m = window.innerWidth < 900; if (m !== this.state.isMobile) this.setState({ isMobile:m }); };
     this._r();
@@ -284,8 +331,12 @@ class Component extends DCLogic {
       wa, spotifyEmbed, youtubeEmbed, platforms, principales, nav, socials, encontraras, showWhatsApp,
       isMobile: this.state.isMobile, desktop: !this.state.isMobile,
       menuOpen: this.state.menuOpen,
-      toggleMenu: ()=>this.setState(s=>({menuOpen:!s.menuOpen})),
-      closeMenu: ()=>this.setState({menuOpen:false})
+      navRest: nav.filter(item => item.label !== 'Servicios'),
+      mobServicesOpen: this.state.mobServicesOpen,
+      mobServicesOpenClass: this.state.mobServicesOpen ? ' open' : '',
+      toggleMenu: ()=>this.setState(s=>({menuOpen:!s.menuOpen, mobServicesOpen:false})),
+      toggleMobServices: ()=>this.setState(s=>({mobServicesOpen:!s.mobServicesOpen})),
+      closeMenu: ()=>this.setState({menuOpen:false, mobServicesOpen:false})
     };
   }
 }

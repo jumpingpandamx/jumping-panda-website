@@ -37,19 +37,49 @@
   /* Mobile menu: Servicios accordion caret */
   .jp-mobcaret::after{content:"";width:8px;height:8px;margin-left:9px;border-right:2px solid currentColor;border-bottom:2px solid currentColor;transform:translateY(-2px) rotate(45deg);transition:transform .2s ease;display:inline-block}
   .jp-mobcaret.open::after{transform:translateY(1px) rotate(-135deg)}
+  /* Trust strip: static centered on desktop, one-line marquee on mobile */
+  .jp-trust-marq{display:none;overflow:hidden}
+  .jp-trust-track{display:flex;width:max-content;animation:jpMarq 22s linear infinite}
+  .jp-trust-half{display:flex;align-items:center;gap:22px;padding:9px 22px 9px 0;white-space:nowrap}
+  @media (max-width:899px){
+    .jp-trust-static{display:none!important}
+    .jp-trust-marq{display:block}
+  }
 </style>
 </helmet>
 <div data-screen-label="Home (Conversión)" id="top" style="background:#FBF6EE;color:#141414;font-family:'Hanken Grotesk',system-ui,-apple-system,sans-serif;overflow-x:clip;position:relative">
 
   <!-- TRUST STRIP -->
   <div style="background:#141414;color:#FBF6EE;font-size:13px;font-weight:600">
-    <div style="max-width:1200px;margin:0 auto;padding:9px 22px;display:flex;flex-wrap:wrap;gap:8px 22px;align-items:center;justify-content:center;text-align:center">
+    <div class="jp-trust-static" style="max-width:1200px;margin:0 auto;padding:9px 22px;display:flex;flex-wrap:wrap;gap:8px 22px;align-items:center;justify-content:center;text-align:center">
       <span style="color:#FFC83D;letter-spacing:1px">★★★★★</span>
       <span>+30 marcas confían en nosotros</span>
       <span style="opacity:.4">·</span>
       <span>Respuesta en menos de 24 h</span>
       <span style="opacity:.4">·</span>
       <span style="color:#e45b8f">Diagnóstico inicial gratis</span>
+    </div>
+    <div class="jp-trust-marq">
+      <div class="jp-trust-track">
+        <div class="jp-trust-half">
+          <span style="color:#FFC83D;letter-spacing:1px">★★★★★</span>
+          <span>+30 marcas confían en nosotros</span>
+          <span style="opacity:.4">·</span>
+          <span>Respuesta en menos de 24 h</span>
+          <span style="opacity:.4">·</span>
+          <span style="color:#e45b8f">Diagnóstico inicial gratis</span>
+          <span style="opacity:.4">·</span>
+        </div>
+        <div class="jp-trust-half" aria-hidden="true">
+          <span style="color:#FFC83D;letter-spacing:1px">★★★★★</span>
+          <span>+30 marcas confían en nosotros</span>
+          <span style="opacity:.4">·</span>
+          <span>Respuesta en menos de 24 h</span>
+          <span style="opacity:.4">·</span>
+          <span style="color:#e45b8f">Diagnóstico inicial gratis</span>
+          <span style="opacity:.4">·</span>
+        </div>
+      </div>
     </div>
   </div>
 

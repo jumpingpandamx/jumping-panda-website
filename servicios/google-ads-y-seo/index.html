@@ -52,6 +52,17 @@
   @keyframes jpMarqR{from{transform:translateX(-50%)}to{transform:translateX(0)}}
   @keyframes jpFloat{0%,100%{transform:translateY(0) rotate(-5deg)}50%{transform:translateY(-11px) rotate(-5deg)}}
   @keyframes jpBob{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
+  /* Nav dropdown (Servicios) */
+  .jp-navitem{position:relative}
+  .jp-navitem>a.jp-caret::after{content:"";width:8px;height:8px;margin-left:7px;border-right:2px solid currentColor;border-bottom:2px solid currentColor;transform:translateY(-2px) rotate(45deg);transition:transform .2s ease}
+  .jp-navitem:hover>a.jp-caret::after,.jp-navitem:focus-within>a.jp-caret::after{transform:translateY(2px) rotate(-135deg)}
+  .jp-dropdown{position:absolute;top:100%;left:0;padding-top:22px;min-width:330px;z-index:50;opacity:0;visibility:hidden;transform:translateY(6px);transition:opacity .18s ease,transform .18s ease,visibility .18s}
+  .jp-navitem:hover .jp-dropdown,.jp-navitem:focus-within .jp-dropdown{opacity:1;visibility:visible;transform:translateY(0)}
+  .jp-dropcard{background:#fff;border:1.5px solid rgba(20,20,20,.14);border-radius:14px;padding:8px;box-shadow:0 12px 30px rgba(20,20,20,.1);display:flex;flex-direction:column;gap:2px}
+  .jp-dropcard a{display:block;padding:10px 12px;border-radius:9px;text-decoration:none;color:#141414;transition:background .12s}
+  .jp-dropcard a:hover{background:#F8E3EC}
+  .jp-dropcard .t{display:block;font-size:14.5px;font-weight:600}
+  .jp-dropcard .d{display:block;font-size:12.5px;color:#666;margin-top:2px}
 </style>
 </helmet>
 <div data-screen-label="Servicio · Google Ads y SEO" id="top" style="background:#FBF6EE;color:#141414;font-family:'Hanken Grotesk',system-ui,-apple-system,sans-serif;overflow-x:clip;position:relative">
@@ -64,36 +75,54 @@
       <span style="opacity:.4">·</span>
       <span>Respuesta en menos de 24 h</span>
       <span style="opacity:.4">·</span>
-      <span style="color:#e45b8f">Asesoría inicial gratis</span>
+      <span style="color:#e45b8f">Diagnóstico inicial gratis</span>
     </div>
   </div>
 
-  <!-- HEADER -->
-  <header style="position:sticky;top:0;z-index:60;backdrop-filter:blur(12px);background:rgba(251,246,238,.85);border-bottom:1px solid rgba(20,20,20,.08)">
-    <div style="max-width:1200px;margin:0 auto;padding:11px 22px;display:flex;align-items:center;justify-content:space-between;gap:18px">
-      <a href="../../index.html#top" style="display:flex;align-items:center;text-decoration:none;flex:none"><img src="../../jumping-panda-header-horizontal-vector.svg" alt="Jumping Panda" style="height:46px;width:auto;display:block" /></a>
+  <!-- HEADER (floating outlined bar) -->
+  <header style="position:sticky;top:0;z-index:60;padding:14px 22px">
+    <div style="max-width:1200px;margin:0 auto;display:flex;align-items:center;gap:24px;padding:11px 12px 11px 20px;background:rgba(251,246,238,.92);backdrop-filter:blur(12px);border:1.5px solid rgba(20,20,20,.14);border-radius:18px">
+      <a href="../../index.html#top" style="display:flex;align-items:center;text-decoration:none;flex:none"><img src="../../jumping-panda-header-horizontal-vector.svg" alt="Jumping Panda" style="height:40px;width:auto;display:block" /></a>
       <sc-if value="{{ desktop }}" hint-placeholder-val="{{ true }}">
-      <nav style="display:flex;align-items:center;gap:4px">
-        <sc-for list="{{ nav }}" as="item" hint-placeholder-count="4">
-          <a href="{{ item.href }}" style="text-decoration:none;color:#141414;font-weight:600;font-size:15px;padding:8px 13px;border-radius:999px;transition:background .2s,color .2s" style-hover="background:#141414;color:#FBF6EE">{{ item.label }}</a>
-        </sc-for>
+      <nav style="display:flex;align-items:center;gap:26px">
+        <div class="jp-navitem">
+          <a href="../../index.html#servicios" class="jp-caret" style="display:inline-flex;align-items:center;text-decoration:none;color:#141414;font-weight:600;font-size:15.5px;white-space:nowrap;cursor:pointer;transition:opacity .15s" style-hover="opacity:.6">Servicios</a>
+          <div class="jp-dropdown">
+            <div class="jp-dropcard">
+              <a href="../../servicios/creacion-de-paginas-web/"><span class="t">Creación de página web</span><span class="d">Tu mejor vendedor 24/7. Clara, rápida y lista para convertir visitas en clientes.</span></a>
+              <a href="../../servicios/pagina-web-con-agenda-de-citas/"><span class="t">Página web + agenda de citas</span><span class="d">Convierte visitas en citas agendadas en automático. Ideal para consultorios y servicios.</span></a>
+              <a href="../../servicios/comercio-electronico/"><span class="t">Comercio electrónico</span><span class="d">Una tienda en línea hecha para vender y escalar, no solo para verse bonita.</span></a>
+              <a href="../../servicios/gestion-de-redes-sociales/"><span class="t">Gestión de redes sociales</span><span class="d">Contenido con estrategia que construye comunidad y genera clientes, no solo likes.</span></a>
+              <a href="../../servicios/google-ads-y-seo/"><span class="t">Google Ads + SEO y GEO</span><span class="d">Aparece justo cuando te buscan y atrae clientes listos para comprar.</span></a>
+              <a href="../../servicios/configuracion-inicial-amazon/"><span class="t">Configuración de Amazon</span><span class="d">Empieza a vender en el marketplace más grande, sin improvisar.</span></a>
+              <a href="../../servicios/configuracion-inicial-mercado-libre/"><span class="t">Configuración de Mercado Libre</span><span class="d">Lanza tu tienda con una base sólida y empieza a vender desde el día uno.</span></a>
+              <a href="../../servicios/mantenimiento-web-y-seo/"><span class="t">Mantenimiento web y SEO</span><span class="d">Tu sitio siempre rápido, seguro y subiendo en Google, mes con mes.</span></a>
+            </div>
+          </div>
+        </div>
+        <a href="../../index.html#como" style="text-decoration:none;color:#141414;font-weight:600;font-size:15.5px;white-space:nowrap;transition:opacity .15s" style-hover="opacity:.6">Cómo funciona</a>
+        <a href="../../index.html#clientes" style="text-decoration:none;color:#141414;font-weight:600;font-size:15.5px;white-space:nowrap;transition:opacity .15s" style-hover="opacity:.6">Clientes</a>
+        <a href="../../podcast/" style="text-decoration:none;color:#141414;font-weight:600;font-size:15.5px;white-space:nowrap;transition:opacity .15s" style-hover="opacity:.6">Podcast</a>
+        <a href="../../index.html#contacto" style="text-decoration:none;color:#141414;font-weight:600;font-size:15.5px;white-space:nowrap;transition:opacity .15s" style-hover="opacity:.6">Contacto</a>
       </nav>
-      <a href="{{ wa }}" target="_blank" rel="noopener" style="flex:none;text-decoration:none;background:#e45b8f;color:#141414;font-weight:700;font-size:15px;padding:11px 20px;border-radius:999px;box-shadow:0 4px 0 #141414;transition:transform .2s,box-shadow .2s" style-hover="transform:translateY(-2px);box-shadow:0 6px 0 #141414">Agendar gratis →</a>
+      <span style="margin-left:auto"></span>
+      <span style="width:1.5px;align-self:stretch;background:rgba(20,20,20,.14)"></span>
+      <a href="{{ wa }}" target="_blank" rel="noopener" style="flex:none;text-decoration:none;background:#e45b8f;color:#141414;font-weight:700;font-size:15px;padding:12px 22px;border:1.5px solid #141414;border-radius:12px;white-space:nowrap;transition:background .15s,transform .1s" style-hover="background:#ec7fa8">Agenda tu diagnóstico</a>
       </sc-if>
       <sc-if value="{{ isMobile }}" hint-placeholder-val="{{ false }}">
-      <button onClick="{{ toggleMenu }}" aria-label="Menú" style="border:none;background:#141414;color:#FBF6EE;width:44px;height:44px;border-radius:13px;cursor:pointer;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px">
-        <span style="width:18px;height:2px;background:#FBF6EE;display:block"></span>
-        <span style="width:18px;height:2px;background:#FBF6EE;display:block"></span>
+      <button onClick="{{ toggleMenu }}" aria-label="Menú" style="margin-left:auto;border:1.5px solid #141414;background:#FBF6EE;width:44px;height:44px;border-radius:12px;cursor:pointer;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px">
+        <span style="width:18px;height:2px;background:#141414;display:block"></span>
+        <span style="width:18px;height:2px;background:#141414;display:block"></span>
         <span style="width:18px;height:2px;background:#e45b8f;display:block"></span>
       </button>
       </sc-if>
     </div>
     <sc-if value="{{ menuOpen }}" hint-placeholder-val="{{ false }}">
-    <div style="padding:8px 22px 20px;display:flex;flex-direction:column;gap:4px;border-top:1px solid rgba(20,20,20,.08)">
+    <div style="max-width:1200px;margin:8px auto 0;padding:10px 20px 20px;background:rgba(251,246,238,.97);backdrop-filter:blur(12px);border:1.5px solid rgba(20,20,20,.14);border-radius:18px;display:flex;flex-direction:column;gap:4px">
       <sc-for list="{{ nav }}" as="item" hint-placeholder-count="4">
         <a href="{{ item.href }}" onClick="{{ closeMenu }}" style="text-decoration:none;color:#141414;font-weight:700;font-size:18px;padding:11px 4px;font-family:'Bricolage Grotesque',sans-serif">{{ item.label }}</a>
       </sc-for>
-      <a href="{{ wa }}" target="_blank" rel="noopener" style="margin-top:8px;text-align:center;text-decoration:none;background:#e45b8f;color:#141414;font-weight:700;padding:13px;border-radius:999px">Agenda tu asesoría gratis →</a>
+      <a href="{{ wa }}" target="_blank" rel="noopener" style="margin-top:8px;text-align:center;text-decoration:none;background:#e45b8f;color:#141414;font-weight:700;padding:13px;border:1.5px solid #141414;border-radius:12px">Agenda tu diagnóstico</a>
     </div>
     </sc-if>
   </header>

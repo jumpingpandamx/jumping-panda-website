@@ -23,6 +23,17 @@
   @keyframes jpMarqR{from{transform:translateX(-50%)}to{transform:translateX(0)}}
   @keyframes jpFloat{0%,100%{transform:translateY(0) rotate(-5deg)}50%{transform:translateY(-11px) rotate(-5deg)}}
   @keyframes jpBob{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
+  /* Nav dropdown (Servicios) */
+  .jp-navitem{position:relative}
+  .jp-navitem>a.jp-caret::after{content:"";width:8px;height:8px;margin-left:7px;border-right:2px solid currentColor;border-bottom:2px solid currentColor;transform:translateY(-2px) rotate(45deg);transition:transform .2s ease}
+  .jp-navitem:hover>a.jp-caret::after,.jp-navitem:focus-within>a.jp-caret::after{transform:translateY(2px) rotate(-135deg)}
+  .jp-dropdown{position:absolute;top:100%;left:0;padding-top:22px;min-width:330px;z-index:50;opacity:0;visibility:hidden;transform:translateY(6px);transition:opacity .18s ease,transform .18s ease,visibility .18s}
+  .jp-navitem:hover .jp-dropdown,.jp-navitem:focus-within .jp-dropdown{opacity:1;visibility:visible;transform:translateY(0)}
+  .jp-dropcard{background:#fff;border:1.5px solid rgba(20,20,20,.14);border-radius:14px;padding:8px;box-shadow:0 12px 30px rgba(20,20,20,.1);display:flex;flex-direction:column;gap:2px}
+  .jp-dropcard a{display:block;padding:10px 12px;border-radius:9px;text-decoration:none;color:#141414;transition:background .12s}
+  .jp-dropcard a:hover{background:#F8E3EC}
+  .jp-dropcard .t{display:block;font-size:14.5px;font-weight:600}
+  .jp-dropcard .d{display:block;font-size:12.5px;color:#666;margin-top:2px}
 </style>
 </helmet>
 <div data-screen-label="Home (Conversión)" id="top" style="background:#FBF6EE;color:#141414;font-family:'Hanken Grotesk',system-ui,-apple-system,sans-serif;overflow-x:clip;position:relative">
@@ -35,36 +46,49 @@
       <span style="opacity:.4">·</span>
       <span>Respuesta en menos de 24 h</span>
       <span style="opacity:.4">·</span>
-      <span style="color:#e45b8f">Asesoría inicial gratis</span>
+      <span style="color:#e45b8f">Diagnóstico inicial gratis</span>
     </div>
   </div>
 
-  <!-- HEADER -->
-  <header style="position:sticky;top:0;z-index:60;backdrop-filter:blur(12px);background:rgba(251,246,238,.85);border-bottom:1px solid rgba(20,20,20,.08)">
-    <div style="max-width:1200px;margin:0 auto;padding:11px 22px;display:flex;align-items:center;justify-content:space-between;gap:18px">
-      <a href="#top" style="display:flex;align-items:center;text-decoration:none;flex:none"><img src="jumping-panda-header-horizontal-vector.svg" alt="Jumping Panda" style="height:46px;width:auto;display:block" /></a>
+  <!-- HEADER (floating outlined bar) -->
+  <header style="position:sticky;top:0;z-index:60;padding:14px 22px">
+    <div style="max-width:1200px;margin:0 auto;display:flex;align-items:center;gap:24px;padding:11px 12px 11px 20px;background:rgba(251,246,238,.92);backdrop-filter:blur(12px);border:1.5px solid rgba(20,20,20,.14);border-radius:18px">
+      <a href="#top" style="display:flex;align-items:center;text-decoration:none;flex:none"><img src="jumping-panda-header-horizontal-vector.svg" alt="Jumping Panda" style="height:40px;width:auto;display:block" /></a>
       <sc-if value="{{ desktop }}" hint-placeholder-val="{{ true }}">
-      <nav style="display:flex;align-items:center;gap:4px">
-        <sc-for list="{{ nav }}" as="item" hint-placeholder-count="4">
-          <a href="{{ item.href }}" style="text-decoration:none;color:#141414;font-weight:600;font-size:15px;padding:8px 13px;border-radius:999px;transition:background .2s,color .2s" style-hover="background:#141414;color:#FBF6EE">{{ item.label }}</a>
-        </sc-for>
+      <nav style="display:flex;align-items:center;gap:26px">
+        <div class="jp-navitem">
+          <a href="#servicios" class="jp-caret" style="display:inline-flex;align-items:center;text-decoration:none;color:#141414;font-weight:600;font-size:15.5px;white-space:nowrap;cursor:pointer;transition:opacity .15s" style-hover="opacity:.6">Servicios</a>
+          <div class="jp-dropdown">
+            <div class="jp-dropcard">
+              <sc-for list="{{ services }}" as="s">
+                <a href="{{ s.href }}"><span class="t">{{ s.title }}</span><span class="d">{{ s.desc }}</span></a>
+              </sc-for>
+            </div>
+          </div>
+        </div>
+        <a href="#como" style="text-decoration:none;color:#141414;font-weight:600;font-size:15.5px;white-space:nowrap;transition:opacity .15s" style-hover="opacity:.6">Cómo funciona</a>
+        <a href="#clientes" style="text-decoration:none;color:#141414;font-weight:600;font-size:15.5px;white-space:nowrap;transition:opacity .15s" style-hover="opacity:.6">Clientes</a>
+        <a href="podcast/" style="text-decoration:none;color:#141414;font-weight:600;font-size:15.5px;white-space:nowrap;transition:opacity .15s" style-hover="opacity:.6">Podcast</a>
+        <a href="#contacto" style="text-decoration:none;color:#141414;font-weight:600;font-size:15.5px;white-space:nowrap;transition:opacity .15s" style-hover="opacity:.6">Contacto</a>
       </nav>
-      <a href="{{ wa }}" target="_blank" style="flex:none;text-decoration:none;background:#e45b8f;color:#141414;font-weight:700;font-size:15px;padding:11px 20px;border-radius:999px;box-shadow:0 4px 0 #141414;transition:transform .2s,box-shadow .2s" style-hover="transform:translateY(-2px);box-shadow:0 6px 0 #141414">Agendar gratis →</a>
+      <span style="margin-left:auto"></span>
+      <span style="width:1.5px;align-self:stretch;background:rgba(20,20,20,.14)"></span>
+      <a href="{{ wa }}" target="_blank" style="flex:none;text-decoration:none;background:#e45b8f;color:#141414;font-weight:700;font-size:15px;padding:12px 22px;border:1.5px solid #141414;border-radius:12px;white-space:nowrap;transition:background .15s,transform .1s" style-hover="background:#ec7fa8">Agenda tu diagnóstico</a>
       </sc-if>
       <sc-if value="{{ isMobile }}" hint-placeholder-val="{{ false }}">
-      <button onClick="{{ toggleMenu }}" aria-label="Menú" style="border:none;background:#141414;color:#FBF6EE;width:44px;height:44px;border-radius:13px;cursor:pointer;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px">
-        <span style="width:18px;height:2px;background:#FBF6EE;display:block"></span>
-        <span style="width:18px;height:2px;background:#FBF6EE;display:block"></span>
+      <button onClick="{{ toggleMenu }}" aria-label="Menú" style="margin-left:auto;border:1.5px solid #141414;background:#FBF6EE;width:44px;height:44px;border-radius:12px;cursor:pointer;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px">
+        <span style="width:18px;height:2px;background:#141414;display:block"></span>
+        <span style="width:18px;height:2px;background:#141414;display:block"></span>
         <span style="width:18px;height:2px;background:#e45b8f;display:block"></span>
       </button>
       </sc-if>
     </div>
     <sc-if value="{{ menuOpen }}" hint-placeholder-val="{{ false }}">
-    <div style="padding:8px 22px 20px;display:flex;flex-direction:column;gap:4px;border-top:1px solid rgba(20,20,20,.08)">
+    <div style="max-width:1200px;margin:8px auto 0;padding:10px 20px 20px;background:rgba(251,246,238,.97);backdrop-filter:blur(12px);border:1.5px solid rgba(20,20,20,.14);border-radius:18px;display:flex;flex-direction:column;gap:4px">
       <sc-for list="{{ nav }}" as="item" hint-placeholder-count="4">
         <a href="{{ item.href }}" onClick="{{ closeMenu }}" style="text-decoration:none;color:#141414;font-weight:700;font-size:18px;padding:11px 4px;font-family:'Bricolage Grotesque',sans-serif">{{ item.label }}</a>
       </sc-for>
-      <a href="{{ wa }}" target="_blank" style="margin-top:8px;text-align:center;text-decoration:none;background:#e45b8f;color:#141414;font-weight:700;padding:13px;border-radius:999px">Agenda tu asesoría gratis →</a>
+      <a href="{{ wa }}" target="_blank" style="margin-top:8px;text-align:center;text-decoration:none;background:#e45b8f;color:#141414;font-weight:700;padding:13px;border:1.5px solid #141414;border-radius:12px">Agenda tu diagnóstico</a>
     </div>
     </sc-if>
   </header>
@@ -76,9 +100,9 @@
       <div>
         <div style="display:inline-flex;align-items:center;gap:8px;background:#141414;color:#FBF6EE;font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:12.5px;letter-spacing:.1em;text-transform:uppercase;padding:8px 14px;border-radius:999px">Marketing digital · México</div>
         <h1 style="font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:clamp(38px,5.6vw,72px);line-height:.98;letter-spacing:-.035em;margin:18px 0 0">Que internet te traiga clientes. <span style="color:#e45b8f">En semanas, no en años.</span></h1>
-        <p style="font-size:clamp(16px,1.35vw,20px);line-height:1.55;max-width:33em;margin:20px 0 0;color:#3c3a37">Creamos tu página, te posicionamos en Google y la IA, y convertimos visitas en clientes que compran — con estrategia, sin complicaciones y <strong style="color:#141414">sin que tú tengas que pelearte con la tecnología.</strong></p>
+        <p style="font-size:clamp(16px,1.35vw,20px);line-height:1.55;max-width:33em;margin:20px 0 0;color:#3c3a37">Creamos tu página, te posicionamos en Google y la IA, y convertimos visitas en clientes que compran. <strong style="color:#141414">Sin que tú tengas que pelearte con la tecnología.</strong></p>
         <div style="display:flex;flex-wrap:wrap;gap:13px;margin-top:26px">
-          <a href="{{ wa }}" target="_blank" style="text-decoration:none;background:#e45b8f;color:#141414;font-weight:700;font-size:17px;padding:16px 28px;border-radius:999px;box-shadow:0 5px 0 #141414;transition:transform .2s,box-shadow .2s" style-hover="transform:translateY(-3px);box-shadow:0 8px 0 #141414">Agenda tu asesoría gratis de 30 min</a>
+          <a href="{{ wa }}" target="_blank" style="text-decoration:none;background:#e45b8f;color:#141414;font-weight:700;font-size:17px;padding:16px 28px;border-radius:999px;box-shadow:0 5px 0 #141414;transition:transform .2s,box-shadow .2s" style-hover="transform:translateY(-3px);box-shadow:0 8px 0 #141414">Agenda tu diagnóstico</a>
           <a href="#como" style="text-decoration:none;background:transparent;color:#141414;font-weight:700;font-size:17px;padding:16px 24px;border-radius:999px;border:2px solid #141414;transition:background .2s,color .2s" style-hover="background:#141414;color:#FBF6EE">Ver cómo funciona</a>
         </div>
         <div style="display:flex;flex-wrap:wrap;gap:10px 18px;margin-top:18px">
@@ -98,7 +122,7 @@
           <img src="https://cdn.shopify.com/s/files/1/0528/5543/9528/files/jumping-panda-Taqueria-google-ads-servicio-web-hero.jpg?v=1776119350&width=1400" alt="Negocio mexicano encontrado en internet con Jumping Panda" style="width:100%;height:100%;object-fit:cover;display:block;aspect-ratio:4/3.5" />
         </div>
         <div style="position:absolute;z-index:2;top:-24px;left:-24px;width:118px;height:118px;border-radius:50%;background:#141414;color:#FBF6EE;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:1px;font-family:'Bricolage Grotesque',sans-serif;animation:jpFloat 4.5s ease-in-out infinite;box-shadow:0 10px 24px rgba(20,20,20,.28)">
-          <div style="font-weight:600;font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;opacity:.8">Asesoría</div>
+          <div style="font-weight:600;font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;opacity:.8">Diagnóstico</div>
           <div style="font-weight:800;font-size:21px;line-height:1;color:#e45b8f">GRATIS</div>
           <div style="font-weight:600;font-size:11px">30 min</div>
         </div>
@@ -145,17 +169,17 @@
   </section>
 
   <!-- PROBLEM / WHY CARE -->
-  <section style="background:#e45b8f;color:#141414">
-    <div style="max-width:1080px;margin:0 auto;padding:clamp(48px,7vw,96px) 22px;text-align:center;animation:jpReveal linear both;animation-timeline:view();animation-range:entry 0% cover 30%">
+  <section style="background:#F8E3EC;color:#141414">
+    <div style="max-width:1080px;margin:0 auto;padding:clamp(56px,8vw,110px) 22px;text-align:center;animation:jpReveal linear both;animation-timeline:view();animation-range:entry 0% cover 30%">
       <h2 style="font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:clamp(28px,4.4vw,54px);line-height:1.02;letter-spacing:-.03em;margin:0;max-width:18em;margin-inline:auto">El mundo entero busca en México. ¿Te encuentran a ti… o a tu competencia?</h2>
       <p style="font-size:clamp(16px,1.5vw,21px);line-height:1.55;max-width:40em;margin:20px auto 0;color:#1c1410">Millones buscan en Google y en IA todos los días. Si no apareces en sus respuestas <strong>(AEO)</strong>, en el mapa <strong>(GEO)</strong> ni en los resultados <strong>(SEO y Ads)</strong>, esos clientes se los lleva alguien más. Cada día sin estrategia es dinero que se va.</p>
-      <a href="{{ wa }}" target="_blank" style="display:inline-block;margin-top:30px;text-decoration:none;background:#141414;color:#FBF6EE;font-weight:700;font-size:17px;padding:15px 30px;border-radius:999px;transition:transform .2s" style-hover="transform:translateY(-3px)">Quiero que me encuentren a mí →</a>
+      <a href="{{ wa }}" target="_blank" style="display:inline-block;margin-top:30px;text-decoration:none;background:#141414;color:#FBF6EE;font-weight:700;font-size:17px;padding:15px 30px;border-radius:999px;transition:transform .2s" style-hover="transform:translateY(-3px)">Agenda tu diagnóstico</a>
     </div>
   </section>
 
   <!-- SERVICES -->
   <section id="servicios" style="background:#141414;color:#FBF6EE;border-radius:clamp(28px,4vw,52px) clamp(28px,4vw,52px) 0 0">
-    <div style="max-width:1200px;margin:0 auto;padding:clamp(48px,7vw,96px) 22px">
+    <div style="max-width:1200px;margin:0 auto;padding:clamp(56px,8vw,110px) 22px">
       <div style="max-width:740px;animation:jpReveal linear both;animation-timeline:view();animation-range:entry 0% cover 26%">
         <div style="font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:#e45b8f">Nuestros servicios</div>
         <h2 style="font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:clamp(28px,4.4vw,52px);line-height:1.02;letter-spacing:-.03em;margin:14px 0 0">Todo para vender en línea, en un solo equipo.</h2>
@@ -178,7 +202,7 @@
 
   <!-- HOW IT WORKS (reduce effort) -->
   <section id="como" style="background:#141414;color:#FBF6EE">
-    <div style="max-width:1200px;margin:0 auto;padding:0 22px clamp(48px,7vw,96px)">
+    <div style="max-width:1200px;margin:0 auto;padding:0 22px clamp(56px,8vw,110px)">
       <div style="border-top:1px solid rgba(251,246,238,.14);padding-top:clamp(40px,6vw,72px)">
         <div style="max-width:740px;animation:jpReveal linear both;animation-timeline:view();animation-range:entry 0% cover 30%">
           <div style="font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:#e45b8f">Cómo trabajamos</div>
@@ -194,7 +218,7 @@
           </sc-for>
         </div>
         <div style="margin-top:36px;display:flex;flex-wrap:wrap;gap:14px;align-items:center">
-          <a href="{{ wa }}" target="_blank" style="text-decoration:none;background:#e45b8f;color:#141414;font-weight:700;font-size:16px;padding:14px 26px;border-radius:999px;transition:transform .2s" style-hover="transform:translateY(-3px)">Empieza con tu diagnóstico gratis</a>
+          <a href="{{ wa }}" target="_blank" style="text-decoration:none;background:#e45b8f;color:#141414;font-weight:700;font-size:16px;padding:14px 26px;border-radius:999px;transition:transform .2s" style-hover="transform:translateY(-3px)">Agenda tu diagnóstico</a>
           <span style="font-size:14px;color:#b9b5ae">Sin costo · Sin compromiso · Respuesta en 24 h</span>
         </div>
       </div>
@@ -202,7 +226,7 @@
   </section>
 
   <!-- WALL OF LOVE (reviews) -->
-  <section style="max-width:1200px;margin:0 auto;padding:clamp(48px,7vw,96px) 22px">
+  <section style="max-width:1200px;margin:0 auto;padding:clamp(56px,8vw,110px) 22px">
     <div style="text-align:center;max-width:760px;margin:0 auto;animation:jpReveal linear both;animation-timeline:view();animation-range:entry 0% cover 30%">
       <div style="font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:#e45b8f">Reseñas reales</div>
       <h2 style="font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:clamp(28px,4.2vw,50px);line-height:1.02;letter-spacing:-.03em;margin:12px 0 0">Lo que pasa cuando confías en Jumping Panda</h2>
@@ -219,11 +243,11 @@
   </section>
 
   <!-- RISK REVERSAL -->
-  <section style="max-width:1080px;margin:0 auto;padding:0 22px clamp(48px,7vw,90px)">
+  <section style="max-width:1080px;margin:0 auto;padding:0 22px clamp(56px,8vw,104px)">
     <div style="background:#141414;color:#FBF6EE;border-radius:28px;padding:clamp(32px,5vw,60px);text-align:center;position:relative;overflow:hidden;animation:jpReveal linear both;animation-timeline:view();animation-range:entry 0% cover 24%">
       <div style="font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:#e45b8f">Cero riesgo</div>
       <h2 style="font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:clamp(28px,4.2vw,50px);line-height:1.02;letter-spacing:-.03em;margin:12px auto 0;max-width:16em">Empezar no te cuesta nada. Quedarte, solo si funciona.</h2>
-      <p style="font-size:clamp(16px,1.4vw,19px);line-height:1.55;max-width:38em;margin:18px auto 0;color:#c9c5be">Tu primera asesoría es gratis y sin compromiso. Salimos de ella con un diagnóstico claro de tu mayor oportunidad de ventas — la apliques con nosotros o por tu cuenta.</p>
+      <p style="font-size:clamp(16px,1.4vw,19px);line-height:1.55;max-width:38em;margin:18px auto 0;color:#c9c5be">Tu primer diagnóstico es gratis y sin compromiso. Salimos de ella con un diagnóstico claro de tu mayor oportunidad de ventas — la apliques con nosotros o por tu cuenta.</p>
       <div style="display:flex;flex-wrap:wrap;justify-content:center;gap:12px 24px;margin-top:26px">
         <sc-for list="{{ riskBadges }}" as="b" hint-placeholder-count="4">
           <span style="display:inline-flex;align-items:center;gap:8px;font-size:15px;font-weight:600"><span style="display:inline-flex;align-items:center;justify-content:center;width:20px;height:20px;border-radius:50%;background:#e45b8f;color:#141414;font-size:12px;font-weight:800">✓</span>{{ b }}</span>
@@ -233,7 +257,7 @@
   </section>
 
   <!-- TEAM -->
-  <section id="equipo" style="max-width:1200px;margin:0 auto;padding:0 22px clamp(48px,7vw,90px)">
+  <section id="equipo" style="max-width:1200px;margin:0 auto;padding:0 22px clamp(56px,8vw,104px)">
     <div style="display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:18px;animation:jpReveal linear both;animation-timeline:view();animation-range:entry 0% cover 28%">
       <div>
         <div style="font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:#e45b8f">El equipo</div>
@@ -255,11 +279,11 @@
   </section>
 
   <!-- FINAL CTA + FORM -->
-  <section id="contacto" style="background:#e45b8f;color:#141414">
-    <div style="max-width:1080px;margin:0 auto;padding:clamp(48px,7vw,96px) 22px;display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:clamp(28px,4vw,52px);align-items:center">
+  <section id="contacto" style="background:#F8E3EC;color:#141414">
+    <div style="max-width:1080px;margin:0 auto;padding:clamp(56px,8vw,110px) 22px;display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:clamp(28px,4vw,52px);align-items:center">
       <div style="animation:jpReveal linear both;animation-timeline:view();animation-range:entry 0% cover 26%">
         <div style="font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:13px;letter-spacing:.12em;text-transform:uppercase;opacity:.7">Tu siguiente cliente te está buscando</div>
-        <h2 style="font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:clamp(30px,4.6vw,56px);line-height:1;letter-spacing:-.03em;margin:14px 0 0">Agenda tu asesoría gratis y encuentra tu mayor oportunidad de ventas.</h2>
+        <h2 style="font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:clamp(30px,4.6vw,56px);line-height:1;letter-spacing:-.03em;margin:14px 0 0">Agenda tu diagnóstico y encuentra tu mayor oportunidad de ventas.</h2>
         <p style="font-size:clamp(16px,1.4vw,20px);line-height:1.55;max-width:30em;margin:18px 0 0;color:#1c1410">30 minutos, 1 a 1, sin costo y sin compromiso. Déjanos tus datos y te contactamos en menos de 24 horas.</p>
         <div style="margin-top:22px;display:flex;align-items:center;gap:12px">
           <span style="color:#141414;font-size:18px;letter-spacing:1px">★★★★★</span>
@@ -270,18 +294,18 @@
         <sc-if value="{{ sent }}" hint-placeholder-val="{{ false }}">
           <div style="text-align:center;padding:30px 8px">
             <div style="font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:30px;color:#e45b8f;letter-spacing:-.02em">¡Listo! 🐼</div>
-            <p style="margin:12px 0 0;font-size:16px;line-height:1.5;color:#3c3a37">Recibimos tus datos. Te contactamos en menos de 24 horas para agendar tu asesoría gratis.</p>
+            <p style="margin:12px 0 0;font-size:16px;line-height:1.5;color:#3c3a37">Recibimos tus datos. Te contactamos en menos de 24 horas para agendar tu diagnóstico gratis.</p>
             <a href="{{ wa }}" target="_blank" style="display:inline-block;margin-top:20px;text-decoration:none;background:#141414;color:#FBF6EE;font-weight:700;padding:13px 24px;border-radius:999px">¿Urge? Escríbenos por WhatsApp</a>
           </div>
         </sc-if>
         <sc-if value="{{ notSent }}" hint-placeholder-val="{{ true }}">
         <form onSubmit="{{ onSubmit }}">
-          <div style="font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:21px;margin-bottom:16px">Agenda tu asesoría gratis</div>
+          <div style="font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:21px;margin-bottom:16px">Agenda tu diagnóstico gratis</div>
           <input value="{{ fNombre }}" onChange="{{ onNombre }}" type="text" placeholder="Tu nombre" style="width:100%;font:inherit;font-size:15px;padding:13px 15px;border:2px solid #141414;border-radius:13px;background:#fff;margin-bottom:12px;outline:none" />
           <input value="{{ fCorreo }}" onChange="{{ onCorreo }}" type="email" required="true" placeholder="Tu correo electrónico *" style="width:100%;font:inherit;font-size:15px;padding:13px 15px;border:2px solid #141414;border-radius:13px;background:#fff;margin-bottom:12px;outline:none" />
           <input value="{{ fTel }}" onChange="{{ onTel }}" type="tel" placeholder="Tu teléfono / WhatsApp" style="width:100%;font:inherit;font-size:15px;padding:13px 15px;border:2px solid #141414;border-radius:13px;background:#fff;margin-bottom:12px;outline:none" />
           <textarea value="{{ fComentario }}" onChange="{{ onComentario }}" rows="2" placeholder="¿Qué te gustaría lograr?" style="width:100%;font:inherit;font-size:15px;padding:13px 15px;border:2px solid #141414;border-radius:13px;background:#fff;margin-bottom:16px;outline:none;resize:vertical"></textarea>
-          <button type="submit" style="width:100%;border:none;cursor:pointer;background:#e45b8f;color:#141414;font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:17px;padding:16px;border-radius:13px;box-shadow:0 5px 0 #141414;transition:transform .15s,box-shadow .15s" style-hover="transform:translateY(-2px);box-shadow:0 7px 0 #141414">Quiero mi asesoría gratis →</button>
+          <button type="submit" style="width:100%;border:none;cursor:pointer;background:#e45b8f;color:#141414;font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:17px;padding:16px;border-radius:13px;box-shadow:0 5px 0 #141414;transition:transform .15s,box-shadow .15s" style-hover="transform:translateY(-2px);box-shadow:0 7px 0 #141414">Agenda tu diagnóstico</button>
           <div style="text-align:center;font-size:12.5px;color:#777;margin-top:12px">Sin costo · Sin compromiso · Respuesta en 24 h</div>
         </form>
         </sc-if>

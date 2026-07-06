@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="../../support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<title>¿Landing o página web completa? Cómo saber cuál necesitas | Blog Jumping Panda</title>
+<meta name="description" content="¿Te cotizaron una página web y no sabes si es lo que necesitas? Te explicamos la diferencia entre landing y página completa, y cuál te conviene según tu negocio.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,600;12..96,700;12..96,800&family=Hanken+Grotesk:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0}
+  img{max-width:100%}
+  ::selection{background:#e45b8f;color:#fff}
+  @keyframes jpReveal{from{transform:translateY(28px)}to{transform:translateY(0)}}
+  @keyframes jpMarq{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+  @keyframes jpMarqR{from{transform:translateX(-50%)}to{transform:translateX(0)}}
+  @keyframes jpFloat{0%,100%{transform:translateY(0) rotate(-5deg)}50%{transform:translateY(-11px) rotate(-5deg)}}
+  @keyframes jpBob{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
+  /* Nav dropdown (Servicios) */
+  .jp-navitem{position:relative}
+  .jp-navitem>a.jp-caret::after{content:"";width:8px;height:8px;margin-left:7px;border-right:2px solid currentColor;border-bottom:2px solid currentColor;transform:translateY(-2px) rotate(45deg);transition:transform .2s ease}
+  .jp-navitem:hover>a.jp-caret::after,.jp-navitem:focus-within>a.jp-caret::after{transform:translateY(2px) rotate(-135deg)}
+  .jp-dropdown{position:absolute;top:100%;left:0;padding-top:22px;min-width:330px;z-index:50;opacity:0;visibility:hidden;transform:translateY(6px);transition:opacity .18s ease,transform .18s ease,visibility .18s}
+  .jp-navitem:hover .jp-dropdown,.jp-navitem:focus-within .jp-dropdown{opacity:1;visibility:visible;transform:translateY(0)}
+  .jp-dropcard{background:#fff;border:1.5px solid rgba(20,20,20,.14);border-radius:14px;padding:8px;box-shadow:0 12px 30px rgba(20,20,20,.1);display:flex;flex-direction:column;gap:2px}
+  .jp-dropcard a{display:block;padding:10px 12px;border-radius:9px;text-decoration:none;color:#141414;transition:background .12s}
+  .jp-dropcard a:hover{background:#F8E3EC}
+  .jp-dropcard .t{display:block;font-size:14.5px;font-weight:600}
+  .jp-dropcard .d{display:block;font-size:12.5px;color:#666;margin-top:2px}
+  /* Mobile menu: Servicios accordion caret */
+  .jp-mobcaret::after{content:"";width:8px;height:8px;margin-left:9px;border-right:2px solid currentColor;border-bottom:2px solid currentColor;transform:translateY(-2px) rotate(45deg);transition:transform .2s ease;display:inline-block}
+  .jp-mobcaret.open::after{transform:translateY(1px) rotate(-135deg)}
+  /* Trust strip: static centered on desktop, one-line marquee on mobile */
+  .jp-trust-marq{display:none;overflow:hidden}
+  .jp-trust-track{display:flex;width:max-content;animation:jpMarq 22s linear infinite}
+  .jp-trust-half{display:flex;align-items:center;gap:22px;padding:9px 22px 9px 0;white-space:nowrap}
+  @media (max-width:899px){
+    .jp-trust-static{display:none!important}
+    .jp-trust-marq{display:block}
+  }
+  /* Article typography */
+  .jp-article{font-size:clamp(16.5px,1.3vw,18.5px);line-height:1.7;color:#3c3a37}
+  .jp-article p{margin:0 0 1.25em}
+  .jp-article strong{color:#141414}
+  .jp-article a{color:#141414;font-weight:600;text-decoration:none;border-bottom:2px solid #e45b8f;padding-bottom:1px;transition:background .15s}
+  .jp-article a:hover{background:#F8E3EC}
+  .jp-article h2{font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:clamp(24px,2.6vw,32px);line-height:1.1;letter-spacing:-.02em;color:#141414;margin:1.9em 0 .7em}
+  .jp-article h3{font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:clamp(19px,1.7vw,22px);line-height:1.2;letter-spacing:-.01em;color:#141414;margin:1.7em 0 .55em}
+  .jp-article h3>span{color:#e45b8f;margin-right:8px}
+  .jp-article ul{padding-left:1.35em;margin:0 0 1.25em}
+  .jp-article li{margin:0 0 .55em}
+  .jp-article li::marker{color:#e45b8f;font-weight:700}
+</style>
+</helmet>
+<div data-screen-label="Blog · ¿Landing o página completa?" id="top" style="background:#FBF6EE;color:#141414;font-family:'Hanken Grotesk',system-ui,-apple-system,sans-serif;overflow-x:clip;position:relative">
+
+  <!-- TRUST STRIP -->
+  <div style="background:#141414;color:#FBF6EE;font-size:13px;font-weight:600">
+    <div class="jp-trust-static" style="max-width:1200px;margin:0 auto;padding:9px 22px;display:flex;flex-wrap:wrap;gap:8px 22px;align-items:center;justify-content:center;text-align:center">
+      <span style="color:#FFC83D;letter-spacing:1px">★★★★★</span>
+      <span>+30 marcas confían en nosotros</span>
+      <span style="opacity:.4">·</span>
+      <span>Respuesta en menos de 24 h</span>
+      <span style="opacity:.4">·</span>
+      <span style="color:#e45b8f">Diagnóstico inicial gratis</span>
+    </div>
+    <div class="jp-trust-marq">
+      <div class="jp-trust-track">
+        <div class="jp-trust-half">
+          <span style="color:#FFC83D;letter-spacing:1px">★★★★★</span>
+          <span>+30 marcas confían en nosotros</span>
+          <span style="opacity:.4">·</span>
+          <span>Respuesta en menos de 24 h</span>
+          <span style="opacity:.4">·</span>
+          <span style="color:#e45b8f">Diagnóstico inicial gratis</span>
+          <span style="opacity:.4">·</span>
+        </div>
+        <div class="jp-trust-half" aria-hidden="true">
+          <span style="color:#FFC83D;letter-spacing:1px">★★★★★</span>
+          <span>+30 marcas confían en nosotros</span>
+          <span style="opacity:.4">·</span>
+          <span>Respuesta en menos de 24 h</span>
+          <span style="opacity:.4">·</span>
+          <span style="color:#e45b8f">Diagnóstico inicial gratis</span>
+          <span style="opacity:.4">·</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- HEADER (floating outlined bar) -->
+  <header style="position:sticky;top:0;z-index:60;padding:14px 22px">
+    <div style="max-width:1200px;margin:0 auto;display:flex;align-items:center;gap:24px;padding:11px 12px 11px 20px;background:rgba(251,246,238,.92);backdrop-filter:blur(12px);border:1.5px solid rgba(20,20,20,.14);border-radius:18px">
+      <a href="../../index.html#top" style="display:flex;align-items:center;text-decoration:none;flex:none"><img src="../../jumping-panda-header-horizontal-vector.svg" alt="Jumping Panda" style="height:40px;width:auto;display:block" /></a>
+      <sc-if value="{{ desktop }}" hint-placeholder-val="{{ true }}">
+      <nav style="display:flex;align-items:center;gap:17px">
+        <div class="jp-navitem">
+          <a href="../../index.html#servicios" class="jp-caret" style="display:inline-flex;align-items:center;text-decoration:none;color:#141414;font-weight:600;font-size:15.5px;white-space:nowrap;cursor:pointer;transition:opacity .15s" style-hover="opacity:.6">Servicios</a>
+          <div class="jp-dropdown">
+            <div class="jp-dropcard">
+              <a href="../../servicios/creacion-de-paginas-web/"><span class="t">Creación de página web</span><span class="d">Tu mejor vendedor 24/7. Clara, rápida y lista para convertir visitas en clientes.</span></a>
+              <a href="../../servicios/pagina-web-con-agenda-de-citas/"><span class="t">Página web + agenda de citas</span><span class="d">Convierte visitas en citas agendadas en automático. Ideal para consultorios y servicios.</span></a>
+              <a href="../../servicios/comercio-electronico/"><span class="t">Comercio electrónico</span><span class="d">Una tienda en línea hecha para vender y escalar, no solo para verse bonita.</span></a>
+              <a href="../../servicios/gestion-de-redes-sociales/"><span class="t">Gestión de redes sociales</span><span class="d">Contenido con estrategia que construye comunidad y genera clientes, no solo likes.</span></a>
+              <a href="../../servicios/google-ads-y-seo/"><span class="t">Google Ads + SEO y GEO</span><span class="d">Aparece justo cuando te buscan y atrae clientes listos para comprar.</span></a>
+              <a href="../../servicios/configuracion-inicial-amazon/"><span class="t">Configuración de Amazon</span><span class="d">Empieza a vender en el marketplace más grande, sin improvisar.</span></a>
+              <a href="../../servicios/configuracion-inicial-mercado-libre/"><span class="t">Configuración de Mercado Libre</span><span class="d">Lanza tu tienda con una base sólida y empieza a vender desde el día uno.</span></a>
+              <a href="../../servicios/mantenimiento-web-y-seo/"><span class="t">Mantenimiento web y SEO</span><span class="d">Tu sitio siempre rápido, seguro y subiendo en Google, mes con mes.</span></a>
+            </div>
+          </div>
+        </div>
+        <a href="../../index.html#como" style="text-decoration:none;color:#141414;font-weight:600;font-size:15.5px;white-space:nowrap;transition:opacity .15s" style-hover="opacity:.6">Cómo funciona</a>
+        <a href="../../index.html#clientes" style="text-decoration:none;color:#141414;font-weight:600;font-size:15.5px;white-space:nowrap;transition:opacity .15s" style-hover="opacity:.6">Clientes</a>
+        <a href="../../nosotros/" style="text-decoration:none;color:#141414;font-weight:600;font-size:15.5px;white-space:nowrap;transition:opacity .15s" style-hover="opacity:.6">Nosotros</a>
+        <a href="../" style="text-decoration:none;color:#141414;font-weight:600;font-size:15.5px;white-space:nowrap;transition:opacity .15s" style-hover="opacity:.6">Blog</a>
+        <a href="../../podcast/" style="text-decoration:none;color:#141414;font-weight:600;font-size:15.5px;white-space:nowrap;transition:opacity .15s" style-hover="opacity:.6">Podcast</a>
+        <a href="../../index.html#contacto" style="text-decoration:none;color:#141414;font-weight:600;font-size:15.5px;white-space:nowrap;transition:opacity .15s" style-hover="opacity:.6">Contacto</a>
+      </nav>
+      <span style="margin-left:auto"></span>
+      <span style="width:1.5px;align-self:stretch;background:rgba(20,20,20,.14)"></span>
+      <a href="{{ wa }}" target="_blank" rel="noopener" style="flex:none;text-decoration:none;background:#e45b8f;color:#141414;font-weight:700;font-size:15px;padding:12px 22px;border:1.5px solid #141414;border-radius:12px;white-space:nowrap;transition:background .15s,transform .1s" style-hover="background:#ec7fa8">Agenda tu diagnóstico</a>
+      </sc-if>
+      <sc-if value="{{ isMobile }}" hint-placeholder-val="{{ false }}">
+      <button onClick="{{ toggleMenu }}" aria-label="Menú" style="margin-left:auto;border:1.5px solid #141414;background:#FBF6EE;width:44px;height:44px;border-radius:12px;cursor:pointer;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px">
+        <span style="width:18px;height:2px;background:#141414;display:block"></span>
+        <span style="width:18px;height:2px;background:#141414;display:block"></span>
+        <span style="width:18px;height:2px;background:#e45b8f;display:block"></span>
+      </button>
+      </sc-if>
+    </div>
+    <sc-if value="{{ menuOpen }}" hint-placeholder-val="{{ false }}">
+    <div style="max-width:1200px;margin:8px auto 0;padding:10px 20px 20px;background:rgba(251,246,238,.97);backdrop-filter:blur(12px);border:1.5px solid rgba(20,20,20,.14);border-radius:18px;display:flex;flex-direction:column;gap:4px">
+      <button onClick="{{ toggleMobServices }}" class="jp-mobcaret{{ mobServicesOpenClass }}" style="display:flex;align-items:center;border:none;background:none;cursor:pointer;text-align:left;color:#141414;font-weight:700;font-size:18px;padding:11px 4px;font-family:'Bricolage Grotesque',sans-serif">Servicios</button>
+      <sc-if value="{{ mobServicesOpen }}" hint-placeholder-val="{{ false }}">
+      <div style="display:flex;flex-direction:column;gap:2px;padding:0 0 8px 14px;border-left:2px solid rgba(20,20,20,.12);margin:0 0 4px 6px">
+          <a href="../../servicios/creacion-de-paginas-web/" onClick="{{ closeMenu }}" style="text-decoration:none;color:#141414;font-weight:600;font-size:15.5px;padding:9px 4px">Creación de página web</a>
+          <a href="../../servicios/pagina-web-con-agenda-de-citas/" onClick="{{ closeMenu }}" style="text-decoration:none;color:#141414;font-weight:600;font-size:15.5px;padding:9px 4px">Página web + agenda de citas</a>
+          <a href="../../servicios/comercio-electronico/" onClick="{{ closeMenu }}" style="text-decoration:none;color:#141414;font-weight:600;font-size:15.5px;padding:9px 4px">Comercio electrónico</a>
+          <a href="../../servicios/gestion-de-redes-sociales/" onClick="{{ closeMenu }}" style="text-decoration:none;color:#141414;font-weight:600;font-size:15.5px;padding:9px 4px">Gestión de redes sociales</a>
+          <a href="../../servicios/google-ads-y-seo/" onClick="{{ closeMenu }}" style="text-decoration:none;color:#141414;font-weight:600;font-size:15.5px;padding:9px 4px">Google Ads + SEO y GEO</a>
+          <a href="../../servicios/configuracion-inicial-amazon/" onClick="{{ closeMenu }}" style="text-decoration:none;color:#141414;font-weight:600;font-size:15.5px;padding:9px 4px">Configuración de Amazon</a>
+          <a href="../../servicios/configuracion-inicial-mercado-libre/" onClick="{{ closeMenu }}" style="text-decoration:none;color:#141414;font-weight:600;font-size:15.5px;padding:9px 4px">Configuración de Mercado Libre</a>
+          <a href="../../servicios/mantenimiento-web-y-seo/" onClick="{{ closeMenu }}" style="text-decoration:none;color:#141414;font-weight:600;font-size:15.5px;padding:9px 4px">Mantenimiento web y SEO</a>
+          <a href="../../index.html#servicios" onClick="{{ closeMenu }}" style="text-decoration:none;color:#e45b8f;font-weight:700;font-size:15px;padding:9px 4px">Ver todos los servicios →</a>
+      </div>
+      </sc-if>
+      <sc-for list="{{ navRest }}" as="item" hint-placeholder-count="6">
+        <a href="{{ item.href }}" onClick="{{ closeMenu }}" style="text-decoration:none;color:#141414;font-weight:700;font-size:18px;padding:11px 4px;font-family:'Bricolage Grotesque',sans-serif">{{ item.label }}</a>
+      </sc-for>
+      <a href="{{ wa }}" target="_blank" rel="noopener" style="margin-top:8px;text-align:center;text-decoration:none;background:#e45b8f;color:#141414;font-weight:700;padding:13px;border:1.5px solid #141414;border-radius:12px">Agenda tu diagnóstico</a>
+    </div>
+    </sc-if>
+  </header>
+
+  <!-- ARTICLE HERO -->
+  <section style="position:relative;overflow:hidden">
+    <div style="position:absolute;top:-120px;right:-120px;width:560px;height:560px;background:radial-gradient(circle at 50% 50%,#F6DCE7,rgba(246,220,231,0) 70%);z-index:0;pointer-events:none"></div>
+    <div style="max-width:820px;margin:0 auto;padding:clamp(40px,5.5vw,72px) 22px clamp(26px,3.5vw,42px);position:relative;z-index:1">
+      <a href="../" style="display:inline-flex;align-items:center;gap:7px;text-decoration:none;color:#141414;font-weight:700;font-size:14.5px;border-bottom:2px solid #e45b8f;padding-bottom:2px">← Volver al blog</a>
+      <div style="display:flex;flex-wrap:wrap;align-items:center;gap:10px;margin-top:26px">
+        <span style="background:#e45b8f;color:#141414;font-weight:700;font-size:12.5px;letter-spacing:.06em;text-transform:uppercase;padding:6px 13px;border-radius:999px">Páginas web</span>
+        <span style="font-size:14px;color:#666">6 de julio, 2026 · 6 min de lectura</span>
+      </div>
+      <h1 style="font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:clamp(32px,4.6vw,56px);line-height:1.02;letter-spacing:-.03em;margin:18px 0 0">¿Landing o página web completa? Cómo saber cuál necesitas antes de pagar de más</h1>
+      <div style="display:flex;align-items:center;gap:12px;margin-top:22px">
+        <img src="../../logo-ink.svg" alt="Jumping Panda" style="width:44px;height:44px;object-fit:contain;flex:none" />
+        <div>
+          <div style="font-weight:700;font-size:15px">Equipo Jumping Panda</div>
+          <div style="font-size:13.5px;color:#666">Chio, Erci y Roberto</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURED IMAGE -->
+  <section style="max-width:820px;margin:0 auto;padding:0 22px">
+    <div style="border:3px solid #141414;border-radius:22px;overflow:hidden;box-shadow:0 16px 0 rgba(20,20,20,.12)">
+      <img src="https://cdn.shopify.com/s/files/1/0528/5543/9528/files/designer-drawing-website-mockup.jpg?v=1762970553&width=1400" alt="Boceto de página web — ¿landing o sitio completo? Jumping Panda" style="width:100%;display:block;aspect-ratio:16/8.5;object-fit:cover" />
+    </div>
+  </section>
+
+  <!-- ARTICLE BODY -->
+  <article class="jp-article" style="max-width:760px;margin:0 auto;padding:clamp(34px,4.5vw,56px) 22px clamp(48px,6vw,80px)">
+
+    <p>Te decidiste: ya quieres tu página. Pides cotizaciones y de repente te llueven términos: que si landing page, que si sitio completo, que si one-page… y los precios van desde unos miles hasta cifras que te hacen sudar frío 😅.</p>
+    <p>Aquí va la mala noticia: si no sabes la diferencia, es muy fácil pagar de más por algo que no necesitabas — o quedarte corto con algo que no te va a servir. La buena noticia: la diferencia es más sencilla de lo que parece. Va por partes.</p>
+
+    <h2>¿Qué es cada cosa? (sin tecnicismos)</h2>
+    <p><strong>Una landing page</strong> es una sola página con un solo objetivo: que el visitante haga una cosa. Que te escriba, que agende una cita, que deje sus datos, que compre. No hay menú, no hay secciones para explorar. Es como un vendedor que dice una sola cosa, pero la dice muy bien.</p>
+    <p><strong>Una <a href="../../servicios/creacion-de-paginas-web/">página web completa</a></strong> es tu local digital: tiene varias secciones (inicio, servicios, nosotros, contacto…) y la gente puede recorrerla, conocerte y comparar. Está pensada para que te encuentren en Google y para generar confianza antes de que te contacten.</p>
+    <p>Ninguna es "mejor" que la otra. Son herramientas distintas para objetivos distintos.</p>
+
+    <h2>Cuándo te conviene una landing</h2>
+    <ul>
+      <li>Vas a lanzar una campaña de anuncios con una oferta o servicio específico.</li>
+      <li>Vendes principalmente un producto o servicio (no diez).</li>
+      <li>Quieres validar una idea rápido, sin invertir de más.</li>
+      <li>Necesitas resultados pronto y el presupuesto está apretado.</li>
+    </ul>
+    <p>Una landing bien hecha puede estar lista en días, no en meses, y cada peso que le metas a anuncios llega a una página diseñada para convertir.</p>
+
+    <h2>Cuándo necesitas una página completa</h2>
+    <ul>
+      <li>Ofreces varios servicios distintos y cada uno merece su espacio.</li>
+      <li>Quieres aparecer en Google cuando la gente busca lo que haces (para eso necesitas varias páginas trabajando el SEO, una landing sola casi no posiciona).</li>
+      <li>Tu cliente investiga y compara antes de decidir — consultorios, despachos, servicios profesionales.</li>
+      <li>Tu marca necesita transmitir seriedad y trayectoria.</li>
+    </ul>
+    <p>Aquí el sitio no solo convierte: construye confianza y te trae visitas desde el buscador todos los días, sin pagar por cada clic.</p>
+
+    <h2>El error que vemos seguido</h2>
+    <p>Negocios que pagaron una página completa de muchas secciones… cuando lo único que necesitaban era una landing para su campaña. Y también al revés: negocios que quieren vivir de Google con una sola landing que nunca va a posicionar. Nosotros mismos <a href="../pagamos-100000-por-una-pagina-que-no-vendia/">pagamos más de $100,000 por una página que no vendía</a> — sabemos lo que se siente.</p>
+    <p>Y un secreto que pocos te dicen: <strong>no es una decisión para siempre</strong>. Puedes empezar con una landing hoy y crecer a un sitio completo cuando el negocio lo pida. Lo importante es no soltar la lana a ciegas.</p>
+
+    <h2>Antes de decidir, hazte estas preguntas</h2>
+    <div style="background:#fff;border:1.5px solid rgba(20,20,20,.14);border-radius:20px;padding:clamp(20px,3vw,30px);margin:1.4em 0 1.6em;display:flex;flex-direction:column;gap:13px">
+      <div style="display:flex;gap:11px;align-items:flex-start"><span style="display:inline-flex;align-items:center;justify-content:center;width:20px;height:20px;border-radius:50%;background:#e45b8f;color:#141414;font-size:12px;font-weight:800;flex:none;margin-top:3px">✓</span><span>¿Quiero que la gente me encuentre en Google, o yo voy a llevar el tráfico con anuncios?</span></div>
+      <div style="display:flex;gap:11px;align-items:flex-start"><span style="display:inline-flex;align-items:center;justify-content:center;width:20px;height:20px;border-radius:50%;background:#e45b8f;color:#141414;font-size:12px;font-weight:800;flex:none;margin-top:3px">✓</span><span>¿Vendo una cosa principal, o varias?</span></div>
+      <div style="display:flex;gap:11px;align-items:flex-start"><span style="display:inline-flex;align-items:center;justify-content:center;width:20px;height:20px;border-radius:50%;background:#e45b8f;color:#141414;font-size:12px;font-weight:800;flex:none;margin-top:3px">✓</span><span>¿Mi cliente decide rápido, o investiga y compara?</span></div>
+      <div style="display:flex;gap:11px;align-items:flex-start"><span style="display:inline-flex;align-items:center;justify-content:center;width:20px;height:20px;border-radius:50%;background:#e45b8f;color:#141414;font-size:12px;font-weight:800;flex:none;margin-top:3px">✓</span><span>¿Necesito resultados este mes, o estoy construyendo a largo plazo?</span></div>
+      <div style="display:flex;gap:11px;align-items:flex-start"><span style="display:inline-flex;align-items:center;justify-content:center;width:20px;height:20px;border-radius:50%;background:#e45b8f;color:#141414;font-size:12px;font-weight:800;flex:none;margin-top:3px">✓</span><span>¿Cuánto puedo invertir hoy, y cuánto en 6 meses?</span></div>
+    </div>
+    <p>Si tus respuestas apuntan a "una oferta, tráfico de anuncios, resultados ya" → landing. Si apuntan a "varios servicios, Google, confianza" → página completa. Si quedaron mezcladas… probablemente necesitas empezar por una y planear la otra.</p>
+
+    <h2>Lo que hacemos diferente</h2>
+    <p>En Jumping Panda no empezamos por venderte nada: empezamos por preguntarte qué quieres lograr. A veces la respuesta es una landing sencilla. A veces es un sitio completo con SEO. Y a veces es "todavía no necesitas ninguna de las dos" — también te lo vamos a decir. En Jumping Panda, saltamos contigo 🐼.</p>
+
+    <!-- CTA CARD -->
+    <div style="background:#141414;color:#FBF6EE;border-radius:24px;padding:clamp(28px,4vw,44px);text-align:center;margin-top:2.4em">
+      <div style="font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:clamp(22px,2.6vw,30px);line-height:1.1;letter-spacing:-.02em">¿No estás seguro de cuál necesitas?</div>
+      <p style="font-size:16px;line-height:1.55;color:#c9c5be;margin:14px auto 0;max-width:34em">Agenda tu diagnóstico gratis y lo revisamos juntos — sin compromiso, la decisión es tuya.</p>
+      <a href="{{ wa }}" target="_blank" rel="noopener" style="display:inline-block;margin-top:22px;text-decoration:none;background:#e45b8f;color:#141414;font-weight:700;font-size:16.5px;padding:15px 28px;border-radius:999px;box-shadow:0 5px 0 rgba(251,246,238,.25);transition:transform .2s,box-shadow .2s" style-hover="transform:translateY(-3px);box-shadow:0 8px 0 rgba(251,246,238,.25)">Quiero mi diagnóstico gratis →</a>
+    </div>
+
+  </article>
+
+  <!-- FOOTER -->
+  <footer style="background:#141414;color:#FBF6EE">
+    <div style="max-width:1200px;margin:0 auto;padding:clamp(46px,6vw,80px) 22px 28px">
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:34px">
+        <div style="grid-column:1/-1;max-width:420px">
+          <img src="../../logo-white.svg" alt="Jumping Panda" style="height:84px;width:auto;display:block" />
+          <p style="margin:14px 0 0;font-size:15px;line-height:1.55;color:#b9b5ae;max-width:30em">Te ayudamos a vender en internet con estrategia, claridad y acompañamiento. Hecho en México, con amor.</p>
+          <div style="display:flex;gap:9px;margin-top:18px">
+            <sc-for list="{{ socials }}" as="s" hint-placeholder-count="4">
+              <a href="{{ s.href }}" target="_blank" rel="noopener" style="text-decoration:none;color:#FBF6EE;font-weight:700;font-size:13px;padding:8px 13px;border:1.5px solid rgba(251,246,238,.25);border-radius:999px;transition:background .2s,color .2s,border-color .2s" style-hover="background:#e45b8f;color:#141414;border-color:#e45b8f">{{ s.label }}</a>
+            </sc-for>
+          </div>
+        </div>
+        <div>
+          <div style="font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:14px;color:#e45b8f;margin-bottom:14px">Menú</div>
+          <div style="display:flex;flex-direction:column;gap:9px">
+            <a href="../../index.html#servicios" style="text-decoration:none;color:#cfccc6;font-size:14.5px" style-hover="color:#FBF6EE">Servicios</a>
+            <a href="../../index.html#como" style="text-decoration:none;color:#cfccc6;font-size:14.5px" style-hover="color:#FBF6EE">Cómo funciona</a>
+            <a href="../../index.html#clientes" style="text-decoration:none;color:#cfccc6;font-size:14.5px" style-hover="color:#FBF6EE">Clientes</a>
+            <a href="../../nosotros/" style="text-decoration:none;color:#cfccc6;font-size:14.5px" style-hover="color:#FBF6EE">Nosotros</a>
+            <a href="../" style="text-decoration:none;color:#cfccc6;font-size:14.5px" style-hover="color:#FBF6EE">Blog</a>
+            <a href="https://jumpingpanda.mx/collections/jumping-panda" target="_blank" rel="noopener" style="text-decoration:none;color:#cfccc6;font-size:14.5px" style-hover="color:#FBF6EE">Tienda</a>
+          </div>
+        </div>
+        <div>
+          <div style="font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:14px;color:#e45b8f;margin-bottom:14px">Políticas</div>
+          <div style="display:flex;flex-direction:column;gap:9px">
+            <a href="https://jumpingpanda.mx/policies/privacy-policy" target="_blank" rel="noopener" style="text-decoration:none;color:#cfccc6;font-size:14.5px" style-hover="color:#FBF6EE">Privacidad</a>
+            <a href="https://jumpingpanda.mx/policies/terms-of-service" target="_blank" rel="noopener" style="text-decoration:none;color:#cfccc6;font-size:14.5px" style-hover="color:#FBF6EE">Términos</a>
+            <a href="https://jumpingpanda.mx/policies/refund-policy" target="_blank" rel="noopener" style="text-decoration:none;color:#cfccc6;font-size:14.5px" style-hover="color:#FBF6EE">Reembolso</a>
+          </div>
+        </div>
+        <div>
+          <div style="font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:14px;color:#e45b8f;margin-bottom:14px">Contacto</div>
+          <div style="display:flex;flex-direction:column;gap:9px">
+            <a href="mailto:soy@jumpingpanda.mx" style="text-decoration:none;color:#cfccc6;font-size:14.5px" style-hover="color:#FBF6EE">soy@jumpingpanda.mx</a>
+            <a href="{{ wa }}" target="_blank" rel="noopener" style="text-decoration:none;color:#cfccc6;font-size:14.5px" style-hover="color:#FBF6EE">+52 722 931 3202</a>
+            <span style="color:#7e7b76;font-size:13px;margin-top:6px">México · MXN $</span>
+          </div>
+        </div>
+      </div>
+      <div style="margin-top:44px;padding-top:22px;border-top:1px solid rgba(251,246,238,.14);font-size:13px;color:#7e7b76">© 2026 Jumping Panda · Hecho en México con amor</div>
+    </div>
+  </footer>
+
+  <sc-if value="{{ showWhatsApp }}" hint-placeholder-val="{{ true }}">
+  <a href="{{ wa }}" target="_blank" rel="noopener" style="position:fixed;bottom:22px;right:22px;z-index:70;text-decoration:none;background:#e45b8f;color:#141414;font-weight:700;font-size:14.5px;padding:13px 20px;border-radius:999px;box-shadow:0 8px 24px rgba(20,20,20,.3);display:flex;align-items:center;gap:8px;transition:transform .2s" style-hover="transform:translateY(-3px)"><span style="width:9px;height:9px;border-radius:50%;background:#141414;display:inline-block"></span>WhatsApp</a>
+  </sc-if>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;showWhatsApp&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;}}">
+class Component extends DCLogic {
+  state = { menuOpen:false, mobServicesOpen:false, isMobile:false };
+  componentDidMount(){
+    this._r = () => { const m = window.innerWidth < 1080; if (m !== this.state.isMobile) this.setState({ isMobile:m }); };
+    this._r();
+    window.addEventListener('resize', this._r);
+  }
+  componentWillUnmount(){ if (this._r) window.removeEventListener('resize', this._r); }
+  renderVals(){
+    const wa = 'https://wa.me/527229313202';
+    const nav = [
+      { label:'Servicios', href:'../../index.html#servicios' },
+      { label:'Cómo funciona', href:'../../index.html#como' },
+      { label:'Clientes', href:'../../index.html#clientes' },
+      { label:'Nosotros', href:'../../nosotros/' },
+      { label:'Blog', href:'../' },
+      { label:'Podcast', href:'../../podcast/' },
+      { label:'Contacto', href:'../../index.html#contacto' }
+    ];
+    const socials = [
+      { label:'Instagram', href:'https://instagram.com/jumpingpandamx' },
+      { label:'Facebook', href:'https://facebook.com/jumpingpandamx' },
+      { label:'TikTok', href:'https://www.tiktok.com/@jumpingpandamx' },
+      { label:'YouTube', href:'http://www.youtube.com/@JumpingPandaMX' }
+    ];
+    const showWhatsApp = this.props.showWhatsApp ?? true;
+    return {
+      wa, nav, socials, showWhatsApp,
+      isMobile: this.state.isMobile, desktop: !this.state.isMobile,
+      menuOpen: this.state.menuOpen,
+      navRest: nav.filter(item => item.label !== 'Servicios'),
+      mobServicesOpen: this.state.mobServicesOpen,
+      mobServicesOpenClass: this.state.mobServicesOpen ? ' open' : '',
+      toggleMenu: ()=>this.setState(s=>({menuOpen:!s.menuOpen, mobServicesOpen:false})),
+      toggleMobServices: ()=>this.setState(s=>({mobServicesOpen:!s.mobServicesOpen})),
+      closeMenu: ()=>this.setState({menuOpen:false, mobServicesOpen:false})
+    };
+  }
+}
+</script>
+</body>
+</html>

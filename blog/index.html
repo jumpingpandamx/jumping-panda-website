@@ -293,7 +293,9 @@ class Component extends DCLogic {
     // Cada entrada del blog es un objeto aquí; la más reciente va primero y se muestra como destacada.
     // href apunta a blog/<slug>/ cuando exista la página del artículo. Plantilla de entrada:
     // { href:'nombre-del-articulo/', title:'Título', excerpt:'Resumen de 1-2 líneas.', img:CDN+'imagen.png?width=1200', category:'Estrategia', date:'6 de julio, 2026', readTime:'6 min' }
-    const posts = [];
+    const posts = [
+      { href:'pagamos-100000-por-una-pagina-que-no-vendia/', title:'Pagamos más de $100,000 por una página que no vendía. Esto es lo que aprendimos.', excerpt:'Te contamos qué salió mal, las cinco cosas que nadie te dice antes de soltar la lana y qué revisar antes de invertir en tu página web.', img:CDN+'Jumping_panda_servicios_paginas_web.png?v=1766180423&width=1200', category:'Páginas web', date:'6 de julio, 2026', readTime:'5 min' }
+    ];
     const socials = [
       { label:'Instagram', href:'https://instagram.com/jumpingpandamx' },
       { label:'Facebook', href:'https://facebook.com/jumpingpandamx' },

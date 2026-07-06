@@ -98,7 +98,7 @@
     <div style="max-width:1200px;margin:0 auto;display:flex;align-items:center;gap:24px;padding:11px 12px 11px 20px;background:rgba(251,246,238,.92);backdrop-filter:blur(12px);border:1.5px solid rgba(20,20,20,.14);border-radius:18px">
       <a href="../index.html#top" style="display:flex;align-items:center;text-decoration:none;flex:none"><img src="../jumping-panda-header-horizontal-vector.svg" alt="Jumping Panda" style="height:40px;width:auto;display:block" /></a>
       <sc-if value="{{ desktop }}" hint-placeholder-val="{{ true }}">
-      <nav style="display:flex;align-items:center;gap:26px">
+      <nav style="display:flex;align-items:center;gap:17px">
         <div class="jp-navitem">
           <a href="../index.html#servicios" class="jp-caret" style="display:inline-flex;align-items:center;text-decoration:none;color:#141414;font-weight:600;font-size:15.5px;white-space:nowrap;cursor:pointer;transition:opacity .15s" style-hover="opacity:.6">Servicios</a>
           <div class="jp-dropdown">
@@ -117,6 +117,7 @@
         <a href="../index.html#como" style="text-decoration:none;color:#141414;font-weight:600;font-size:15.5px;white-space:nowrap;transition:opacity .15s" style-hover="opacity:.6">Cómo funciona</a>
         <a href="../index.html#clientes" style="text-decoration:none;color:#141414;font-weight:600;font-size:15.5px;white-space:nowrap;transition:opacity .15s" style-hover="opacity:.6">Clientes</a>
         <a href="#top" style="text-decoration:none;color:#141414;font-weight:600;font-size:15.5px;white-space:nowrap;transition:opacity .15s" style-hover="opacity:.6">Nosotros</a>
+        <a href="../blog/" style="text-decoration:none;color:#141414;font-weight:600;font-size:15.5px;white-space:nowrap;transition:opacity .15s" style-hover="opacity:.6">Blog</a>
         <a href="../podcast/" style="text-decoration:none;color:#141414;font-weight:600;font-size:15.5px;white-space:nowrap;transition:opacity .15s" style-hover="opacity:.6">Podcast</a>
         <a href="../index.html#contacto" style="text-decoration:none;color:#141414;font-weight:600;font-size:15.5px;white-space:nowrap;transition:opacity .15s" style-hover="opacity:.6">Contacto</a>
       </nav>
@@ -257,6 +258,7 @@
             <a href="../index.html#como" style="text-decoration:none;color:#cfccc6;font-size:14.5px" style-hover="color:#FBF6EE">Cómo funciona</a>
             <a href="../index.html#clientes" style="text-decoration:none;color:#cfccc6;font-size:14.5px" style-hover="color:#FBF6EE">Clientes</a>
             <a href="#top" style="text-decoration:none;color:#cfccc6;font-size:14.5px" style-hover="color:#FBF6EE">Nosotros</a>
+            <a href="../blog/" style="text-decoration:none;color:#cfccc6;font-size:14.5px" style-hover="color:#FBF6EE">Blog</a>
             <a href="https://jumpingpanda.mx/collections/jumping-panda" target="_blank" rel="noopener" style="text-decoration:none;color:#cfccc6;font-size:14.5px" style-hover="color:#FBF6EE">Tienda</a>
           </div>
         </div>
@@ -291,7 +293,7 @@
 class Component extends DCLogic {
   state = { menuOpen:false, mobServicesOpen:false, isMobile:false };
   componentDidMount(){
-    this._r = () => { const m = window.innerWidth < 900; if (m !== this.state.isMobile) this.setState({ isMobile:m }); };
+    this._r = () => { const m = window.innerWidth < 1080; if (m !== this.state.isMobile) this.setState({ isMobile:m }); };
     this._r();
     window.addEventListener('resize', this._r);
   }
@@ -335,6 +337,7 @@ class Component extends DCLogic {
       { label:'Cómo funciona', href:'../index.html#como' },
       { label:'Clientes', href:'../index.html#clientes' },
       { label:'Nosotros', href:'#top' },
+      { label:'Blog', href:'../blog/' },
       { label:'Podcast', href:'../podcast/' },
       { label:'Contacto', href:'../index.html#contacto' }
     ];

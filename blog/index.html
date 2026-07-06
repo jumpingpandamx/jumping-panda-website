@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="../support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<title>Blog de Jumping Panda | Ideas para vender en internet</title>
+<meta name="description" content="Guías, ideas y estrategias del equipo de Jumping Panda para ayudarte a vender en internet: páginas web, SEO, redes sociales, Amazon y Mercado Libre.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,600;12..96,700;12..96,800&family=Hanken+Grotesk:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0}
+  img{max-width:100%}
+  ::selection{background:#e45b8f;color:#fff}
+  @keyframes jpReveal{from{transform:translateY(28px)}to{transform:translateY(0)}}
+  @keyframes jpMarq{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+  @keyframes jpMarqR{from{transform:translateX(-50%)}to{transform:translateX(0)}}
+  @keyframes jpFloat{0%,100%{transform:translateY(0) rotate(-5deg)}50%{transform:translateY(-11px) rotate(-5deg)}}
+  @keyframes jpBob{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
+  /* Nav dropdown (Servicios) */
+  .jp-navitem{position:relative}
+  .jp-navitem>a.jp-caret::after{content:"";width:8px;height:8px;margin-left:7px;border-right:2px solid currentColor;border-bottom:2px solid currentColor;transform:translateY(-2px) rotate(45deg);transition:transform .2s ease}
+  .jp-navitem:hover>a.jp-caret::after,.jp-navitem:focus-within>a.jp-caret::after{transform:translateY(2px) rotate(-135deg)}
+  .jp-dropdown{position:absolute;top:100%;left:0;padding-top:22px;min-width:330px;z-index:50;opacity:0;visibility:hidden;transform:translateY(6px);transition:opacity .18s ease,transform .18s ease,visibility .18s}
+  .jp-navitem:hover .jp-dropdown,.jp-navitem:focus-within .jp-dropdown{opacity:1;visibility:visible;transform:translateY(0)}
+  .jp-dropcard{background:#fff;border:1.5px solid rgba(20,20,20,.14);border-radius:14px;padding:8px;box-shadow:0 12px 30px rgba(20,20,20,.1);display:flex;flex-direction:column;gap:2px}
+  .jp-dropcard a{display:block;padding:10px 12px;border-radius:9px;text-decoration:none;color:#141414;transition:background .12s}
+  .jp-dropcard a:hover{background:#F8E3EC}
+  .jp-dropcard .t{display:block;font-size:14.5px;font-weight:600}
+  .jp-dropcard .d{display:block;font-size:12.5px;color:#666;margin-top:2px}
+  /* Mobile menu: Servicios accordion caret */
+  .jp-mobcaret::after{content:"";width:8px;height:8px;margin-left:9px;border-right:2px solid currentColor;border-bottom:2px solid currentColor;transform:translateY(-2px) rotate(45deg);transition:transform .2s ease;display:inline-block}
+  .jp-mobcaret.open::after{transform:translateY(1px) rotate(-135deg)}
+  /* Trust strip: static centered on desktop, one-line marquee on mobile */
+  .jp-trust-marq{display:none;overflow:hidden}
+  .jp-trust-track{display:flex;width:max-content;animation:jpMarq 22s linear infinite}
+  .jp-trust-half{display:flex;align-items:center;gap:22px;padding:9px 22px 9px 0;white-space:nowrap}
+  @media (max-width:899px){
+    .jp-trust-static{display:none!important}
+    .jp-trust-marq{display:block}
+  }
+  /* Featured post: image + text side by side on desktop */
+  .jp-featured{display:grid;grid-template-columns:1.1fr 1fr;text-decoration:none;color:#141414;background:#fff;border:3px solid #141414;border-radius:26px;overflow:hidden;box-shadow:0 18px 0 rgba(20,20,20,.12);transition:transform .3s,box-shadow .3s}
+  .jp-featured:hover{transform:translateY(-5px);box-shadow:0 23px 0 rgba(20,20,20,.12)}
+  @media (max-width:767px){.jp-featured{grid-template-columns:1fr}}
+</style>
+</helmet>
+<div data-screen-label="Blog · Jumping Panda" id="top" style="background:#FBF6EE;color:#141414;font-family:'Hanken Grotesk',system-ui,-apple-system,sans-serif;overflow-x:clip;position:relative">
+
+  <!-- TRUST STRIP -->
+  <div style="background:#141414;color:#FBF6EE;font-size:13px;font-weight:600">
+    <div class="jp-trust-static" style="max-width:1200px;margin:0 auto;padding:9px 22px;display:flex;flex-wrap:wrap;gap:8px 22px;align-items:center;justify-content:center;text-align:center">
+      <span style="color:#FFC83D;letter-spacing:1px">★★★★★</span>
+      <span>+30 marcas confían en nosotros</span>
+      <span style="opacity:.4">·</span>
+      <span>Respuesta en menos de 24 h</span>
+      <span style="opacity:.4">·</span>
+      <span style="color:#e45b8f">Diagnóstico inicial gratis</span>
+    </div>
+    <div class="jp-trust-marq">
+      <div class="jp-trust-track">
+        <div class="jp-trust-half">
+          <span style="color:#FFC83D;letter-spacing:1px">★★★★★</span>
+          <span>+30 marcas confían en nosotros</span>
+          <span style="opacity:.4">·</span>
+          <span>Respuesta en menos de 24 h</span>
+          <span style="opacity:.4">·</span>
+          <span style="color:#e45b8f">Diagnóstico inicial gratis</span>
+          <span style="opacity:.4">·</span>
+        </div>
+        <div class="jp-trust-half" aria-hidden="true">
+          <span style="color:#FFC83D;letter-spacing:1px">★★★★★</span>
+          <span>+30 marcas confían en nosotros</span>
+          <span style="opacity:.4">·</span>
+          <span>Respuesta en menos de 24 h</span>
+          <span style="opacity:.4">·</span>
+          <span style="color:#e45b8f">Diagnóstico inicial gratis</span>
+          <span style="opacity:.4">·</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- HEADER (floating outlined bar) -->
+  <header style="position:sticky;top:0;z-index:60;padding:14px 22px">
+    <div style="max-width:1200px;margin:0 auto;display:flex;align-items:center;gap:24px;padding:11px 12px 11px 20px;background:rgba(251,246,238,.92);backdrop-filter:blur(12px);border:1.5px solid rgba(20,20,20,.14);border-radius:18px">
+      <a href="../index.html#top" style="display:flex;align-items:center;text-decoration:none;flex:none"><img src="../jumping-panda-header-horizontal-vector.svg" alt="Jumping Panda" style="height:40px;width:auto;display:block" /></a>
+      <sc-if value="{{ desktop }}" hint-placeholder-val="{{ true }}">
+      <nav style="display:flex;align-items:center;gap:17px">
+        <div class="jp-navitem">
+          <a href="../index.html#servicios" class="jp-caret" style="display:inline-flex;align-items:center;text-decoration:none;color:#141414;font-weight:600;font-size:15.5px;white-space:nowrap;cursor:pointer;transition:opacity .15s" style-hover="opacity:.6">Servicios</a>
+          <div class="jp-dropdown">
+            <div class="jp-dropcard">
+              <a href="../servicios/creacion-de-paginas-web/"><span class="t">Creación de página web</span><span class="d">Tu mejor vendedor 24/7. Clara, rápida y lista para convertir visitas en clientes.</span></a>
+              <a href="../servicios/pagina-web-con-agenda-de-citas/"><span class="t">Página web + agenda de citas</span><span class="d">Convierte visitas en citas agendadas en automático. Ideal para consultorios y servicios.</span></a>
+              <a href="../servicios/comercio-electronico/"><span class="t">Comercio electrónico</span><span class="d">Una tienda en línea hecha para vender y escalar, no solo para verse bonita.</span></a>
+              <a href="../servicios/gestion-de-redes-sociales/"><span class="t">Gestión de redes sociales</span><span class="d">Contenido con estrategia que construye comunidad y genera clientes, no solo likes.</span></a>
+              <a href="../servicios/google-ads-y-seo/"><span class="t">Google Ads + SEO y GEO</span><span class="d">Aparece justo cuando te buscan y atrae clientes listos para comprar.</span></a>
+              <a href="../servicios/configuracion-inicial-amazon/"><span class="t">Configuración de Amazon</span><span class="d">Empieza a vender en el marketplace más grande, sin improvisar.</span></a>
+              <a href="../servicios/configuracion-inicial-mercado-libre/"><span class="t">Configuración de Mercado Libre</span><span class="d">Lanza tu tienda con una base sólida y empieza a vender desde el día uno.</span></a>
+              <a href="../servicios/mantenimiento-web-y-seo/"><span class="t">Mantenimiento web y SEO</span><span class="d">Tu sitio siempre rápido, seguro y subiendo en Google, mes con mes.</span></a>
+            </div>
+          </div>
+        </div>
+        <a href="../index.html#como" style="text-decoration:none;color:#141414;font-weight:600;font-size:15.5px;white-space:nowrap;transition:opacity .15s" style-hover="opacity:.6">Cómo funciona</a>
+        <a href="../index.html#clientes" style="text-decoration:none;color:#141414;font-weight:600;font-size:15.5px;white-space:nowrap;transition:opacity .15s" style-hover="opacity:.6">Clientes</a>
+        <a href="../nosotros/" style="text-decoration:none;color:#141414;font-weight:600;font-size:15.5px;white-space:nowrap;transition:opacity .15s" style-hover="opacity:.6">Nosotros</a>
+        <a href="#top" style="text-decoration:none;color:#141414;font-weight:600;font-size:15.5px;white-space:nowrap;transition:opacity .15s" style-hover="opacity:.6">Blog</a>
+        <a href="../podcast/" style="text-decoration:none;color:#141414;font-weight:600;font-size:15.5px;white-space:nowrap;transition:opacity .15s" style-hover="opacity:.6">Podcast</a>
+        <a href="../index.html#contacto" style="text-decoration:none;color:#141414;font-weight:600;font-size:15.5px;white-space:nowrap;transition:opacity .15s" style-hover="opacity:.6">Contacto</a>
+      </nav>
+      <span style="margin-left:auto"></span>
+      <span style="width:1.5px;align-self:stretch;background:rgba(20,20,20,.14)"></span>
+      <a href="{{ wa }}" target="_blank" rel="noopener" style="flex:none;text-decoration:none;background:#e45b8f;color:#141414;font-weight:700;font-size:15px;padding:12px 22px;border:1.5px solid #141414;border-radius:12px;white-space:nowrap;transition:background .15s,transform .1s" style-hover="background:#ec7fa8">Agenda tu diagnóstico</a>
+      </sc-if>
+      <sc-if value="{{ isMobile }}" hint-placeholder-val="{{ false }}">
+      <button onClick="{{ toggleMenu }}" aria-label="Menú" style="margin-left:auto;border:1.5px solid #141414;background:#FBF6EE;width:44px;height:44px;border-radius:12px;cursor:pointer;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px">
+        <span style="width:18px;height:2px;background:#141414;display:block"></span>
+        <span style="width:18px;height:2px;background:#141414;display:block"></span>
+        <span style="width:18px;height:2px;background:#e45b8f;display:block"></span>
+      </button>
+      </sc-if>
+    </div>
+    <sc-if value="{{ menuOpen }}" hint-placeholder-val="{{ false }}">
+    <div style="max-width:1200px;margin:8px auto 0;padding:10px 20px 20px;background:rgba(251,246,238,.97);backdrop-filter:blur(12px);border:1.5px solid rgba(20,20,20,.14);border-radius:18px;display:flex;flex-direction:column;gap:4px">
+      <button onClick="{{ toggleMobServices }}" class="jp-mobcaret{{ mobServicesOpenClass }}" style="display:flex;align-items:center;border:none;background:none;cursor:pointer;text-align:left;color:#141414;font-weight:700;font-size:18px;padding:11px 4px;font-family:'Bricolage Grotesque',sans-serif">Servicios</button>
+      <sc-if value="{{ mobServicesOpen }}" hint-placeholder-val="{{ false }}">
+      <div style="display:flex;flex-direction:column;gap:2px;padding:0 0 8px 14px;border-left:2px solid rgba(20,20,20,.12);margin:0 0 4px 6px">
+          <a href="../servicios/creacion-de-paginas-web/" onClick="{{ closeMenu }}" style="text-decoration:none;color:#141414;font-weight:600;font-size:15.5px;padding:9px 4px">Creación de página web</a>
+          <a href="../servicios/pagina-web-con-agenda-de-citas/" onClick="{{ closeMenu }}" style="text-decoration:none;color:#141414;font-weight:600;font-size:15.5px;padding:9px 4px">Página web + agenda de citas</a>
+          <a href="../servicios/comercio-electronico/" onClick="{{ closeMenu }}" style="text-decoration:none;color:#141414;font-weight:600;font-size:15.5px;padding:9px 4px">Comercio electrónico</a>
+          <a href="../servicios/gestion-de-redes-sociales/" onClick="{{ closeMenu }}" style="text-decoration:none;color:#141414;font-weight:600;font-size:15.5px;padding:9px 4px">Gestión de redes sociales</a>
+          <a href="../servicios/google-ads-y-seo/" onClick="{{ closeMenu }}" style="text-decoration:none;color:#141414;font-weight:600;font-size:15.5px;padding:9px 4px">Google Ads + SEO y GEO</a>
+          <a href="../servicios/configuracion-inicial-amazon/" onClick="{{ closeMenu }}" style="text-decoration:none;color:#141414;font-weight:600;font-size:15.5px;padding:9px 4px">Configuración de Amazon</a>
+          <a href="../servicios/configuracion-inicial-mercado-libre/" onClick="{{ closeMenu }}" style="text-decoration:none;color:#141414;font-weight:600;font-size:15.5px;padding:9px 4px">Configuración de Mercado Libre</a>
+          <a href="../servicios/mantenimiento-web-y-seo/" onClick="{{ closeMenu }}" style="text-decoration:none;color:#141414;font-weight:600;font-size:15.5px;padding:9px 4px">Mantenimiento web y SEO</a>
+          <a href="../index.html#servicios" onClick="{{ closeMenu }}" style="text-decoration:none;color:#e45b8f;font-weight:700;font-size:15px;padding:9px 4px">Ver todos los servicios →</a>
+      </div>
+      </sc-if>
+      <sc-for list="{{ navRest }}" as="item" hint-placeholder-count="6">
+        <a href="{{ item.href }}" onClick="{{ closeMenu }}" style="text-decoration:none;color:#141414;font-weight:700;font-size:18px;padding:11px 4px;font-family:'Bricolage Grotesque',sans-serif">{{ item.label }}</a>
+      </sc-for>
+      <a href="{{ wa }}" target="_blank" rel="noopener" style="margin-top:8px;text-align:center;text-decoration:none;background:#e45b8f;color:#141414;font-weight:700;padding:13px;border:1.5px solid #141414;border-radius:12px">Agenda tu diagnóstico</a>
+    </div>
+    </sc-if>
+  </header>
+
+  <!-- HERO -->
+  <section style="position:relative;overflow:hidden">
+    <div style="position:absolute;top:-120px;right:-120px;width:560px;height:560px;background:radial-gradient(circle at 50% 50%,#F6DCE7,rgba(246,220,231,0) 70%);z-index:0;pointer-events:none"></div>
+    <div style="max-width:1000px;margin:0 auto;padding:clamp(44px,6vw,84px) 22px clamp(30px,4vw,48px);text-align:center;position:relative;z-index:1">
+      <div style="font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:13px;letter-spacing:.16em;text-transform:uppercase;color:#e45b8f">Blog</div>
+      <h1 style="font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:clamp(38px,6vw,80px);line-height:.98;letter-spacing:-.035em;margin:14px 0 0">Ideas para vender más en internet</h1>
+      <p style="font-size:clamp(16px,1.5vw,21px);line-height:1.55;max-width:34em;margin:20px auto 0;color:#3c3a37">Guías, estrategias y aprendizajes del equipo de Jumping Panda, escritos para dueños de negocio, no para técnicos.</p>
+    </div>
+  </section>
+
+  <!-- POSTS -->
+  <section style="max-width:1200px;margin:0 auto;padding:clamp(20px,3vw,36px) 22px clamp(56px,8vw,104px)">
+
+    <sc-if value="{{ hasPosts }}" hint-placeholder-val="{{ true }}">
+
+    <!-- FEATURED POST -->
+    <a href="{{ featured.href }}" class="jp-featured" style="animation:jpReveal linear both;animation-timeline:view();animation-range:entry 0% cover 22%">
+      <div style="overflow:hidden;background:#F8E3EC;min-height:280px"><img src="{{ featured.img }}" alt="{{ featured.title }}" style="width:100%;height:100%;object-fit:cover;display:block" /></div>
+      <div style="padding:clamp(24px,3.4vw,44px);display:flex;flex-direction:column;justify-content:center">
+        <div style="display:flex;flex-wrap:wrap;align-items:center;gap:10px">
+          <span style="background:#e45b8f;color:#141414;font-weight:700;font-size:12.5px;letter-spacing:.06em;text-transform:uppercase;padding:6px 13px;border-radius:999px">{{ featured.category }}</span>
+          <span style="font-size:13.5px;color:#666">{{ featured.date }} · {{ featured.readTime }} de lectura</span>
+        </div>
+        <h2 style="font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:clamp(24px,2.8vw,36px);line-height:1.05;letter-spacing:-.025em;margin:16px 0 0">{{ featured.title }}</h2>
+        <p style="font-size:16px;line-height:1.6;color:#3c3a37;margin:14px 0 0">{{ featured.excerpt }}</p>
+        <span style="display:inline-flex;align-items:center;gap:7px;font-weight:700;font-size:15.5px;color:#e45b8f;margin-top:18px">Leer artículo →</span>
+      </div>
+    </a>
+
+    <!-- POST GRID -->
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:18px;margin-top:clamp(28px,4vw,44px)">
+      <sc-for list="{{ rest }}" as="p" hint-placeholder-count="2">
+        <a href="{{ p.href }}" style="display:flex;flex-direction:column;background:#fff;border:1px solid rgba(20,20,20,.08);border-radius:22px;overflow:hidden;text-decoration:none;color:#141414;transition:transform .35s,box-shadow .35s;animation:jpReveal linear both;animation-timeline:view();animation-range:entry 0% cover 16%" style-hover="transform:translateY(-7px);box-shadow:0 22px 44px rgba(20,20,20,.14)">
+          <div style="aspect-ratio:16/10;overflow:hidden;background:#F8E3EC"><img src="{{ p.img }}" alt="{{ p.title }}" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block" /></div>
+          <div style="padding:20px 22px 24px;display:flex;flex-direction:column;flex:1">
+            <div style="display:flex;flex-wrap:wrap;align-items:center;gap:9px">
+              <span style="background:#F8E3EC;color:#141414;font-weight:700;font-size:12px;letter-spacing:.06em;text-transform:uppercase;padding:5px 11px;border-radius:999px">{{ p.category }}</span>
+              <span style="font-size:13px;color:#666">{{ p.date }}</span>
+            </div>
+            <h3 style="font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:20px;line-height:1.15;letter-spacing:-.01em;margin:13px 0 0">{{ p.title }}</h3>
+            <p style="margin:10px 0 16px;font-size:14.5px;line-height:1.55;color:#3c3a37;flex:1">{{ p.excerpt }}</p>
+            <span style="display:inline-flex;align-items:center;gap:7px;font-weight:700;font-size:14.5px;color:#e45b8f">Leer artículo →</span>
+          </div>
+        </a>
+      </sc-for>
+    </div>
+
+    </sc-if>
+
+    <sc-if value="{{ noPosts }}" hint-placeholder-val="{{ false }}">
+    <div style="max-width:640px;margin:0 auto;text-align:center;background:#fff;border:3px solid #141414;border-radius:26px;padding:clamp(36px,5vw,60px) clamp(22px,4vw,44px);box-shadow:0 18px 0 rgba(20,20,20,.12)">
+      <div style="font-size:44px;line-height:1">🐼✍️</div>
+      <h2 style="font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:clamp(24px,3vw,34px);letter-spacing:-.02em;margin:16px 0 0">Estamos escribiendo los primeros artículos</h2>
+      <p style="font-size:16px;line-height:1.6;color:#3c3a37;margin:14px auto 0;max-width:32em">Muy pronto encontrarás aquí guías y estrategias para vender en internet. Mientras tanto, escúchanos en el podcast o platiquemos de tu negocio.</p>
+      <div style="display:flex;flex-wrap:wrap;gap:12px;justify-content:center;margin-top:24px">
+        <a href="../podcast/" style="text-decoration:none;background:#e45b8f;color:#141414;font-weight:700;font-size:15.5px;padding:13px 24px;border-radius:999px;box-shadow:0 4px 0 #141414;transition:transform .2s,box-shadow .2s" style-hover="transform:translateY(-2px);box-shadow:0 6px 0 #141414">Escuchar el podcast</a>
+        <a href="{{ wa }}" target="_blank" rel="noopener" style="text-decoration:none;background:transparent;color:#141414;font-weight:700;font-size:15.5px;padding:13px 22px;border-radius:999px;border:2px solid #141414;transition:background .2s,color .2s" style-hover="background:#141414;color:#FBF6EE">Contáctanos</a>
+      </div>
+    </div>
+    </sc-if>
+
+  </section>
+
+  <!-- CIERRE / CTA -->
+  <section style="background:#F8E3EC;color:#141414">
+    <div style="max-width:1000px;margin:0 auto;padding:clamp(48px,7vw,96px) 22px;text-align:center;animation:jpReveal linear both;animation-timeline:view();animation-range:entry 0% cover 30%">
+      <h2 style="font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:clamp(28px,4.4vw,54px);line-height:1.02;letter-spacing:-.03em;margin:0;max-width:18em;margin-inline:auto">¿Prefieres que lo hagamos por ti?</h2>
+      <p style="font-size:clamp(16px,1.5vw,21px);line-height:1.55;max-width:36em;margin:18px auto 0;color:#1c1410">Leer ayuda, pero un plan hecho para tu negocio ayuda más. Agenda tu diagnóstico gratis y encuentra tu mayor oportunidad de ventas.</p>
+      <div style="display:flex;flex-wrap:wrap;gap:13px;justify-content:center;margin-top:28px">
+        <a href="{{ wa }}" target="_blank" rel="noopener" style="text-decoration:none;background:#141414;color:#FBF6EE;font-weight:700;font-size:17px;padding:15px 28px;border-radius:999px;transition:transform .2s" style-hover="transform:translateY(-3px)">Agenda tu diagnóstico</a>
+        <a href="../index.html#servicios" style="text-decoration:none;background:transparent;color:#141414;font-weight:700;font-size:17px;padding:15px 26px;border-radius:999px;border:2px solid #141414;transition:background .2s,color .2s" style-hover="background:#141414;color:#FBF6EE">Ver servicios</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer style="background:#141414;color:#FBF6EE">
+    <div style="max-width:1200px;margin:0 auto;padding:clamp(46px,6vw,80px) 22px 28px">
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:34px">
+        <div style="grid-column:1/-1;max-width:420px">
+          <img src="../logo-white.svg" alt="Jumping Panda" style="height:84px;width:auto;display:block" />
+          <p style="margin:14px 0 0;font-size:15px;line-height:1.55;color:#b9b5ae;max-width:30em">Te ayudamos a vender en internet con estrategia, claridad y acompañamiento. Hecho en México, con amor.</p>
+          <div style="display:flex;gap:9px;margin-top:18px">
+            <sc-for list="{{ socials }}" as="s" hint-placeholder-count="4">
+              <a href="{{ s.href }}" target="_blank" rel="noopener" style="text-decoration:none;color:#FBF6EE;font-weight:700;font-size:13px;padding:8px 13px;border:1.5px solid rgba(251,246,238,.25);border-radius:999px;transition:background .2s,color .2s,border-color .2s" style-hover="background:#e45b8f;color:#141414;border-color:#e45b8f">{{ s.label }}</a>
+            </sc-for>
+          </div>
+        </div>
+        <div>
+          <div style="font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:14px;color:#e45b8f;margin-bottom:14px">Menú</div>
+          <div style="display:flex;flex-direction:column;gap:9px">
+            <a href="../index.html#servicios" style="text-decoration:none;color:#cfccc6;font-size:14.5px" style-hover="color:#FBF6EE">Servicios</a>
+            <a href="../index.html#como" style="text-decoration:none;color:#cfccc6;font-size:14.5px" style-hover="color:#FBF6EE">Cómo funciona</a>
+            <a href="../index.html#clientes" style="text-decoration:none;color:#cfccc6;font-size:14.5px" style-hover="color:#FBF6EE">Clientes</a>
+            <a href="../nosotros/" style="text-decoration:none;color:#cfccc6;font-size:14.5px" style-hover="color:#FBF6EE">Nosotros</a>
+            <a href="#top" style="text-decoration:none;color:#cfccc6;font-size:14.5px" style-hover="color:#FBF6EE">Blog</a>
+            <a href="https://jumpingpanda.mx/collections/jumping-panda" target="_blank" rel="noopener" style="text-decoration:none;color:#cfccc6;font-size:14.5px" style-hover="color:#FBF6EE">Tienda</a>
+          </div>
+        </div>
+        <div>
+          <div style="font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:14px;color:#e45b8f;margin-bottom:14px">Políticas</div>
+          <div style="display:flex;flex-direction:column;gap:9px">
+            <a href="https://jumpingpanda.mx/policies/privacy-policy" target="_blank" rel="noopener" style="text-decoration:none;color:#cfccc6;font-size:14.5px" style-hover="color:#FBF6EE">Privacidad</a>
+            <a href="https://jumpingpanda.mx/policies/terms-of-service" target="_blank" rel="noopener" style="text-decoration:none;color:#cfccc6;font-size:14.5px" style-hover="color:#FBF6EE">Términos</a>
+            <a href="https://jumpingpanda.mx/policies/refund-policy" target="_blank" rel="noopener" style="text-decoration:none;color:#cfccc6;font-size:14.5px" style-hover="color:#FBF6EE">Reembolso</a>
+          </div>
+        </div>
+        <div>
+          <div style="font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:14px;color:#e45b8f;margin-bottom:14px">Contacto</div>
+          <div style="display:flex;flex-direction:column;gap:9px">
+            <a href="mailto:soy@jumpingpanda.mx" style="text-decoration:none;color:#cfccc6;font-size:14.5px" style-hover="color:#FBF6EE">soy@jumpingpanda.mx</a>
+            <a href="{{ wa }}" target="_blank" rel="noopener" style="text-decoration:none;color:#cfccc6;font-size:14.5px" style-hover="color:#FBF6EE">+52 722 931 3202</a>
+            <span style="color:#7e7b76;font-size:13px;margin-top:6px">México · MXN $</span>
+          </div>
+        </div>
+      </div>
+      <div style="margin-top:44px;padding-top:22px;border-top:1px solid rgba(251,246,238,.14);font-size:13px;color:#7e7b76">© 2026 Jumping Panda · Hecho en México con amor</div>
+    </div>
+  </footer>
+
+  <sc-if value="{{ showWhatsApp }}" hint-placeholder-val="{{ true }}">
+  <a href="{{ wa }}" target="_blank" rel="noopener" style="position:fixed;bottom:22px;right:22px;z-index:70;text-decoration:none;background:#e45b8f;color:#141414;font-weight:700;font-size:14.5px;padding:13px 20px;border-radius:999px;box-shadow:0 8px 24px rgba(20,20,20,.3);display:flex;align-items:center;gap:8px;transition:transform .2s" style-hover="transform:translateY(-3px)"><span style="width:9px;height:9px;border-radius:50%;background:#141414;display:inline-block"></span>WhatsApp</a>
+  </sc-if>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;showWhatsApp&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;}}">
+class Component extends DCLogic {
+  state = { menuOpen:false, mobServicesOpen:false, isMobile:false };
+  componentDidMount(){
+    this._r = () => { const m = window.innerWidth < 1080; if (m !== this.state.isMobile) this.setState({ isMobile:m }); };
+    this._r();
+    window.addEventListener('resize', this._r);
+  }
+  componentWillUnmount(){ if (this._r) window.removeEventListener('resize', this._r); }
+  renderVals(){
+    const CDN = 'https://cdn.shopify.com/s/files/1/0528/5543/9528/files/';
+    const wa = 'https://wa.me/527229313202';
+    // Cada entrada del blog es un objeto aquí; la más reciente va primero y se muestra como destacada.
+    // href apunta a blog/<slug>/ cuando exista la página del artículo. Plantilla de entrada:
+    // { href:'nombre-del-articulo/', title:'Título', excerpt:'Resumen de 1-2 líneas.', img:CDN+'imagen.png?width=1200', category:'Estrategia', date:'6 de julio, 2026', readTime:'6 min' }
+    const posts = [];
+    const socials = [
+      { label:'Instagram', href:'https://instagram.com/jumpingpandamx' },
+      { label:'Facebook', href:'https://facebook.com/jumpingpandamx' },
+      { label:'TikTok', href:'https://www.tiktok.com/@jumpingpandamx' },
+      { label:'YouTube', href:'http://www.youtube.com/@JumpingPandaMX' }
+    ];
+    const nav = [
+      { label:'Servicios', href:'../index.html#servicios' },
+      { label:'Cómo funciona', href:'../index.html#como' },
+      { label:'Clientes', href:'../index.html#clientes' },
+      { label:'Nosotros', href:'../nosotros/' },
+      { label:'Blog', href:'#top' },
+      { label:'Podcast', href:'../podcast/' },
+      { label:'Contacto', href:'../index.html#contacto' }
+    ];
+    const showWhatsApp = this.props.showWhatsApp ?? true;
+    return {
+      wa, posts, socials, nav, showWhatsApp,
+      hasPosts: posts.length > 0, noPosts: posts.length === 0,
+      featured: posts[0] || {}, rest: posts.slice(1),
+      isMobile: this.state.isMobile, desktop: !this.state.isMobile,
+      menuOpen: this.state.menuOpen,
+      navRest: nav.filter(item => item.label !== 'Servicios'),
+      mobServicesOpen: this.state.mobServicesOpen,
+      mobServicesOpenClass: this.state.mobServicesOpen ? ' open' : '',
+      toggleMenu: ()=>this.setState(s=>({menuOpen:!s.menuOpen, mobServicesOpen:false})),
+      toggleMobServices: ()=>this.setState(s=>({mobServicesOpen:!s.mobServicesOpen})),
+      closeMenu: ()=>this.setState({menuOpen:false, mobServicesOpen:false})
+    };
+  }
+}
+</script>
+</body>
+</html>

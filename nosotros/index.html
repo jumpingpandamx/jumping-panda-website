@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="../support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<title>Conoce al equipo de Jumping Panda | Nosotros</title>
+<meta name="description" content="Somos Roberto, Erci y Chio, el equipo detrás de Jumping Panda. Te ayudamos a vender en internet con estrategia, orden y creatividad. Conoce nuestra historia.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,600;12..96,700;12..96,800&family=Hanken+Grotesk:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0}
+  img{max-width:100%}
+  ::selection{background:#e45b8f;color:#fff}
+  @keyframes jpReveal{from{transform:translateY(28px)}to{transform:translateY(0)}}
+  @keyframes jpMarq{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+  @keyframes jpMarqR{from{transform:translateX(-50%)}to{transform:translateX(0)}}
+  @keyframes jpFloat{0%,100%{transform:translateY(0) rotate(-5deg)}50%{transform:translateY(-11px) rotate(-5deg)}}
+  @keyframes jpBob{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
+  /* Nav dropdown (Servicios) */
+  .jp-navitem{position:relative}
+  .jp-navitem>a.jp-caret::after{content:"";width:8px;height:8px;margin-left:7px;border-right:2px solid currentColor;border-bottom:2px solid currentColor;transform:translateY(-2px) rotate(45deg);transition:transform .2s ease}
+  .jp-navitem:hover>a.jp-caret::after,.jp-navitem:focus-within>a.jp-caret::after{transform:translateY(2px) rotate(-135deg)}
+  .jp-dropdown{position:absolute;top:100%;left:0;padding-top:22px;min-width:330px;z-index:50;opacity:0;visibility:hidden;transform:translateY(6px);transition:opacity .18s ease,transform .18s ease,visibility .18s}
+  .jp-navitem:hover .jp-dropdown,.jp-navitem:focus-within .jp-dropdown{opacity:1;visibility:visible;transform:translateY(0)}
+  .jp-dropcard{background:#fff;border:1.5px solid rgba(20,20,20,.14);border-radius:14px;padding:8px;box-shadow:0 12px 30px rgba(20,20,20,.1);display:flex;flex-direction:column;gap:2px}
+  .jp-dropcard a{display:block;padding:10px 12px;border-radius:9px;text-decoration:none;color:#141414;transition:background .12s}
+  .jp-dropcard a:hover{background:#F8E3EC}
+  .jp-dropcard .t{display:block;font-size:14.5px;font-weight:600}
+  .jp-dropcard .d{display:block;font-size:12.5px;color:#666;margin-top:2px}
+  /* Mobile menu: Servicios accordion caret */
+  .jp-mobcaret::after{content:"";width:8px;height:8px;margin-left:9px;border-right:2px solid currentColor;border-bottom:2px solid currentColor;transform:translateY(-2px) rotate(45deg);transition:transform .2s ease;display:inline-block}
+  .jp-mobcaret.open::after{transform:translateY(1px) rotate(-135deg)}
+  /* Trust strip: static centered on desktop, one-line marquee on mobile */
+  .jp-trust-marq{display:none;overflow:hidden}
+  .jp-trust-track{display:flex;width:max-content;animation:jpMarq 22s linear infinite}
+  .jp-trust-half{display:flex;align-items:center;gap:22px;padding:9px 22px 9px 0;white-space:nowrap}
+  @media (max-width:899px){
+    .jp-trust-static{display:none!important}
+    .jp-trust-marq{display:block}
+  }
+  /* Team rows: photo + bio, alternating sides on desktop */
+  .jp-member{display:flex;flex-wrap:wrap;gap:clamp(24px,4vw,52px);align-items:flex-start;animation:jpReveal linear both;animation-timeline:view();animation-range:entry 0% cover 18%}
+  .jp-member>.ph{flex:1 1 280px;max-width:400px}
+  .jp-member>.bio{flex:2 1 380px;min-width:0}
+  .jp-member:nth-of-type(even){flex-direction:row-reverse}
+  @media (max-width:767px){
+    .jp-member{flex-direction:column!important}
+    .jp-member>.ph{max-width:100%}
+  }
+</style>
+</helmet>
+<div data-screen-label="Nosotros · Conócenos" id="top" style="background:#FBF6EE;color:#141414;font-family:'Hanken Grotesk',system-ui,-apple-system,sans-serif;overflow-x:clip;position:relative">
+
+  <!-- TRUST STRIP -->
+  <div style="background:#141414;color:#FBF6EE;font-size:13px;font-weight:600">
+    <div class="jp-trust-static" style="max-width:1200px;margin:0 auto;padding:9px 22px;display:flex;flex-wrap:wrap;gap:8px 22px;align-items:center;justify-content:center;text-align:center">
+      <span style="color:#FFC83D;letter-spacing:1px">★★★★★</span>
+      <span>+30 marcas confían en nosotros</span>
+      <span style="opacity:.4">·</span>
+      <span>Respuesta en menos de 24 h</span>
+      <span style="opacity:.4">·</span>
+      <span style="color:#e45b8f">Diagnóstico inicial gratis</span>
+    </div>
+    <div class="jp-trust-marq">
+      <div class="jp-trust-track">
+        <div class="jp-trust-half">
+          <span style="color:#FFC83D;letter-spacing:1px">★★★★★</span>
+          <span>+30 marcas confían en nosotros</span>
+          <span style="opacity:.4">·</span>
+          <span>Respuesta en menos de 24 h</span>
+          <span style="opacity:.4">·</span>
+          <span style="color:#e45b8f">Diagnóstico inicial gratis</span>
+          <span style="opacity:.4">·</span>
+        </div>
+        <div class="jp-trust-half" aria-hidden="true">
+          <span style="color:#FFC83D;letter-spacing:1px">★★★★★</span>
+          <span>+30 marcas confían en nosotros</span>
+          <span style="opacity:.4">·</span>
+          <span>Respuesta en menos de 24 h</span>
+          <span style="opacity:.4">·</span>
+          <span style="color:#e45b8f">Diagnóstico inicial gratis</span>
+          <span style="opacity:.4">·</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- HEADER (floating outlined bar) -->
+  <header style="position:sticky;top:0;z-index:60;padding:14px 22px">
+    <div style="max-width:1200px;margin:0 auto;display:flex;align-items:center;gap:24px;padding:11px 12px 11px 20px;background:rgba(251,246,238,.92);backdrop-filter:blur(12px);border:1.5px solid rgba(20,20,20,.14);border-radius:18px">
+      <a href="../index.html#top" style="display:flex;align-items:center;text-decoration:none;flex:none"><img src="../jumping-panda-header-horizontal-vector.svg" alt="Jumping Panda" style="height:40px;width:auto;display:block" /></a>
+      <sc-if value="{{ desktop }}" hint-placeholder-val="{{ true }}">
+      <nav style="display:flex;align-items:center;gap:26px">
+        <div class="jp-navitem">
+          <a href="../index.html#servicios" class="jp-caret" style="display:inline-flex;align-items:center;text-decoration:none;color:#141414;font-weight:600;font-size:15.5px;white-space:nowrap;cursor:pointer;transition:opacity .15s" style-hover="opacity:.6">Servicios</a>
+          <div class="jp-dropdown">
+            <div class="jp-dropcard">
+              <a href="../servicios/creacion-de-paginas-web/"><span class="t">Creación de página web</span><span class="d">Tu mejor vendedor 24/7. Clara, rápida y lista para convertir visitas en clientes.</span></a>
+              <a href="../servicios/pagina-web-con-agenda-de-citas/"><span class="t">Página web + agenda de citas</span><span class="d">Convierte visitas en citas agendadas en automático. Ideal para consultorios y servicios.</span></a>
+              <a href="../servicios/comercio-electronico/"><span class="t">Comercio electrónico</span><span class="d">Una tienda en línea hecha para vender y escalar, no solo para verse bonita.</span></a>
+              <a href="../servicios/gestion-de-redes-sociales/"><span class="t">Gestión de redes sociales</span><span class="d">Contenido con estrategia que construye comunidad y genera clientes, no solo likes.</span></a>
+              <a href="../servicios/google-ads-y-seo/"><span class="t">Google Ads + SEO y GEO</span><span class="d">Aparece justo cuando te buscan y atrae clientes listos para comprar.</span></a>
+              <a href="../servicios/configuracion-inicial-amazon/"><span class="t">Configuración de Amazon</span><span class="d">Empieza a vender en el marketplace más grande, sin improvisar.</span></a>
+              <a href="../servicios/configuracion-inicial-mercado-libre/"><span class="t">Configuración de Mercado Libre</span><span class="d">Lanza tu tienda con una base sólida y empieza a vender desde el día uno.</span></a>
+              <a href="../servicios/mantenimiento-web-y-seo/"><span class="t">Mantenimiento web y SEO</span><span class="d">Tu sitio siempre rápido, seguro y subiendo en Google, mes con mes.</span></a>
+            </div>
+          </div>
+        </div>
+        <a href="../index.html#como" style="text-decoration:none;color:#141414;font-weight:600;font-size:15.5px;white-space:nowrap;transition:opacity .15s" style-hover="opacity:.6">Cómo funciona</a>
+        <a href="../index.html#clientes" style="text-decoration:none;color:#141414;font-weight:600;font-size:15.5px;white-space:nowrap;transition:opacity .15s" style-hover="opacity:.6">Clientes</a>
+        <a href="#top" style="text-decoration:none;color:#141414;font-weight:600;font-size:15.5px;white-space:nowrap;transition:opacity .15s" style-hover="opacity:.6">Nosotros</a>
+        <a href="../podcast/" style="text-decoration:none;color:#141414;font-weight:600;font-size:15.5px;white-space:nowrap;transition:opacity .15s" style-hover="opacity:.6">Podcast</a>
+        <a href="../index.html#contacto" style="text-decoration:none;color:#141414;font-weight:600;font-size:15.5px;white-space:nowrap;transition:opacity .15s" style-hover="opacity:.6">Contacto</a>
+      </nav>
+      <span style="margin-left:auto"></span>
+      <span style="width:1.5px;align-self:stretch;background:rgba(20,20,20,.14)"></span>
+      <a href="{{ wa }}" target="_blank" rel="noopener" style="flex:none;text-decoration:none;background:#e45b8f;color:#141414;font-weight:700;font-size:15px;padding:12px 22px;border:1.5px solid #141414;border-radius:12px;white-space:nowrap;transition:background .15s,transform .1s" style-hover="background:#ec7fa8">Agenda tu diagnóstico</a>
+      </sc-if>
+      <sc-if value="{{ isMobile }}" hint-placeholder-val="{{ false }}">
+      <button onClick="{{ toggleMenu }}" aria-label="Menú" style="margin-left:auto;border:1.5px solid #141414;background:#FBF6EE;width:44px;height:44px;border-radius:12px;cursor:pointer;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px">
+        <span style="width:18px;height:2px;background:#141414;display:block"></span>
+        <span style="width:18px;height:2px;background:#141414;display:block"></span>
+        <span style="width:18px;height:2px;background:#e45b8f;display:block"></span>
+      </button>
+      </sc-if>
+    </div>
+    <sc-if value="{{ menuOpen }}" hint-placeholder-val="{{ false }}">
+    <div style="max-width:1200px;margin:8px auto 0;padding:10px 20px 20px;background:rgba(251,246,238,.97);backdrop-filter:blur(12px);border:1.5px solid rgba(20,20,20,.14);border-radius:18px;display:flex;flex-direction:column;gap:4px">
+      <button onClick="{{ toggleMobServices }}" class="jp-mobcaret{{ mobServicesOpenClass }}" style="display:flex;align-items:center;border:none;background:none;cursor:pointer;text-align:left;color:#141414;font-weight:700;font-size:18px;padding:11px 4px;font-family:'Bricolage Grotesque',sans-serif">Servicios</button>
+      <sc-if value="{{ mobServicesOpen }}" hint-placeholder-val="{{ false }}">
+      <div style="display:flex;flex-direction:column;gap:2px;padding:0 0 8px 14px;border-left:2px solid rgba(20,20,20,.12);margin:0 0 4px 6px">
+          <a href="../servicios/creacion-de-paginas-web/" onClick="{{ closeMenu }}" style="text-decoration:none;color:#141414;font-weight:600;font-size:15.5px;padding:9px 4px">Creación de página web</a>
+          <a href="../servicios/pagina-web-con-agenda-de-citas/" onClick="{{ closeMenu }}" style="text-decoration:none;color:#141414;font-weight:600;font-size:15.5px;padding:9px 4px">Página web + agenda de citas</a>
+          <a href="../servicios/comercio-electronico/" onClick="{{ closeMenu }}" style="text-decoration:none;color:#141414;font-weight:600;font-size:15.5px;padding:9px 4px">Comercio electrónico</a>
+          <a href="../servicios/gestion-de-redes-sociales/" onClick="{{ closeMenu }}" style="text-decoration:none;color:#141414;font-weight:600;font-size:15.5px;padding:9px 4px">Gestión de redes sociales</a>
+          <a href="../servicios/google-ads-y-seo/" onClick="{{ closeMenu }}" style="text-decoration:none;color:#141414;font-weight:600;font-size:15.5px;padding:9px 4px">Google Ads + SEO y GEO</a>
+          <a href="../servicios/configuracion-inicial-amazon/" onClick="{{ closeMenu }}" style="text-decoration:none;color:#141414;font-weight:600;font-size:15.5px;padding:9px 4px">Configuración de Amazon</a>
+          <a href="../servicios/configuracion-inicial-mercado-libre/" onClick="{{ closeMenu }}" style="text-decoration:none;color:#141414;font-weight:600;font-size:15.5px;padding:9px 4px">Configuración de Mercado Libre</a>
+          <a href="../servicios/mantenimiento-web-y-seo/" onClick="{{ closeMenu }}" style="text-decoration:none;color:#141414;font-weight:600;font-size:15.5px;padding:9px 4px">Mantenimiento web y SEO</a>
+          <a href="../index.html#servicios" onClick="{{ closeMenu }}" style="text-decoration:none;color:#e45b8f;font-weight:700;font-size:15px;padding:9px 4px">Ver todos los servicios →</a>
+      </div>
+      </sc-if>
+      <sc-for list="{{ navRest }}" as="item" hint-placeholder-count="5">
+        <a href="{{ item.href }}" onClick="{{ closeMenu }}" style="text-decoration:none;color:#141414;font-weight:700;font-size:18px;padding:11px 4px;font-family:'Bricolage Grotesque',sans-serif">{{ item.label }}</a>
+      </sc-for>
+      <a href="{{ wa }}" target="_blank" rel="noopener" style="margin-top:8px;text-align:center;text-decoration:none;background:#e45b8f;color:#141414;font-weight:700;padding:13px;border:1.5px solid #141414;border-radius:12px">Agenda tu diagnóstico</a>
+    </div>
+    </sc-if>
+  </header>
+
+  <!-- HERO -->
+  <section style="position:relative;overflow:hidden">
+    <div style="position:absolute;top:-120px;right:-120px;width:560px;height:560px;background:radial-gradient(circle at 50% 50%,#F6DCE7,rgba(246,220,231,0) 70%);z-index:0;pointer-events:none"></div>
+    <div style="max-width:960px;margin:0 auto;padding:clamp(44px,6vw,84px) 22px clamp(40px,5vw,64px);text-align:center;position:relative;z-index:1">
+      <div style="font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:13px;letter-spacing:.16em;text-transform:uppercase;color:#e45b8f">Nosotros</div>
+      <h1 style="font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:clamp(38px,6vw,80px);line-height:.98;letter-spacing:-.035em;margin:14px 0 0">Conócenos</h1>
+      <p style="font-size:clamp(16px,1.5vw,21px);line-height:1.55;max-width:32em;margin:20px auto 0;color:#3c3a37">Somos el equipo detrás de Jumping Panda, y estamos aquí para ayudarte a vender en internet.</p>
+      <div style="margin-top:34px;border:3px solid #141414;border-radius:20px;overflow:hidden;box-shadow:0 18px 0 rgba(20,20,20,.12)">
+        <div style="position:relative;width:100%;aspect-ratio:16/9">
+          <iframe title="Todos Tenemos a un PANDA en la Familia | Chio, Erci &amp; Roberto | Jumping Panda" src="{{ youtubeEmbed }}" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;border:0;display:block"></iframe>
+        </div>
+      </div>
+      <p style="font-size:14.5px;color:#666;margin:16px 0 0"><a href="{{ youtubeWatch }}" target="_blank" rel="noopener" style="color:#141414;font-weight:600;text-decoration:none;border-bottom:2px solid #e45b8f;padding-bottom:2px">Conoce la historia detrás del equipo de Jumping Panda: Chio, Erci y Roberto.</a></p>
+    </div>
+  </section>
+
+  <!-- QUIÉNES SOMOS -->
+  <section style="max-width:880px;margin:0 auto;padding:clamp(24px,4vw,48px) 22px clamp(48px,7vw,90px);text-align:center;animation:jpReveal linear both;animation-timeline:view();animation-range:entry 0% cover 30%">
+    <div style="font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:#e45b8f">Nuestra misión</div>
+    <h2 style="font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:clamp(28px,4.2vw,48px);line-height:1.02;letter-spacing:-.03em;margin:12px 0 0">Quiénes somos</h2>
+    <p style="font-size:clamp(16px,1.3vw,19px);line-height:1.6;margin:20px auto 0;color:#3c3a37">Somos Roberto, Chio y Erci, los apasionados detrás de <strong style="color:#141414">Jumping Panda</strong>. Nos unimos con un objetivo claro: <strong style="color:#141414">ayudarte a vender en internet</strong>. Sabemos que el mundo de las ventas online puede ser confuso y abrumador, pero no te preocupes, estamos aquí para guiarte en cada paso del camino.</p>
+  </section>
+
+  <!-- QUÉ HACEMOS (dark) -->
+  <section style="background:#141414;color:#FBF6EE;border-radius:clamp(28px,4vw,52px) clamp(28px,4vw,52px) 0 0">
+    <div style="max-width:880px;margin:0 auto;padding:clamp(48px,7vw,92px) 22px">
+      <div style="animation:jpReveal linear both;animation-timeline:view();animation-range:entry 0% cover 28%">
+        <div style="font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:#e45b8f">Cómo te ayudamos</div>
+        <h2 style="font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:clamp(28px,4.2vw,50px);line-height:1.02;letter-spacing:-.03em;margin:14px 0 0">Qué hacemos</h2>
+        <p style="font-size:clamp(16px,1.3vw,19px);line-height:1.6;margin:20px 0 0;color:#c9c5be">En Jumping Panda, tomamos tu mano y te dirigimos hacia las plataformas correctas para que tus ventas crezcan. ¿Necesitas tu tienda en línea?, ¿es mejor empezar en un marketplace?, ¿qué redes sociales son las más efectivas para tu negocio? Nosotros te orientamos para que tomes las mejores decisiones.</p>
+        <p style="font-size:clamp(16px,1.3vw,19px);line-height:1.6;margin:16px 0 0;color:#c9c5be">Además, creamos páginas y tiendas en línea, gestionamos redes sociales, trabajamos SEO y publicidad, y te ayudamos a iniciar en marketplaces como Amazon y Mercado Libre.</p>
+        <div style="margin-top:26px">
+          <a href="../index.html#servicios" style="text-decoration:none;background:#e45b8f;color:#141414;font-weight:700;font-size:16px;padding:14px 26px;border-radius:999px;display:inline-block;transition:transform .2s" style-hover="transform:translateY(-3px)">Conoce todos nuestros servicios →</a>
+        </div>
+      </div>
+      <div style="margin-top:38px;background:#1d1d1d;border:1px solid rgba(251,246,238,.12);border-radius:22px;padding:clamp(24px,3vw,34px);animation:jpReveal linear both;animation-timeline:view();animation-range:entry 0% cover 20%">
+        <div style="font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:14px;letter-spacing:.1em;text-transform:uppercase;color:#e45b8f">🎙️ Nuestro podcast</div>
+        <p style="font-size:clamp(15.5px,1.25vw,18px);line-height:1.6;margin:12px 0 0;color:#c9c5be">Y no nos detenemos ahí. Tenemos un podcast, <strong style="color:#FBF6EE">Pandas Creativos y su Camino al Éxito</strong>, donde platicamos con personas exitosas en su ramo: su trayectoria, sus logros, sus fracasos y el equilibrio que han logrado.</p>
+        <a href="../podcast/" style="display:inline-block;margin-top:16px;text-decoration:none;color:#FBF6EE;font-weight:700;font-size:15.5px;border-bottom:2px solid #e45b8f;padding-bottom:3px">Escúchalo →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- EL EQUIPO -->
+  <section style="max-width:1080px;margin:0 auto;padding:clamp(56px,8vw,104px) 22px">
+    <div style="text-align:center;max-width:760px;margin:0 auto;animation:jpReveal linear both;animation-timeline:view();animation-range:entry 0% cover 30%">
+      <div style="font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:#e45b8f">El equipo</div>
+      <h2 style="font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:clamp(28px,4.2vw,50px);line-height:1.02;letter-spacing:-.03em;margin:12px 0 0">Conoce al equipo</h2>
+      <p style="font-size:16px;line-height:1.55;color:#666;margin:14px 0 0">Tres personas reales, con historias reales, que contestan tus mensajes y se enamoran de tu proyecto.</p>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:clamp(44px,6vw,72px);margin-top:clamp(38px,5vw,56px)">
+      <sc-for list="{{ team }}" as="m" hint-placeholder-count="3">
+        <div class="jp-member">
+          <div class="ph" style="position:relative">
+            <div style="position:absolute;inset:12px -12px -12px 12px;background:#e45b8f;border-radius:26px;z-index:0"></div>
+            <div style="position:relative;z-index:1;border-radius:24px;overflow:hidden;border:3px solid #141414;background:#F8E3EC"><img src="{{ m.img }}" alt="{{ m.alt }}" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;aspect-ratio:1/1" /></div>
+          </div>
+          <div class="bio">
+            <h3 style="font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:clamp(24px,2.6vw,32px);letter-spacing:-.02em;margin:0">{{ m.name }}</h3>
+            <div style="display:inline-block;margin-top:10px;background:#F8E3EC;color:#141414;font-weight:600;font-size:13.5px;padding:6px 14px;border-radius:999px">{{ m.role }}</div>
+            <p style="font-size:16px;line-height:1.65;color:#3c3a37;margin:18px 0 0">{{ m.p1 }}</p>
+            <p style="font-size:16px;line-height:1.65;color:#3c3a37;margin:14px 0 0">{{ m.p2 }}</p>
+            <p style="font-size:16px;line-height:1.65;color:#3c3a37;margin:14px 0 0">{{ m.p3 }}</p>
+          </div>
+        </div>
+      </sc-for>
+    </div>
+  </section>
+
+  <!-- CIERRE / CTA -->
+  <section style="background:#F8E3EC;color:#141414">
+    <div style="max-width:1000px;margin:0 auto;padding:clamp(48px,7vw,96px) 22px;text-align:center;animation:jpReveal linear both;animation-timeline:view();animation-range:entry 0% cover 30%">
+      <h2 style="font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:clamp(28px,4.4vw,54px);line-height:1.02;letter-spacing:-.03em;margin:0;max-width:16em;margin-inline:auto">¿Trabajamos juntos?</h2>
+      <p style="font-size:clamp(16px,1.5vw,21px);line-height:1.55;max-width:36em;margin:18px auto 0;color:#1c1410">¿Listo para vender en internet con un equipo que te acompaña en cada paso? Platiquemos.</p>
+      <div style="display:flex;flex-wrap:wrap;gap:13px;justify-content:center;margin-top:28px">
+        <a href="{{ wa }}" target="_blank" rel="noopener" style="text-decoration:none;background:#141414;color:#FBF6EE;font-weight:700;font-size:17px;padding:15px 28px;border-radius:999px;transition:transform .2s" style-hover="transform:translateY(-3px)">Contáctanos</a>
+        <a href="../index.html#servicios" style="text-decoration:none;background:transparent;color:#141414;font-weight:700;font-size:17px;padding:15px 26px;border-radius:999px;border:2px solid #141414;transition:background .2s,color .2s" style-hover="background:#141414;color:#FBF6EE">Ver servicios</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer style="background:#141414;color:#FBF6EE">
+    <div style="max-width:1200px;margin:0 auto;padding:clamp(46px,6vw,80px) 22px 28px">
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:34px">
+        <div style="grid-column:1/-1;max-width:420px">
+          <img src="../logo-white.svg" alt="Jumping Panda" style="height:84px;width:auto;display:block" />
+          <p style="margin:14px 0 0;font-size:15px;line-height:1.55;color:#b9b5ae;max-width:30em">Te ayudamos a vender en internet con estrategia, claridad y acompañamiento. Hecho en México, con amor.</p>
+          <div style="display:flex;gap:9px;margin-top:18px">
+            <sc-for list="{{ socials }}" as="s" hint-placeholder-count="4">
+              <a href="{{ s.href }}" target="_blank" rel="noopener" style="text-decoration:none;color:#FBF6EE;font-weight:700;font-size:13px;padding:8px 13px;border:1.5px solid rgba(251,246,238,.25);border-radius:999px;transition:background .2s,color .2s,border-color .2s" style-hover="background:#e45b8f;color:#141414;border-color:#e45b8f">{{ s.label }}</a>
+            </sc-for>
+          </div>
+        </div>
+        <div>
+          <div style="font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:14px;color:#e45b8f;margin-bottom:14px">Menú</div>
+          <div style="display:flex;flex-direction:column;gap:9px">
+            <a href="../index.html#servicios" style="text-decoration:none;color:#cfccc6;font-size:14.5px" style-hover="color:#FBF6EE">Servicios</a>
+            <a href="../index.html#como" style="text-decoration:none;color:#cfccc6;font-size:14.5px" style-hover="color:#FBF6EE">Cómo funciona</a>
+            <a href="../index.html#clientes" style="text-decoration:none;color:#cfccc6;font-size:14.5px" style-hover="color:#FBF6EE">Clientes</a>
+            <a href="#top" style="text-decoration:none;color:#cfccc6;font-size:14.5px" style-hover="color:#FBF6EE">Nosotros</a>
+            <a href="https://jumpingpanda.mx/collections/jumping-panda" target="_blank" rel="noopener" style="text-decoration:none;color:#cfccc6;font-size:14.5px" style-hover="color:#FBF6EE">Tienda</a>
+          </div>
+        </div>
+        <div>
+          <div style="font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:14px;color:#e45b8f;margin-bottom:14px">Políticas</div>
+          <div style="display:flex;flex-direction:column;gap:9px">
+            <a href="https://jumpingpanda.mx/policies/privacy-policy" target="_blank" rel="noopener" style="text-decoration:none;color:#cfccc6;font-size:14.5px" style-hover="color:#FBF6EE">Privacidad</a>
+            <a href="https://jumpingpanda.mx/policies/terms-of-service" target="_blank" rel="noopener" style="text-decoration:none;color:#cfccc6;font-size:14.5px" style-hover="color:#FBF6EE">Términos</a>
+            <a href="https://jumpingpanda.mx/policies/refund-policy" target="_blank" rel="noopener" style="text-decoration:none;color:#cfccc6;font-size:14.5px" style-hover="color:#FBF6EE">Reembolso</a>
+          </div>
+        </div>
+        <div>
+          <div style="font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:14px;color:#e45b8f;margin-bottom:14px">Contacto</div>
+          <div style="display:flex;flex-direction:column;gap:9px">
+            <a href="mailto:soy@jumpingpanda.mx" style="text-decoration:none;color:#cfccc6;font-size:14.5px" style-hover="color:#FBF6EE">soy@jumpingpanda.mx</a>
+            <a href="{{ wa }}" target="_blank" rel="noopener" style="text-decoration:none;color:#cfccc6;font-size:14.5px" style-hover="color:#FBF6EE">+52 722 931 3202</a>
+            <span style="color:#7e7b76;font-size:13px;margin-top:6px">México · MXN $</span>
+          </div>
+        </div>
+      </div>
+      <div style="margin-top:44px;padding-top:22px;border-top:1px solid rgba(251,246,238,.14);font-size:13px;color:#7e7b76">© 2026 Jumping Panda · Hecho en México con amor</div>
+    </div>
+  </footer>
+
+  <sc-if value="{{ showWhatsApp }}" hint-placeholder-val="{{ true }}">
+  <a href="{{ wa }}" target="_blank" rel="noopener" style="position:fixed;bottom:22px;right:22px;z-index:70;text-decoration:none;background:#e45b8f;color:#141414;font-weight:700;font-size:14.5px;padding:13px 20px;border-radius:999px;box-shadow:0 8px 24px rgba(20,20,20,.3);display:flex;align-items:center;gap:8px;transition:transform .2s" style-hover="transform:translateY(-3px)"><span style="width:9px;height:9px;border-radius:50%;background:#141414;display:inline-block"></span>WhatsApp</a>
+  </sc-if>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;showWhatsApp&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;}}">
+class Component extends DCLogic {
+  state = { menuOpen:false, mobServicesOpen:false, isMobile:false };
+  componentDidMount(){
+    this._r = () => { const m = window.innerWidth < 900; if (m !== this.state.isMobile) this.setState({ isMobile:m }); };
+    this._r();
+    window.addEventListener('resize', this._r);
+  }
+  componentWillUnmount(){ if (this._r) window.removeEventListener('resize', this._r); }
+  renderVals(){
+    const CDN = 'https://cdn.shopify.com/s/files/1/0528/5543/9528/files/';
+    const wa = 'https://wa.me/527229313202';
+    const youtubeEmbed = 'https://www.youtube.com/embed/IfuWB4nmsMU';
+    const youtubeWatch = 'https://www.youtube.com/watch?v=IfuWB4nmsMU';
+    const team = [
+      {
+        name:'Roberto Ministro',
+        role:'Logística y desarrollo web',
+        img:CDN+'conoce_al_equipo_roberto.jpg?v=1727714706&width=900',
+        alt:'Roberto Ministro, logística y desarrollo web en Jumping Panda',
+        p1:'Roberto es el genio detrás de la logística en Jumping Panda, siempre preguntándose: "¿Cómo lo hago?" Apasionado por el orden y la estructura, estudió Ingeniería en Biotecnología y lleva 12 años en el mundo del emprendimiento. Durante este tiempo, ha aprendido que con investigación, prueba y error, se pueden alcanzar resultados sorprendentemente exitosos.',
+        p2:'En Jumping Panda, Roberto es el crack en la creación de páginas en línea y en la estrategia de ventas por internet. Es la mente que te explica que para vender en internet necesitas tener tus costos bien definidos, un embalaje increíblemente resistente y, lo más importante, enamorarte de tu producto. Su habilidad como desarrollador es insuperable.',
+        p3:'Él es un amante de la gastronomía oaxaqueña, y cada vez que visita Oaxaca descubre nuevos sabores que le fascinan. Además, es un corredor nato que recientemente ha comenzado a explorar el pádel. En Jumping Panda, Roberto es quien calma al equipo, guía con paciencia y nos recuerda que el éxito se construye paso a paso con dedicación y esfuerzo.'
+      },
+      {
+        name:'Erci Rodríguez',
+        role:'Marketing digital',
+        img:CDN+'conoce_al_equipo_Erci.jpg?v=1727714706&width=900',
+        alt:'Erci Rodríguez, marketing digital en Jumping Panda',
+        p1:'Erci es la fuerza creativa detrás del marketing digital en Jumping Panda 🎯✨. Sus colores favoritos son el azul y el blanco, y si le preguntas por su comida favorita, sin duda te dirá que es el sushi y la barbacoa. Le apasiona y practica el tocho bandera, y es una fiel seguidora de los Osos de Chicago.',
+        p2:'Con su experiencia en Ciencias de la Comunicación, un diplomado en Fotografía y un máster en Mercadotecnia, Erci es quien nos guía en el uso inteligente del marketing digital. Su compromiso por ayudar a los demás a crecer en el mundo empresarial es tan fuerte como su amor por sus pasiones personales.',
+        p3:'Erci trabaja en una empresa de logística en desarrollo web y decidió emprender junto con sus increíbles socios este camino llamado "Jumping Panda". Sin ella, nuestro equipo de mercadotecnia no sería lo mismo. Su energía, creatividad y enfoque constante en el éxito nos inspiran cada día.'
+      },
+      {
+        name:'Chio Lara',
+        role:'Estética visual y organización',
+        img:CDN+'Conoce_al_equipo_chio.jpg?v=1727714706&width=900',
+        alt:'Chio Lara, estética visual y organización en Jumping Panda',
+        p1:'Chio es la mente creativa detrás de la estética visual en Jumping Panda. Apasionada por la armonía y la belleza en todo lo que hace, ella se asegura de que todo luzca bonito y en equilibrio. Con una formación en administración de la hospitalidad y una carrera de 12 años en el mundo empresarial, ha perfeccionado su enfoque en el servicio al cliente y la organización.',
+        p2:'Chio no solo se encarga de que Jumping Panda se vea increíble, sino que también organiza al equipo para que todos trabajen felices y en sintonía. Amante del color morado y del café con un buen croissant, es una mujer positiva, siempre sonriente y mamá de dos. Además, aunque su agenda esté llena, sueña con retomar el running, un deporte que le encanta.',
+        p3:'Con su energía y visión, Chio aporta un toque especial que hace que Jumping Panda sea un lugar donde la creatividad y la eficiencia se encuentran.'
+      }
+    ];
+    const nav = [
+      { label:'Servicios', href:'../index.html#servicios' },
+      { label:'Cómo funciona', href:'../index.html#como' },
+      { label:'Clientes', href:'../index.html#clientes' },
+      { label:'Nosotros', href:'#top' },
+      { label:'Podcast', href:'../podcast/' },
+      { label:'Contacto', href:'../index.html#contacto' }
+    ];
+    const socials = [
+      { label:'Instagram', href:'https://instagram.com/jumpingpandamx' },
+      { label:'Facebook', href:'https://facebook.com/jumpingpandamx' },
+      { label:'TikTok', href:'https://www.tiktok.com/@jumpingpandamx' },
+      { label:'YouTube', href:'http://www.youtube.com/@JumpingPandaMX' }
+    ];
+    const showWhatsApp = this.props.showWhatsApp ?? true;
+    return {
+      wa, youtubeEmbed, youtubeWatch, team, nav, socials, showWhatsApp,
+      isMobile: this.state.isMobile, desktop: !this.state.isMobile,
+      menuOpen: this.state.menuOpen,
+      navRest: nav.filter(item => item.label !== 'Servicios'),
+      mobServicesOpen: this.state.mobServicesOpen,
+      mobServicesOpenClass: this.state.mobServicesOpen ? ' open' : '',
+      toggleMenu: ()=>this.setState(s=>({menuOpen:!s.menuOpen, mobServicesOpen:false})),
+      toggleMobServices: ()=>this.setState(s=>({mobServicesOpen:!s.mobServicesOpen})),
+      closeMenu: ()=>this.setState({menuOpen:false, mobServicesOpen:false})
+    };
+  }
+}
+</script>
+</body>
+</html>

@@ -307,7 +307,7 @@ class Component extends DCLogic {
   }
   componentWillUnmount(){ if (this._r) window.removeEventListener('resize', this._r); }
   renderVals(){
-    const wa = 'https://wa.me/527229313202';
+    const wa = 'https://wa.me/527229313202?text=' + encodeURIComponent('¡Hola, Jumping Panda! 🐼 Leí su artículo de temporada alta y quiero mi diagnóstico gratis para preparar mi tienda a tiempo.');
     const nav = [
       { label:'Servicios', href:'../../index.html#servicios' },
       { label:'Cómo funciona', href:'../../index.html#como' },

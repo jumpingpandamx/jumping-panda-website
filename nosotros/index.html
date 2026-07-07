@@ -299,7 +299,7 @@ class Component extends DCLogic {
   componentWillUnmount(){ if (this._r) window.removeEventListener('resize', this._r); }
   renderVals(){
     const CDN = 'https://cdn.shopify.com/s/files/1/0528/5543/9528/files/';
-    const wa = 'https://wa.me/527229313202';
+    const wa = 'https://wa.me/527229313202?text=' + encodeURIComponent('¡Hola! 🐼 Acabo de conocer al equipo en su página de Nosotros. Quiero platicar con ustedes y agendar mi diagnóstico gratis.');
     const youtubeEmbed = 'https://www.youtube.com/embed/IfuWB4nmsMU';
     const youtubeWatch = 'https://www.youtube.com/watch?v=IfuWB4nmsMU';
     const team = [

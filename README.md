@@ -191,12 +191,22 @@ Held in the `Component` logic class:
 - **Local & version-controlled**: `jumping-panda-header-horizontal-vector.svg` (header),
   `logo-white.svg` (footer), `logo-ink.svg` (unused), and the **24 client logos** in
   `logos/` (transparent SVGs).
-- **External (Shopify CDN)**: the hero image, 8 service images, and 3 team photos are
-  still hot-linked from `https://cdn.shopify.com/s/files/1/0528/5543/9528/files/…`.
-  They load over the network; the exact URLs are in the logic block at the bottom of
-  `index.html`. For a fully self-contained repo, consider downloading them into an
-  `assets/` folder and updating the references (the client logos have already been
-  migrated this way).
+- **Photos & illustrations**: all in `img/` as `.webp`, version-controlled. This includes
+  the hero, the service cards, the team photos and every blog image. Nothing is
+  hot-linked to an external CDN any more — these used to load from the Shopify CDN, and
+  were migrated into the repo in July 2026 before that store was taken offline.
+  `img/originales/` keeps the untouched originals as downloaded (Shopify was the only
+  copy); the site itself never serves them.
+- **Adding a new image**: save the original in `img/originales/`, then generate the
+  webp the site actually uses:
+
+  ```sh
+  cwebp -q 82 -metadata none img/originales/foto.jpg -o img/foto.webp
+  ```
+
+  Reference it relatively (`img/foto.webp` from the root, `../img/…` from `blog/`,
+  `../../img/…` from a post). **Never hot-link an external CDN**: when that service
+  goes away, the image breaks.
 - **Review screenshots (TODO)**: the "Wall of love" uses 6 empty `<image-slot>`
   placeholders. Drop real review screenshots onto them in the browser (they persist in
   `localStorage`), **or** replace each `<image-slot>` with a plain `<img>` pointing at a

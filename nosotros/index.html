@@ -308,7 +308,6 @@ class Component extends DCLogic {
   }
   componentWillUnmount(){ if (this._r) window.removeEventListener('resize', this._r); }
   renderVals(){
-    const CDN = 'https://cdn.shopify.com/s/files/1/0528/5543/9528/files/';
     const wa = 'https://wa.me/527229313202?text=' + encodeURIComponent('¡Hola! 🐼 Acabo de conocer al equipo en su página de Nosotros. Quiero platicar con ustedes y agendar mi diagnóstico gratis.');
     const youtubeEmbed = 'https://www.youtube.com/embed/IfuWB4nmsMU';
     const youtubeWatch = 'https://www.youtube.com/watch?v=IfuWB4nmsMU';
@@ -316,7 +315,7 @@ class Component extends DCLogic {
       {
         name:'Roberto Ministro',
         role:'Logística y desarrollo web',
-        img:CDN+'conoce_al_equipo_roberto.jpg?v=1727714706&width=900',
+        img:'../img/conoce_al_equipo_roberto.webp',
         alt:'Roberto Ministro, logística y desarrollo web en Jumping Panda',
         p1:'Roberto es el genio detrás de la logística en Jumping Panda, siempre preguntándose: "¿Cómo lo hago?" Apasionado por el orden y la estructura, estudió Ingeniería en Biotecnología y lleva 12 años en el mundo del emprendimiento. Durante este tiempo, ha aprendido que con investigación, prueba y error, se pueden alcanzar resultados sorprendentemente exitosos.',
         p2:'En Jumping Panda, Roberto es el crack en la creación de páginas en línea y en la estrategia de ventas por internet. Es la mente que te explica que para vender en internet necesitas tener tus costos bien definidos, un embalaje increíblemente resistente y, lo más importante, enamorarte de tu producto. Su habilidad como desarrollador es insuperable.',
@@ -325,7 +324,7 @@ class Component extends DCLogic {
       {
         name:'Erci Rodríguez',
         role:'Marketing digital',
-        img:CDN+'conoce_al_equipo_Erci.jpg?v=1727714706&width=900',
+        img:'../img/conoce_al_equipo_Erci.webp',
         alt:'Erci Rodríguez, marketing digital en Jumping Panda',
         p1:'Erci es la fuerza creativa detrás del marketing digital en Jumping Panda 🎯✨. Sus colores favoritos son el azul y el blanco, y si le preguntas por su comida favorita, sin duda te dirá que es el sushi y la barbacoa. Le apasiona y practica el tocho bandera, y es una fiel seguidora de los Osos de Chicago.',
         p2:'Con su experiencia en Ciencias de la Comunicación, un diplomado en Fotografía y un máster en Mercadotecnia, Erci es quien nos guía en el uso inteligente del marketing digital. Su compromiso por ayudar a los demás a crecer en el mundo empresarial es tan fuerte como su amor por sus pasiones personales.',
@@ -334,7 +333,7 @@ class Component extends DCLogic {
       {
         name:'Chio Lara',
         role:'Estética visual y organización',
-        img:CDN+'Conoce_al_equipo_chio.jpg?v=1727714706&width=900',
+        img:'../img/Conoce_al_equipo_chio.webp',
         alt:'Chio Lara, estética visual y organización en Jumping Panda',
         p1:'Chio es la mente creativa detrás de la estética visual en Jumping Panda. Apasionada por la armonía y la belleza en todo lo que hace, ella se asegura de que todo luzca bonito y en equilibrio. Con una formación en administración de la hospitalidad y una carrera de 12 años en el mundo empresarial, ha perfeccionado su enfoque en el servicio al cliente y la organización.',
         p2:'Chio no solo se encarga de que Jumping Panda se vea increíble, sino que también organiza al equipo para que todos trabajen felices y en sintonía. Amante del color morado y del café con un buen croissant, es una mujer positiva, siempre sonriente y mamá de dos. Además, aunque su agenda esté llena, sueña con retomar el running, un deporte que le encanta.',

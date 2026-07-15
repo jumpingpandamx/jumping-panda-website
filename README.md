@@ -5,10 +5,11 @@ Marketing site for **Jumping Panda**, a Mexican digital-marketing studio. The
 visitors into booked free consultations.
 
 It started as a single landing page (`index.html`) and now also has **8 service pages**
-(under `servicios/`) and a **podcast page** (`podcast/`) — all sharing the same header,
-footer, nav, design tokens, and runtime. Every page is **high-fidelity** (final colors,
-typography, spacing, copy, interactions) and renders through a tiny client-side runtime
-(`support.js`), so it runs as-is on any static host.
+(`servicios/`), a **blog** (`blog/`, 7 posts), a **podcast page** (`podcast/`), an
+**about page** (`nosotros/`) and two legal pages (`privacidad/`, `terminos/`) — all
+sharing the same header, footer, nav, design tokens, and runtime. Every page is
+**high-fidelity** (final colors, typography, spacing, copy, interactions) and renders
+through a tiny client-side runtime (`support.js`), so it runs as-is on any static host.
 
 ---
 
@@ -49,8 +50,16 @@ To publish a change, just commit and push to `main`; Pages rebuilds automaticall
 | `logo-white.svg` | White logo — used in the footer (dark background). |
 | `logo-ink.svg` | Dark square logo. **No longer referenced** (header now uses the horizontal logo); kept for reference. |
 | `logos/` | 24 client logos as transparent SVGs — the logo wall ("Marcas reales que ya venden con nosotros"). |
+| `img/` | Every photo/illustration the site serves, as `.webp`. See **Assets**. |
+| `img/originales/` | Untouched originals of the above. Never served — kept as the only surviving copy. |
 | `servicios/<slug>/index.html` | The 8 service pages (see **Pages** below). Each is its own self-contained Design Component. |
+| `blog/index.html` | Blog index. The post list lives in `const posts = [...]` at the bottom — **this is what you edit to publish a post**. |
+| `blog/<slug>/index.html` | One folder per post (7 today). See **Pages**. |
+| `nosotros/index.html` | About page ("Conócenos") — team + YouTube embed. |
 | `podcast/index.html` | The podcast page ("Pandas Creativos y su Camino al Éxito"). |
+| `privacidad/`, `terminos/` | Legal pages, linked from the footer. |
+| `sitemap.xml` | **Hand-maintained.** Every new page/post must be added here in the same commit. |
+| `robots.txt` | Points crawlers at the sitemap. |
 | `CNAME` | Custom-domain config for GitHub Pages (`jumpingpanda.mx`). Don't delete. |
 
 > **How `index.html` is structured.** It is a "Design Component": the markup lives
@@ -95,6 +104,32 @@ cierre + contact form. All CTAs link to WhatsApp (`https://wa.me/527229313202`,
 - **"Prueba social"** sections were intentionally omitted (no testimonials yet), and
   FAQ items marked `[completar]` in the briefs were dropped pending real info.
 
+**Blog** — `blog/index.html` → `/blog/`, plus one folder per post. The index renders
+from `const posts = [...]` in its logic block: the **first entry is the featured card**,
+the rest fill the grid. Posts share a template (hero → cover image → `.jp-article` body
+→ dark CTA card → footer); the quickest way to start a new one is to copy an existing
+post folder and replace the head, hero and body.
+
+| Post | Slug |
+|------|------|
+| Cómo hacer que tu negocio aparezca en Google antes que tu competencia (guía + PDF) | `/blog/aparecer-en-google-antes-que-tu-competencia/` |
+| De un local en Metepec a tazas en más de 100 países: la historia de Kuppani | `/blog/la-historia-de-kuppani/` |
+| Temporada alta 2026: prepara tu tienda en línea | `/blog/prepara-tu-ecommerce-para-la-temporada-alta/` |
+| Cómo lanzar tu tienda en línea (y que sí venda) | `/blog/como-lanzar-tu-tienda-en-linea/` |
+| ¿WordPress, Shopify, Wix…? Cómo elegir la plataforma | `/blog/que-plataforma-elegir-para-tu-pagina-web/` |
+| ¿Landing o página web completa? | `/blog/landing-o-pagina-web-completa/` |
+| Pagamos más de $100,000 por una página que no vendía | `/blog/pagamos-100000-por-una-pagina-que-no-vendia/` |
+
+To publish a post: create `blog/<slug>/index.html`, add its entry to `const posts`
+(newest first), drop its image in `img/` as webp, **and add the URL to `sitemap.xml`** —
+all in the same commit. Slugs are permanent once live; don't rename them.
+
+The guide post also serves a lead magnet: `jumping-panda-guia-aparece-google.pdf` sits
+in its folder and downloads directly (no email gate). The page is deliberately a
+**teaser** — it must not reproduce the guide's content, or there's no reason to download it.
+
+**Nosotros** — `nosotros/index.html` → `/nosotros/`. Team intro + YouTube embed.
+
 **Podcast** — `podcast/index.html` → `/podcast/`. Deliberately distinct look (dark hero
 with pink glow). Sections: hero → Sobre el podcast → ¿Qué encontrarás? → Escúchanos
 (platform buttons) → Episodios (Spotify *show* embed + YouTube *playlist* embed) →
@@ -102,9 +137,10 @@ cierre. Platform URLs live in `const platforms = [...]`. **TODO:** the hero is
 text-only — a podcast logo asset still needs to be added.
 
 **Navigation** — the header nav (and mobile menu) is **Servicios · Cómo funciona ·
-Clientes · Podcast · Contacto**, present on every page. On sub-pages the first three and
-Contacto point back to the home anchors (e.g. `../index.html#servicios`); "Podcast"
-points to `/podcast/`.
+Clientes · Nosotros · Blog · Podcast · Contacto**, present on every page. "Servicios" is
+a hover/focus dropdown listing all 8 service pages (an accordion in the mobile menu). On
+sub-pages, Cómo funciona / Clientes / Contacto point back to the home anchors (e.g.
+`../index.html#servicios`); the rest point at their own pages.
 
 ---
 
@@ -140,22 +176,23 @@ points to `/podcast/`.
 **Layout**
 - Content container max-width **1200px** (narrower sections 1080px), `padding: 0 22px`.
 - Section rhythm: `padding: clamp(48px,7vw,96px) 22px`.
-- Responsive breakpoint at **900px** (`isMobile`): below it the nav collapses to a
-  hamburger menu.
+- Responsive breakpoint at **1080px** (`isMobile`, from `window.innerWidth < 1080`):
+  below it the nav collapses to a hamburger menu. Note the trust strip switches to its
+  marquee variant at a different width (`@media (max-width:899px)`).
 
 ---
 
 ## Sections (top → bottom)
 
-1. **Trust strip** — thin dark bar: 5-star rating, "+30 marcas", "respuesta en 24 h", "asesoría gratis".
-2. **Header** — sticky, blurred cream bar. Horizontal logo (`jumping-panda-header-horizontal-vector.svg`) + nav (Servicios · Cómo funciona · Clientes · Podcast · Contacto) + pink "Agendar gratis" CTA. Collapses to a hamburger + slide-down menu under 900px. Same header on every page.
-3. **Hero** — two-column: badge, H1 (with pink phrase), subhead, two CTAs, 4 risk badges, rating row; right column is a bordered hero image with two floating cards ("Asesoría GRATIS 30 min" + "Te encuentran cuando te buscan").
+1. **Trust strip** — thin dark bar: 5-star rating, "+30 marcas confían en nosotros", "Respuesta en menos de 24 h", "Diagnóstico inicial gratis". Static and centered on desktop; a one-line marquee under 900px.
+2. **Header** — sticky, blurred cream bar. Horizontal logo (`jumping-panda-header-horizontal-vector.svg`) + nav (Servicios ▾ · Cómo funciona · Clientes · Nosotros · Blog · Podcast · Contacto) + pink **"Agenda tu diagnóstico"** CTA. Collapses to a hamburger + slide-down menu under 1080px. Same header on every page.
+3. **Hero** — two-column: badge, H1 (with pink phrase), subhead, two CTAs, 4 risk badges, rating row; right column is a bordered hero image with two floating cards ("DIAGNÓSTICO GRATIS 30 min" + "Te encuentran justo cuando te buscan").
 4. **Logo wall** — a single infinite marquee of the 24 client logos (transparent SVGs from `logos/`), shown in grayscale. Subhead reads "+30 negocios mexicanos". The logo list and order live in the logic block at the bottom of `index.html` (`const clients = [...]`).
 5. **Outcome chain** — dark section, 4 numbered cards (Te encuentran → Te eligen → Vendes más → Creces).
 6. **Problem** — full-bleed pink section, big question headline + CTA.
 7. **Services** — dark, rounded top; grid of 8 service cards (image + title + desc + link), hover lift + pink border. Each card links to its local service page under `servicios/` (see **Pages**).
 8. **How it works** — dark, 4 numbered steps + CTA row.
-9. **Wall of love** — 6 review screenshot slots (`<image-slot>`), 3:4 aspect.
+9. **Wall of love / "Reseñas reales"** — **currently hidden.** The whole section is wrapped in a `<!--[jp-hide-reviews] … -->` comment in `index.html` while it's being redeveloped; remove that wrapper to restore it. It holds 6 review screenshot slots (`<image-slot>`), 3:4 aspect.
 10. **Risk reversal** — dark rounded card, "empezar no cuesta nada" + 4 badges.
 11. **Team** — 3 member cards (photo, name, role).
 12. **Final CTA + form** — pink, two-column: pitch + contact form (name, email, phone, message).
@@ -226,7 +263,9 @@ Two things to wire up for production:
 
 1. **Contact form** → POST to your CRM / email / WhatsApp Business API. Today it only
    flips a local success flag.
-2. **Images** → move the Shopify-hosted images and real review screenshots into the repo.
+2. **Review screenshots** → the "Wall of love" slots persist in `localStorage`, not in the
+   repo. Replace each `<image-slot>` with a committed `<img>` (the photos themselves were
+   already migrated into `img/`).
 
 If no framework is set up yet, the simplest path is to keep this static page as-is and
 deploy it to GitHub Pages.

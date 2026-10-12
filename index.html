@@ -507,7 +507,21 @@ class Component extends DCLogic {
       onCorreo: (e)=>this.setState({correo:e.target.value}),
       onTel: (e)=>this.setState({tel:e.target.value}),
       onComentario: (e)=>this.setState({comentario:e.target.value}),
-      onSubmit: (e)=>{ e.preventDefault(); this.setState({sent:true}); },
+      onSubmit: (e)=>{
+        e.preventDefault();
+        const s = this.state;
+        const msg =
+`¡Hola, Jumping Panda! 🐼 Quiero agendar mi diagnóstico gratis.
+
+👤 Nombre: ${s.nombre || '(no indicado)'}
+✉️ Correo: ${s.correo || '(no indicado)'}
+📱 Teléfono: ${s.tel || '(no indicado)'}
+💬 Qué quiere lograr: ${s.comentario || '(no indicado)'}`;
+        const url = 'https://wa.me/527229313202?text=' + encodeURIComponent(msg);
+        const win = window.open(url, '_blank');
+        if (!win) window.location.href = url;
+        this.setState({sent:true});
+      },
       toggleMenu: ()=>this.setState(s=>({menuOpen:!s.menuOpen, mobServicesOpen:false})),
       toggleMobServices: ()=>this.setState(s=>({mobServicesOpen:!s.mobServicesOpen})),
       closeMenu: ()=>this.setState({menuOpen:false, mobServicesOpen:false})

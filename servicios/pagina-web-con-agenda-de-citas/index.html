@@ -65,6 +65,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     .jp-trust-static{display:none!important}
     .jp-trust-marq{display:block}
   }
+.jp-err{font-size:12.5px;line-height:1.4;color:#b5476f;margin:-8px 4px 12px}.jp-err:empty{display:none}
 </style>
 </head>
 <body>
@@ -336,10 +337,14 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         <sc-if value="{{ notSent }}" hint-placeholder-val="{{ true }}">
         <form onSubmit="{{ onSubmit }}">
           <div style="font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:21px;margin-bottom:16px">¿Tienes dudas? Escríbenos</div>
-          <input value="{{ fNombre }}" onChange="{{ onNombre }}" type="text" placeholder="Tu nombre" style="width:100%;font:inherit;font-size:15px;padding:13px 15px;border:2px solid #141414;border-radius:13px;background:#fff;margin-bottom:12px;outline:none" />
-          <input value="{{ fCorreo }}" onChange="{{ onCorreo }}" type="email" required="true" placeholder="Tu correo electrónico *" style="width:100%;font:inherit;font-size:15px;padding:13px 15px;border:2px solid #141414;border-radius:13px;background:#fff;margin-bottom:12px;outline:none" />
-          <input value="{{ fTel }}" onChange="{{ onTel }}" type="tel" placeholder="Tu teléfono / WhatsApp" style="width:100%;font:inherit;font-size:15px;padding:13px 15px;border:2px solid #141414;border-radius:13px;background:#fff;margin-bottom:12px;outline:none" />
-          <textarea value="{{ fComentario }}" onChange="{{ onComentario }}" rows="2" placeholder="¿En qué te ayudamos?" style="width:100%;font:inherit;font-size:15px;padding:13px 15px;border:2px solid #141414;border-radius:13px;background:#fff;margin-bottom:16px;outline:none;resize:vertical"></textarea>
+          <input value="{{ fNombre }}" onChange="{{ onNombre }}" type="text" placeholder="Tu nombre *" style="width:100%;font:inherit;font-size:15px;padding:13px 15px;border:2px solid #141414;border-radius:13px;background:#fff;margin-bottom:12px;outline:none" />
+          <div class="jp-err">{{ eNombre }}</div>
+          <input value="{{ fCorreo }}" onChange="{{ onCorreo }}" type="text" inputmode="email" autocomplete="email" placeholder="Tu correo electrónico *" style="width:100%;font:inherit;font-size:15px;padding:13px 15px;border:2px solid #141414;border-radius:13px;background:#fff;margin-bottom:12px;outline:none" />
+          <div class="jp-err">{{ eCorreo }}</div>
+          <input value="{{ fTel }}" onChange="{{ onTel }}" type="tel" placeholder="Tu teléfono / WhatsApp *" style="width:100%;font:inherit;font-size:15px;padding:13px 15px;border:2px solid #141414;border-radius:13px;background:#fff;margin-bottom:12px;outline:none" />
+          <div class="jp-err">{{ eTel }}</div>
+          <textarea value="{{ fComentario }}" onChange="{{ onComentario }}" rows="2" placeholder="¿En qué te ayudamos? *" style="width:100%;font:inherit;font-size:15px;padding:13px 15px;border:2px solid #141414;border-radius:13px;background:#fff;margin-bottom:16px;outline:none;resize:vertical"></textarea>
+          <div class="jp-err">{{ eComentario }}</div>
           <button type="submit" style="width:100%;border:none;cursor:pointer;background:#e45b8f;color:#141414;font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:17px;padding:16px;border-radius:13px;box-shadow:0 5px 0 #141414;transition:transform .15s,box-shadow .15s" style-hover="transform:translateY(-2px);box-shadow:0 7px 0 #141414">Enviar mis datos →</button>
           <div style="text-align:center;font-size:12.5px;color:#777;margin-top:12px">Sin costo · Sin compromiso · Respuesta en 24 h</div>
         </form>
@@ -400,7 +405,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 </x-dc>
 <script type="text/x-dc" data-dc-script data-props="{&quot;showWhatsApp&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;}}">
 class Component extends DCLogic {
-  state = { menuOpen:false, mobServicesOpen:false, isMobile:false, sent:false, nombre:'', correo:'', tel:'', comentario:'' };
+  state = { menuOpen:false, mobServicesOpen:false, isMobile:false, sent:false, nombre:'', correo:'', tel:'', comentario:'', errs:{} };
   componentDidMount(){
     this._r = () => { const m = window.innerWidth < 1080; if (m !== this.state.isMobile) this.setState({ isMobile:m }); };
     this._r();
@@ -472,14 +477,21 @@ class Component extends DCLogic {
       wa, nav, socials, diferenciadores, proceso, siList, noList, beneficios, faqs, crossSell, showWhatsApp,
       isMobile: this.state.isMobile, desktop: !this.state.isMobile,
       menuOpen: this.state.menuOpen, sent: this.state.sent, notSent: !this.state.sent,
+      eNombre: this.state.errs.nombre||'', eCorreo: this.state.errs.correo||'', eTel: this.state.errs.tel||'', eComentario: this.state.errs.comentario||'',
       fNombre: this.state.nombre, fCorreo: this.state.correo, fTel: this.state.tel, fComentario: this.state.comentario,
-      onNombre: (e)=>this.setState({nombre:e.target.value}),
-      onCorreo: (e)=>this.setState({correo:e.target.value}),
-      onTel: (e)=>this.setState({tel:e.target.value}),
-      onComentario: (e)=>this.setState({comentario:e.target.value}),
+      onNombre: (e)=>this.setState({nombre:e.target.value, errs:{...this.state.errs, nombre:''}}),
+      onCorreo: (e)=>this.setState({correo:e.target.value, errs:{...this.state.errs, correo:''}}),
+      onTel: (e)=>this.setState({tel:e.target.value, errs:{...this.state.errs, tel:''}}),
+      onComentario: (e)=>this.setState({comentario:e.target.value, errs:{...this.state.errs, comentario:''}}),
       onSubmit: (e)=>{
         e.preventDefault();
         const s = this.state;
+        const errs = {};
+        if (!s.nombre.trim()) errs.nombre = 'Cuéntanos tu nombre para saludarte.';
+        if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(s.correo.trim())) errs.correo = s.correo.trim() ? 'Revisa tu correo, parece que falta algo (ej. nombre@correo.com).' : 'Falta tu correo para poder responderte.';
+        if (s.tel.replace(/\D/g,'').length < 10) errs.tel = s.tel.trim() ? 'Escribe tu número completo, con 10 dígitos.' : 'Falta tu teléfono o WhatsApp.';
+        if (!s.comentario.trim()) errs.comentario = 'Cuéntanos en una línea qué te gustaría lograr.';
+        if (Object.keys(errs).length) { this.setState({errs}); return; }
         const msg =
 `¡Hola, Jumping Panda! 🐼 Quiero agendar mi diagnóstico gratis.
 

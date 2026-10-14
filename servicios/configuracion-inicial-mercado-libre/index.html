@@ -489,12 +489,12 @@ class Component extends DCLogic {
         if (!s.comentario.trim()) errs.comentario = 'Cuéntanos en una línea qué te gustaría lograr.';
         if (Object.keys(errs).length) { this.setState({errs}); return; }
         const msg =
-`¡Hola, Jumping Panda! 🐼 Quiero agendar mi diagnóstico gratis.
+`¡Hola, Jumping Panda! Quiero agendar mi diagnóstico gratis.
 
-👤 Nombre: ${s.nombre || '(no indicado)'}
-✉️ Correo: ${s.correo || '(no indicado)'}
-📱 Teléfono: ${s.tel || '(no indicado)'}
-💬 Qué quiere lograr: ${s.comentario || '(no indicado)'}`;
+*Nombre:* ${s.nombre || '(no indicado)'}
+*Correo:* ${s.correo || '(no indicado)'}
+*Teléfono:* ${s.tel || '(no indicado)'}
+*Qué quiere lograr:* ${s.comentario || '(no indicado)'}`;
         const url = 'https://wa.me/527229313202?text=' + encodeURIComponent(msg);
         const win = window.open(url, '_blank');
         if (!win) window.location.href = url;

@@ -67,6 +67,39 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   }
 .jp-err{font-size:12.5px;line-height:1.4;color:#b5476f;margin:-8px 4px 12px}.jp-err:empty{display:none}
 </style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "name": "Jumping Panda",
+      "url": "https://jumpingpanda.mx/",
+      "logo": "https://jumpingpanda.mx/icon-512.png",
+      "email": "soy@jumpingpanda.mx",
+      "telephone": "+52 722 931 3202",
+      "areaServed": "MX",
+      "sameAs": [
+        "https://instagram.com/jumpingpandamx",
+        "https://facebook.com/jumpingpandamx",
+        "https://www.tiktok.com/@jumpingpandamx",
+        "http://www.youtube.com/@JumpingPandaMX"
+      ],
+      "@id": "https://jumpingpanda.mx/#org"
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://jumpingpanda.mx/#site",
+      "url": "https://jumpingpanda.mx/",
+      "name": "Jumping Panda",
+      "inLanguage": "es-MX",
+      "publisher": {
+        "@id": "https://jumpingpanda.mx/#org"
+      }
+    }
+  ]
+}
+</script>
 </head>
 <body>
 <!-- Google Tag Manager (noscript) -->
@@ -217,7 +250,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     <div style="margin-top:32px;display:flex">
       <div style="display:flex;gap:14px;width:max-content;animation:jpMarq 45s linear infinite">
         <sc-for list="{{ clientsLoop }}" as="c">
-          <div style="flex:none;height:126px;display:flex;align-items:center;justify-content:center;padding:0 22px"><img src="{{ c }}" alt="Cliente Jumping Panda" style="height:126px;width:auto;object-fit:contain;display:block;filter:grayscale(1)" /></div>
+          <div style="flex:none;height:126px;display:flex;align-items:center;justify-content:center;padding:0 22px"><img loading="lazy" src="{{ c }}" alt="Cliente Jumping Panda" style="height:126px;width:auto;object-fit:contain;display:block;filter:grayscale(1)" /></div>
         </sc-for>
       </div>
     </div>
@@ -262,7 +295,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(248px,1fr));gap:16px;margin-top:42px">
         <sc-for list="{{ services }}" as="s">
           <a href="{{ s.href }}" style="display:flex;flex-direction:column;background:#1d1d1d;border:1px solid rgba(251,246,238,.12);border-radius:22px;overflow:hidden;text-decoration:none;color:#FBF6EE;transition:transform .35s,box-shadow .35s,border-color .35s;animation:jpReveal linear both;animation-timeline:view();animation-range:entry 0% cover 16%" style-hover="transform:translateY(-7px);box-shadow:0 22px 44px rgba(0,0,0,.4);border-color:#e45b8f">
-            <div style="aspect-ratio:16/11;overflow:hidden;background:#2a2a2a"><img src="{{ s.img }}" alt="{{ s.title }}" style="width:100%;height:100%;object-fit:cover;display:block" /></div>
+            <div style="aspect-ratio:16/11;overflow:hidden;background:#2a2a2a"><img loading="lazy" src="{{ s.img }}" alt="{{ s.title }}" style="width:100%;height:100%;object-fit:cover;display:block" /></div>
             <div style="padding:20px 20px 22px;display:flex;flex-direction:column;flex:1">
               <h3 style="font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:20px;margin:0 0 9px;letter-spacing:-.01em">{{ s.title }}</h3>
               <p style="margin:0 0 16px;font-size:14px;line-height:1.5;color:#b9b5ae;flex:1">{{ s.desc }}</p>
@@ -345,7 +378,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px;margin-top:36px">
       <sc-for list="{{ team }}" as="m">
         <div style="background:#fff;border:1px solid rgba(20,20,20,.1);border-radius:22px;overflow:hidden;animation:jpReveal linear both;animation-timeline:view();animation-range:entry 0% cover 18%">
-          <div style="aspect-ratio:1/1;overflow:hidden;background:#F8E3EC"><img src="{{ m.img }}" alt="{{ m.name }}" style="width:100%;height:100%;object-fit:cover;display:block" /></div>
+          <div style="aspect-ratio:1/1;overflow:hidden;background:#F8E3EC"><img loading="lazy" src="{{ m.img }}" alt="{{ m.name }}" style="width:100%;height:100%;object-fit:cover;display:block" /></div>
           <div style="padding:18px 20px 22px">
             <h3 style="font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:21px;margin:0">{{ m.name }}</h3>
             <div style="display:inline-block;margin-top:8px;background:#F8E3EC;color:#141414;font-weight:600;font-size:13px;padding:5px 12px;border-radius:999px">{{ m.role }}</div>

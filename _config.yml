@@ -1,0 +1,3 @@
+# Keep the untouched image originals in the repo, but do not publish them.
+exclude:
+  - img/originales

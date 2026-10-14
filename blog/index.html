@@ -311,7 +311,7 @@ class Component extends DCLogic {
   }
   componentWillUnmount(){ if (this._r) window.removeEventListener('resize', this._r); }
   renderVals(){
-    const wa = 'https://wa.me/527229313202?text=' + encodeURIComponent('¡Hola, Jumping Panda! 🐼 Vengo de su blog y quiero agendar mi diagnóstico gratis.');
+    const wa = 'https://wa.me/527229313202?text=' + encodeURIComponent('¡Hola, Jumping Panda! Vengo de su blog y quiero agendar mi diagnóstico gratis.');
     // Cada entrada del blog es un objeto aquí; la más reciente va primero y se muestra como destacada.
     // href apunta a blog/<slug>/ cuando exista la página del artículo.
     // Las imágenes viven en /img/ dentro del repo (NO enlazar a CDNs externos: si el

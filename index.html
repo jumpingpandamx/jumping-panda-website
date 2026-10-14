@@ -77,7 +77,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <script src="image-slot.js"></script>
 
 </helmet>
-<div data-screen-label="Home (Conversión)" id="top" style="background:#FBF6EE;color:#141414;font-family:'Hanken Grotesk',system-ui,-apple-system,sans-serif;overflow-x:clip;position:relative">
+<div data-screen-label="Home (Conversión)" id="top" style="background:#fff;color:#141414;font-family:'Hanken Grotesk',system-ui,-apple-system,sans-serif;overflow-x:clip;position:relative">
 
   <!-- TRUST STRIP -->
   <div style="background:#141414;color:#FBF6EE;font-size:13px;font-weight:600">
@@ -115,7 +115,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
   <!-- HEADER (floating outlined bar) -->
   <header style="position:sticky;top:0;z-index:60;padding:14px 22px">
-    <div style="max-width:1200px;margin:0 auto;display:flex;align-items:center;gap:24px;padding:11px 12px 11px 20px;background:rgba(251,246,238,.92);backdrop-filter:blur(12px);border:1.5px solid rgba(20,20,20,.14);border-radius:18px">
+    <div style="max-width:1200px;margin:0 auto;display:flex;align-items:center;gap:24px;padding:11px 12px 11px 20px;background:rgba(255,255,255,.92);backdrop-filter:blur(12px);border:1.5px solid rgba(20,20,20,.14);border-radius:18px">
       <a href="#top" style="display:flex;align-items:center;text-decoration:none;flex:none"><img src="jumping-panda-header-horizontal-vector.svg" alt="Jumping Panda" style="height:40px;width:auto;display:block" /></a>
       <sc-if value="{{ desktop }}" hint-placeholder-val="{{ true }}">
       <nav style="display:flex;align-items:center;gap:17px">
@@ -141,7 +141,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       <a href="{{ wa }}" target="_blank" style="flex:none;text-decoration:none;background:#e45b8f;color:#141414;font-weight:700;font-size:15px;padding:12px 22px;border:1.5px solid #141414;border-radius:12px;white-space:nowrap;transition:background .15s,transform .1s" style-hover="background:#ec7fa8">Agenda tu diagnóstico</a>
       </sc-if>
       <sc-if value="{{ isMobile }}" hint-placeholder-val="{{ false }}">
-      <button onClick="{{ toggleMenu }}" aria-label="Menú" style="margin-left:auto;border:1.5px solid #141414;background:#FBF6EE;width:44px;height:44px;border-radius:12px;cursor:pointer;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px">
+      <button onClick="{{ toggleMenu }}" aria-label="Menú" style="margin-left:auto;border:1.5px solid #141414;background:#fff;width:44px;height:44px;border-radius:12px;cursor:pointer;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px">
         <span style="width:18px;height:2px;background:#141414;display:block"></span>
         <span style="width:18px;height:2px;background:#141414;display:block"></span>
         <span style="width:18px;height:2px;background:#e45b8f;display:block"></span>
@@ -149,7 +149,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       </sc-if>
     </div>
     <sc-if value="{{ menuOpen }}" hint-placeholder-val="{{ false }}">
-    <div style="max-width:1200px;margin:8px auto 0;padding:10px 20px 20px;background:rgba(251,246,238,.97);backdrop-filter:blur(12px);border:1.5px solid rgba(20,20,20,.14);border-radius:18px;display:flex;flex-direction:column;gap:4px">
+    <div style="max-width:1200px;margin:8px auto 0;padding:10px 20px 20px;background:rgba(255,255,255,.97);backdrop-filter:blur(12px);border:1.5px solid rgba(20,20,20,.14);border-radius:18px;display:flex;flex-direction:column;gap:4px">
       <button onClick="{{ toggleMobServices }}" class="jp-mobcaret{{ mobServicesOpenClass }}" style="display:flex;align-items:center;border:none;background:none;cursor:pointer;text-align:left;color:#141414;font-weight:700;font-size:18px;padding:11px 4px;font-family:'Bricolage Grotesque',sans-serif">Servicios</button>
       <sc-if value="{{ mobServicesOpen }}" hint-placeholder-val="{{ false }}">
       <div style="display:flex;flex-direction:column;gap:2px;padding:0 0 8px 14px;border-left:2px solid rgba(20,20,20,.12);margin:0 0 4px 6px">
@@ -200,7 +200,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
           <div style="font-weight:800;font-size:21px;line-height:1;color:#e45b8f">GRATIS</div>
           <div style="font-weight:600;font-size:11px">30 min</div>
         </div>
-        <div style="position:absolute;z-index:2;right:-12px;bottom:34px;background:#FBF6EE;border:2px solid #141414;border-radius:16px;padding:11px 15px;box-shadow:0 10px 24px rgba(20,20,20,.16);max-width:200px">
+        <div style="position:absolute;z-index:2;right:-12px;bottom:34px;background:#fff;border:2px solid #141414;border-radius:16px;padding:11px 15px;box-shadow:0 10px 24px rgba(20,20,20,.16);max-width:200px">
           <div style="font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:15px;line-height:1.15">Te encuentran justo cuando te buscan</div>
           <div style="font-size:12.5px;color:#666;margin-top:3px">Google · IA · Mapas</div>
         </div>
@@ -333,7 +333,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   </section>
 
   <!-- TEAM -->
-  <section id="equipo" style="background:#fff;color:#141414">
+  <section id="equipo" style="background:#F4F2EE;color:#141414">
   <div style="max-width:1200px;margin:0 auto;padding:clamp(56px,8vw,104px) 22px">
     <div style="display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:18px;animation:jpReveal linear both;animation-timeline:view();animation-range:entry 0% cover 28%">
       <div>
@@ -344,7 +344,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     </div>
     <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px;margin-top:36px">
       <sc-for list="{{ team }}" as="m">
-        <div style="background:#FBF6EE;border:1px solid rgba(20,20,20,.1);border-radius:22px;overflow:hidden;animation:jpReveal linear both;animation-timeline:view();animation-range:entry 0% cover 18%">
+        <div style="background:#fff;border:1px solid rgba(20,20,20,.1);border-radius:22px;overflow:hidden;animation:jpReveal linear both;animation-timeline:view();animation-range:entry 0% cover 18%">
           <div style="aspect-ratio:1/1;overflow:hidden;background:#F8E3EC"><img src="{{ m.img }}" alt="{{ m.name }}" style="width:100%;height:100%;object-fit:cover;display:block" /></div>
           <div style="padding:18px 20px 22px">
             <h3 style="font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:21px;margin:0">{{ m.name }}</h3>
@@ -368,7 +368,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
           <span style="font-size:14.5px;color:#1c1410"><strong>+30 marcas</strong> ya dieron el paso</span>
         </div>
       </div>
-      <div style="background:#FBF6EE;border:3px solid #141414;border-radius:26px;padding:clamp(22px,3vw,34px);box-shadow:0 18px 0 rgba(20,20,20,.18);animation:jpReveal linear both;animation-timeline:view();animation-range:entry 0% cover 22%">
+      <div style="background:#fff;border:3px solid #141414;border-radius:26px;padding:clamp(22px,3vw,34px);box-shadow:0 18px 0 rgba(20,20,20,.18);animation:jpReveal linear both;animation-timeline:view();animation-range:entry 0% cover 22%">
         <sc-if value="{{ sent }}" hint-placeholder-val="{{ false }}">
           <div style="text-align:center;padding:30px 8px">
             <div style="font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:30px;color:#e45b8f;letter-spacing:-.02em">¡Listo! 🐼</div>

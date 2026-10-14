@@ -408,7 +408,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
           </div>
         </div>
       </div>
-      <div style="margin-top:44px;padding-top:22px;border-top:1px solid rgba(251,246,238,.14);font-size:13px;color:#7e7b76">© 2026 Jumping Panda · Hecho en México con amor</div>
+      <div style="margin-top:44px;padding-top:22px;border-top:1px solid rgba(251,246,238,.14);padding-bottom:56px;font-size:13px;color:#7e7b76">© 2026 Jumping Panda · Hecho en México con amor<div style="margin-top:6px;font-size:11px;line-height:1.5;color:#6f6c67">Usamos Microsoft Clarity para mejorar el sitio. Al usarlo, aceptas que nosotros y Microsoft recopilemos estos datos. Más detalles en nuestro <a href="/privacidad/" style="color:inherit;text-decoration:underline">Aviso de Privacidad</a>.</div></div>
     </div>
   </footer>
 
@@ -510,6 +510,14 @@ class Component extends DCLogic {
 *Correo:* ${s.correo || '(no indicado)'}
 *Teléfono:* ${s.tel || '(no indicado)'}
 *Qué quiere lograr:* ${s.comentario || '(no indicado)'}`;
+        // Guarda el lead en Google Sheets (se activa al pegar la URL del Apps Script).
+        const LEADS_URL = '';
+        if (LEADS_URL) {
+          try {
+            fetch(LEADS_URL, { method:'POST', mode:'no-cors', keepalive:true, headers:{'Content-Type':'text/plain'},
+              body: JSON.stringify({ nombre:s.nombre, correo:s.correo, tel:s.tel, comentario:s.comentario, pagina:location.pathname }) });
+          } catch (err) {}
+        }
         const url = 'https://wa.me/527229313202?text=' + encodeURIComponent(msg);
         const win = window.open(url, '_blank');
         if (!win) window.location.href = url;

@@ -516,7 +516,7 @@ class Component extends DCLogic {
 *Teléfono:* ${s.tel || '(no indicado)'}
 *Qué quiere lograr:* ${s.comentario || '(no indicado)'}`;
         // Guarda el lead en Google Sheets (se activa al pegar la URL del Apps Script).
-        const LEADS_URL = '';
+        const LEADS_URL = 'https://script.google.com/macros/s/AKfycbyCflduxotG6ciWXp8Z6fVRxMl7K_gYCn-_z1-4q9uQbrCAt6R-tyDXPQPXYDMzYxa4/exec';
         if (LEADS_URL) {
           try {
             fetch(LEADS_URL, { method:'POST', mode:'no-cors', keepalive:true, headers:{'Content-Type':'text/plain'},

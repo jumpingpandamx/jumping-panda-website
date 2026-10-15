@@ -14,7 +14,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
 })(window,document,'script','dataLayer','GTM-TJRGH7KQ');</script>
 <!-- End Google Tag Manager -->
-<script src="./support.js"></script>
+<script src="./support.js" defer></script>
+<script src="./track.js" defer></script>
 <title>Páginas web y marketing digital para PYMEs | Jumping Panda</title>
 <meta name="description" content="Creamos páginas web que sí venden y manejamos tus redes, Google Ads y SEO. Marketing digital para PYMEs en México. Agenda tu diagnóstico.">
 <link rel="canonical" href="https://jumpingpanda.mx/">
@@ -24,16 +25,23 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <meta property="og:url" content="https://jumpingpanda.mx/">
 <meta property="og:title" content="Páginas web y marketing digital para PYMEs | Jumping Panda">
 <meta property="og:description" content="Creamos páginas web que sí venden y manejamos tus redes, Google Ads y SEO. Marketing digital para PYMEs en México. Agenda tu diagnóstico.">
-<meta property="og:image" content="https://jumpingpanda.mx/icon-512.png">
+<meta property="og:image" content="https://jumpingpanda.mx/img/og/home.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Páginas web y marketing digital para PYMEs | Jumping Panda">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Páginas web y marketing digital para PYMEs | Jumping Panda">
 <meta name="twitter:description" content="Creamos páginas web que sí venden y manejamos tus redes, Google Ads y SEO. Marketing digital para PYMEs en México. Agenda tu diagnóstico.">
-<meta name="twitter:image" content="https://jumpingpanda.mx/icon-512.png">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,600;12..96,700;12..96,800&family=Hanken+Grotesk:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<meta name="twitter:image" content="https://jumpingpanda.mx/img/og/home.jpg">
+<link rel="preload" href="/fonts/bricolage-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/hanken-latin.woff2" as="font" type="font/woff2" crossorigin>
+<style>@font-face{font-family:'Bricolage Grotesque';font-style:normal;font-weight:500 800;font-display:swap;src:url(/fonts/bricolage-latin.woff2) format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD}@font-face{font-family:'Hanken Grotesk';font-style:normal;font-weight:400 800;font-display:swap;src:url(/fonts/hanken-latin.woff2) format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD}</style>
 <style>
   *{box-sizing:border-box}
+  /* contraste AA: rosa mas oscuro para texto sobre fondos claros */
+  [style*="color:#e45b8f"]{color:#bd3069!important}
+  [style*="background:#141414"] [style*="color:#e45b8f"],[style*="background:#1d1d1d"] [style*="color:#e45b8f"],[style*="background:#2a2a2a"] [style*="color:#e45b8f"],[style*="background:#141414"][style*="color:#e45b8f"]{color:#e45b8f!important}
+
   html{scroll-behavior:smooth}
   body{margin:0}
   img{max-width:100%}
@@ -108,7 +116,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <!-- End Google Tag Manager (noscript) -->
 <x-dc>
 <helmet>
-<script src="image-slot.js"></script>
+<script src="image-slot.js" defer></script>
 
 </helmet>
 <div data-screen-label="Home (Conversión)" id="top" style="background:#fff;color:#141414;font-family:'Hanken Grotesk',system-ui,-apple-system,sans-serif;overflow-x:clip;position:relative">
@@ -201,6 +209,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     </sc-if>
   </header>
 
+  <main id="contenido">
   <!-- ABOVE THE FOLD -->
   <section style="position:relative;max-width:1200px;margin:0 auto;padding:clamp(34px,5vw,68px) 22px clamp(30px,4vw,52px)">
     <div style="position:absolute;top:-20px;right:-90px;width:560px;height:560px;background:radial-gradient(circle at 35% 35%,#F6DCE7,rgba(246,220,231,0) 68%);z-index:0;pointer-events:none"></div>
@@ -227,7 +236,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       <div style="position:relative">
         <div style="position:absolute;inset:14px -14px -16px 14px;background:#e45b8f;border-radius:30px;z-index:0"></div>
         <div style="position:relative;z-index:1;border-radius:28px;overflow:hidden;border:3px solid #141414;box-shadow:0 24px 50px rgba(20,20,20,.18)">
-          <img src="img/jumping-panda-Taqueria-google-ads-servicio-web-hero.webp" alt="Negocio mexicano encontrado en internet con Jumping Panda" style="width:100%;height:100%;object-fit:cover;display:block;aspect-ratio:4/3.5" />
+          <img width="1000" height="563" src="img/jumping-panda-Taqueria-google-ads-servicio-web-hero.webp" alt="Negocio mexicano encontrado en internet con Jumping Panda" style="width:100%;height:100%;object-fit:cover;display:block;aspect-ratio:4/3.5" />
         </div>
         <div style="position:absolute;z-index:2;top:-24px;left:-24px;width:118px;height:118px;border-radius:50%;background:#141414;color:#FBF6EE;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:1px;font-family:'Bricolage Grotesque',sans-serif;animation:jpFloat 4.5s ease-in-out infinite;box-shadow:0 10px 24px rgba(20,20,20,.28)">
           <div style="font-weight:600;font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;opacity:.8">Diagnóstico</div>
@@ -390,6 +399,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   </div>
   </section>
 
+  <!-- LECTURAS RELACIONADAS -->
+  <section id="lecturas" style="background:#fff;color:#141414;padding:clamp(48px,7vw,90px) 22px"><div style="max-width:1200px;margin:0 auto"><div style="font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:#BD3069">Del blog</div><h2 style="font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:clamp(28px,4vw,48px);line-height:1.02;letter-spacing:-.03em;margin:12px 0 0">Ideas y casos reales para vender más en internet</h2><p style="font-size:clamp(16px,1.4vw,19px);line-height:1.55;max-width:40em;margin:16px 0 0;color:#3c3a37">Guías sin rollos y historias de negocios mexicanos, escritas por el equipo de Jumping Panda.</p><div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px;margin-top:34px"><a href="blog/aparecer-en-google-antes-que-tu-competencia/" style="display:flex;flex-direction:column;text-decoration:none;color:#141414;background:#fff;border:1px solid rgba(20,20,20,.12);border-radius:20px;overflow:hidden;transition:transform .2s" style-hover="transform:translateY(-3px)"><img src="blog/aparecer-en-google-antes-que-tu-competencia/portada-guia-aparece-google.png" alt="Cómo hacer que tu negocio aparezca en Google antes que tu competencia" loading="lazy" style="width:100%;aspect-ratio:16/9;object-fit:cover;display:block" /><span style="display:block;padding:16px 18px 20px"><span style="display:block;font-size:12.5px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#BD3069">Guía gratis</span><span style="display:block;margin-top:8px;font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:17.5px;line-height:1.2;letter-spacing:-.01em;display:-webkit-box;-webkit-line-clamp:4;-webkit-box-orient:vertical;overflow:hidden">Cómo hacer que tu negocio aparezca en Google antes que tu competencia</span></span></a><a href="blog/pagamos-100000-por-una-pagina-que-no-vendia/" style="display:flex;flex-direction:column;text-decoration:none;color:#141414;background:#fff;border:1px solid rgba(20,20,20,.12);border-radius:20px;overflow:hidden;transition:transform .2s" style-hover="transform:translateY(-3px)"><img src="img/Jumping_panda_servicios_paginas_web.webp" alt="Pagamos más de $100,000 por una página que no vendía. Esto es lo que aprendimos" loading="lazy" style="width:100%;aspect-ratio:16/9;object-fit:cover;display:block" /><span style="display:block;padding:16px 18px 20px"><span style="display:block;font-size:12.5px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#BD3069">Páginas web</span><span style="display:block;margin-top:8px;font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:17.5px;line-height:1.2;letter-spacing:-.01em;display:-webkit-box;-webkit-line-clamp:4;-webkit-box-orient:vertical;overflow:hidden">Pagamos más de $100,000 por una página que no vendía. Esto es lo que aprendimos</span></span></a><a href="blog/como-lanzar-tu-tienda-en-linea/" style="display:flex;flex-direction:column;text-decoration:none;color:#141414;background:#fff;border:1px solid rgba(20,20,20,.12);border-radius:20px;overflow:hidden;transition:transform .2s" style-hover="transform:translateY(-3px)"><img src="img/Jumping_panda_servicios_comercio_electronico.webp" alt="Cómo lanzar tu tienda en línea (y que sí venda): la guía sin rollos" loading="lazy" style="width:100%;aspect-ratio:16/9;object-fit:cover;display:block" /><span style="display:block;padding:16px 18px 20px"><span style="display:block;font-size:12.5px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#BD3069">E-commerce</span><span style="display:block;margin-top:8px;font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:17.5px;line-height:1.2;letter-spacing:-.01em;display:-webkit-box;-webkit-line-clamp:4;-webkit-box-orient:vertical;overflow:hidden">Cómo lanzar tu tienda en línea (y que sí venda): la guía sin rollos</span></span></a></div><div style="margin-top:30px;display:flex;flex-wrap:wrap;gap:22px"><a href="blog/" style="text-decoration:none;color:#141414;font-weight:700;border-bottom:2px solid #e45b8f;padding-bottom:3px">Ver todo el blog →</a><a href="podcast/" style="text-decoration:none;color:#141414;font-weight:700;border-bottom:2px solid #e45b8f;padding-bottom:3px">Escuchar el podcast →</a></div></div></section>
+
   <!-- FINAL CTA + FORM -->
   <section id="contacto" style="background:#F8E3EC;color:#141414">
     <div style="max-width:1200px;margin:0 auto;padding:clamp(56px,8vw,110px) 22px;display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:clamp(28px,4vw,52px);align-items:center">
@@ -429,6 +441,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     </div>
   </section>
 
+  </main>
   <!-- FOOTER -->
   <footer style="background:#141414;color:#FBF6EE">
     <div style="max-width:1200px;margin:0 auto;padding:clamp(46px,6vw,80px) 22px 28px">
@@ -573,6 +586,10 @@ class Component extends DCLogic {
               body: JSON.stringify({ nombre:s.nombre, correo:s.correo, tel:s.tel, comentario:s.comentario, pagina:location.pathname }) });
           } catch (err) {}
         }
+        try {
+          (window.dataLayer = window.dataLayer || []).push({ event:'generate_lead', form_page:location.pathname, lead_source:'formulario_whatsapp' });
+          if (window.fbq) window.fbq('track', 'Lead');
+        } catch (err) {}
         const url = 'https://wa.me/527229313202?text=' + encodeURIComponent(msg);
         const win = window.open(url, '_blank');
         if (!win) window.location.href = url;
